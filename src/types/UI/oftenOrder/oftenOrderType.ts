@@ -1,0 +1,1 @@
+export type OftenOrderType = 'auto' | { manual: { px: number } };

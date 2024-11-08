@@ -1,0 +1,1 @@
+export type LinkType = 'active' | 'disable' | 'none';
