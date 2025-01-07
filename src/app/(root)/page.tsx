@@ -14,7 +14,7 @@ export default function Home() {
   return (
     <>
 <Logo/>
-<Button variant='user' status={false} size="default"/>
+<Button variant='cart' status={false} size="default"/>
 
 <Notifications/>
     </>
