@@ -6,9 +6,9 @@ import { SessionProvider } from 'next-auth/react';
 
 const queryClient = new QueryClient();
 
-export default function ClientProviders({ children,session}: { children: React.ReactNode ,session:any}) {
+export default function ClientProviders({ children}: { children: React.ReactNode }) {
   return (
-    <SessionProvider session={session}>
+    <SessionProvider>
       <QueryClientProvider client={queryClient}>
         <NotificationProvider>
           {children}
