@@ -15,6 +15,8 @@ import { useNotification } from "@/context/notification";
 import { Loading } from "@/components/shared/loading/loading";
 import { useEffect } from "react";
 import { useSession,signIn } from "next-auth/react";
+import { userService } from "@/service/userService";
+
 const ButtonConfig: Record<ButtonVariants, any> = {
   cart: {
     icon: <FiShoppingCart />,
@@ -205,8 +207,11 @@ if(CountError || TotalError) {
       return (
         <button onClick={()=> {
     
-          
-          signIn('google')
+          userService.CheckLogged().then((e)=> {
+            console.log(e)
+
+          })
+      
         }}
           className={`${ButtonConfig[Variant].style[Size]} ${
             Status == true && "cursor-not-allowed"

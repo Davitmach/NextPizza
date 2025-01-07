@@ -14,7 +14,6 @@ export default function Home() {
 const {data} =useSession();
 useEffect(()=> {
 console.log(data);
-
 },[data])
   return (
     <>
