@@ -1,0 +1,8 @@
+.Active {
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.05);
+color: rgba(254, 95, 0, 1);
+}
+.Disable {
+    
+   &:hover {   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.05);}
+}

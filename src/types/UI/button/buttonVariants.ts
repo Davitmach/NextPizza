@@ -1,0 +1,1 @@
+export type ButtonVariants = 'cart' | 'user' | 'orange' | 'collet' | 'add' | 'gray' | 'back' | 'pay' | 'grayTransparent' | 'orangeGoHome' | 'orangeBorder'

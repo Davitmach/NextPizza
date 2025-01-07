@@ -1,0 +1,12 @@
+.anim {
+    animation: anim 5s linear forwards;
+    @keyframes anim {
+from {
+    width: 100%;
+}
+to {
+    width: 0;
+}
+    }
+}
+

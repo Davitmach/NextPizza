@@ -1,0 +1,36 @@
+.Option_box {
+    position: relative;
+}
+.Label {
+    position: absolute;
+    color: rgba(32, 32, 32, 1);
+left: 20px;
+top: 50%;
+transform: translateY(-50%);
+font-weight: 700;
+font-size: 16px;
+    &::before {
+        content: url('/svg/arrow.svg');
+        margin-right: 10px;
+       
+    }
+}
+.Select {
+
+    -webkit-appearance: none;  
+    -moz-appearance: none;    
+outline: none;
+background-color: rgba(250, 250, 250, 1);
+padding: 8px 20px 8px 150px;
+border-radius: 15px;
+color: rgba(254, 95, 0, 1);
+font-size: 16px;
+font-weight:700;
+cursor: pointer;
+option {
+    font-size: 16px;
+    font-weight: 700;
+  
+}
+
+}
