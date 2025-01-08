@@ -15,15 +15,11 @@ const handler = NextAuth({
      
    ],
    callbacks: {
-
+    // Колбэк для успешной аутентификации
     async signIn({ user, account, profile }) {
-     
-      console.log('Пользователь вошел:', user);
+      console.log('Пользователь вошел:', user);  // Выводим данные пользователя в консоль
       return true; 
     },
-
-    
-   
   },
    secret:process.env.NEXTAUTH_SECRET,
   
