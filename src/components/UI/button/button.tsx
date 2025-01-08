@@ -13,7 +13,7 @@ import Cookie from 'js-cookie'
 import {useQuery} from "@tanstack/react-query";
 import { useNotification } from "@/context/notification";
 import { Loading } from "@/components/shared/loading/loading";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSession,signIn } from "next-auth/react";
 import { userService } from "@/service/userService";
 
@@ -203,22 +203,31 @@ if(CountError || TotalError) {
       );
     case "user":
       
-      
+      const [logged,setLogged] = useState<boolean|null>(null);
+      const {data} = useQuery({
+        queryKey:['checkLogin'],
+        queryFn:()=> userService.CheckLogged()
+        
+            })
+            useEffect(()=> {
+ setLogged(data?.status)
+
+
+            },[data])
+      const {status} = useSession();
       return (
         <button onClick={()=> {
     
-          userService.CheckLogged().then((e)=> {
-            console.log(e)
-
-          })
-      
+          userService.LoginProvider()
+        
         }}
           className={`${ButtonConfig[Variant].style[Size]} ${
             Status == true && "cursor-not-allowed"
           }`}
         >
           {ButtonConfig[Variant].icon}
-          {Text}
+
+          {logged == null ?   <Loading type="orange" borderWidth={4} width={20}/> :logged == true ? 'Профиль' : 'Войти'}
         </button>
       );
     case "back":

@@ -13,7 +13,7 @@ import { useSession } from "next-auth/react";
 export default function Home() {
 const {data} =useSession();
 useEffect(()=> {
-console.log(data);
+console.log(data,'session');
 },[data])
   return (
     <>

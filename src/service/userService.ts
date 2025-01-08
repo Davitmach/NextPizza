@@ -3,8 +3,12 @@
 import { UserApi } from "@/api/user/userApi";
 import axios from "axios";
 import { AxiosResponse } from "axios";
+
+import { signOut,signIn,getSession } from "next-auth/react";
+import Cookie from 'js-cookie'
+import { useEffect } from "react";
 class UserService {
-   
+
 async Login(name:string,email:string) {
     try {
 const data = await axios.post(UserApi.login,{
@@ -29,6 +33,45 @@ return data.data;
     catch(error) {
         return(error);
     }
+}
+async Logout(status:'authenticated'|'loading' | 'unauthenticated') {
+    try {
+    if(status == 'authenticated') {
+      await signOut()
+const data = await axios.get(UserApi.logout,{
+    withCredentials:true
+})
+return data.data
+    }
+    else {
+        
+        const data = await axios.get(UserApi.logout,{
+            withCredentials:true   
+    })
+    return data.data;
+        
+
+    }
+
+    }
+    catch(error) {
+        return(error)
+    }
+    
+}
+async LoginProvider() {
+try {
+signIn('google')
+const session = await getSession();
+useEffect(()=> {
+console.log(session,'qaqs');
+
+},[session])
+
+}
+catch(error) {
+    return(error)
+}
 }
     
 
