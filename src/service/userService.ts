@@ -4,7 +4,7 @@ import { UserApi } from "@/api/user/userApi";
 import axios from "axios";
 import { AxiosResponse } from "axios";
 
-import { signOut,signIn,getSession } from "next-auth/react";
+import { signOut,signIn,getSession, useSession } from "next-auth/react";
 import Cookie from 'js-cookie'
 import { useEffect } from "react";
 
@@ -61,10 +61,14 @@ return data.data
     
 }
 async LoginProvider() {
+
 try {
 signIn('google')
+const {data} = useSession()
+useEffect(()=>{
+console.log(data);
 
-
+},[data])
 
 }
 catch(error) {

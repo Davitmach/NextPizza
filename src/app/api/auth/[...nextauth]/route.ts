@@ -14,21 +14,7 @@ const handler = NextAuth({
     })
      
    ],
-   callbacks: {
-    // Колбэк при успешной аутентификации
-    async signIn({ user, account, profile }) {
-      console.log('Пользователь вошел:', user);  // Логируем данные о пользователе
-      console.log('qaqem glxit');  // Ваше сообщение в консоли
-      return true;
-    },
-    // Колбэк для получения данных сессии
-    async session({ session, user }) {
-      if (user) {
-        session.user = user;  // Передаем данные пользователя в session
-      }
-      return session;
-    },
-  },
+
    secret:process.env.NEXTAUTH_SECRET,
   
 })

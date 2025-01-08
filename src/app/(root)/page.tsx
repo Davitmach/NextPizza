@@ -11,10 +11,7 @@ import { useSession,signOut } from "next-auth/react";
 
 
 export default function Home() {
-const {data} =useSession();
-useEffect(()=> {
-console.log(data,'session');
-},[data])
+
 const Func = useCallback(()=> {
 console.log('ВЫШЕЛ');
 
