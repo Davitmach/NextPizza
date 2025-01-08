@@ -7,6 +7,7 @@ import { AxiosResponse } from "axios";
 import { signOut,signIn,getSession } from "next-auth/react";
 import Cookie from 'js-cookie'
 import { useEffect } from "react";
+import {useSessionContext } from "@/context/session";
 class UserService {
 
 async Login(name:string,email:string) {
@@ -62,11 +63,12 @@ return data.data
 async LoginProvider() {
 try {
 signIn('google')
-const session = await getSession();
+const  {user} = useSessionContext();
 useEffect(()=> {
-console.log(session,'qaqs');
+console.log(user,'deaudajuea');
 
-},[session])
+},[user])
+
 
 }
 catch(error) {
