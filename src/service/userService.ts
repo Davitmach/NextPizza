@@ -1,5 +1,5 @@
 
-
+'use client'
 import { UserApi } from "@/api/user/userApi";
 import axios from "axios";
 import { AxiosResponse } from "axios";
