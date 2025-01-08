@@ -64,7 +64,7 @@ async LoginProvider() {
 
 try {
 await signIn('google')
-console.log('qaqs');
+
 
 
 }

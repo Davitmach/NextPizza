@@ -214,7 +214,11 @@ if(CountError || TotalError) {
 
 
             },[data])
-      const {status} = useSession();
+      const {status,data:SessionData} = useSession();
+      useEffect(()=> {
+console.log(status);
+
+      },[status])
       return (
         <button onClick={()=> {
     
