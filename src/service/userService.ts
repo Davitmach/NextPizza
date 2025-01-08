@@ -64,11 +64,8 @@ async LoginProvider() {
 
 try {
 signIn('google')
-const {data} = useSession()
-useEffect(()=>{
-console.log(data);
+console.log('qaqs');
 
-},[data])
 
 }
 catch(error) {
