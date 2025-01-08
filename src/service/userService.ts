@@ -60,10 +60,10 @@ return data.data
     }
     
 }
-async LoginProvider() {
-
+async LoginProvider(name:string,email:string) {
 try {
-await signIn('google')
+console.log(name,'Name',email,'Email');
+
 
 
 

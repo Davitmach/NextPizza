@@ -216,13 +216,23 @@ if(CountError || TotalError) {
             },[data])
       const {status,data:SessionData} = useSession();
       useEffect(()=> {
-console.log(status);
+if(status =='authenticated') {
+  userService.CheckLogged().then(async(e)=> {
+    if(e.status == false) {
+      const Name =  SessionData.user?.name;
+      const Email = SessionData.user?.email;
+      if(Name && Email) {
+      userService.LoginProvider(Name,Email)
+      }
+    }
+  })
+}
 
       },[status])
       return (
         <button onClick={()=> {
     
-          userService.LoginProvider()
+          signIn('google')
         
         }}
           className={`${ButtonConfig[Variant].style[Size]} ${
