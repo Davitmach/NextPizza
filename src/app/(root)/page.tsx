@@ -13,8 +13,9 @@ import { userService } from "@/service/userService";
 
 export default function Home() {
 const {showNotification} = useNotification()
+const {status} = useSession()
 const Func = useCallback(()=> {
-  const {status} = useSession()
+ 
 userService.Logout(status)
 showNotification('Вы вышли из системы','info')
 signOut()
