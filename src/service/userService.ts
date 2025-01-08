@@ -63,7 +63,7 @@ return data.data
 async LoginProvider() {
 
 try {
-signIn('google')
+await signIn('google')
 console.log('qaqs');
 
 
