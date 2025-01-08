@@ -15,11 +15,19 @@ const handler = NextAuth({
      
    ],
    callbacks: {
-    // Колбэк для успешной аутентификации
     async signIn({ user, account, profile }) {
-      console.log('Пользователь вошел:', user);  // Выводим данные пользователя в консоль
-      return true; 
+      if (user) {
+        console.log('Пользователь вошел:', user);  // Проверка, что данные пользователя есть
+      } else {
+        console.log('Нет данных пользователя');  // В случае отсутствия данных
+      }
+      return true;
     },
+    async session({ session, user }) {
+      // Логирование данных сессии
+      console.log('Текущая сессия:', session);
+      return session;
+    }
   },
    secret:process.env.NEXTAUTH_SECRET,
   
