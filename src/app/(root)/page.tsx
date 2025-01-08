@@ -8,13 +8,15 @@ import { useCallback, useEffect, useRef } from "react";
 import { Notifications } from "@/components/shared/notification/notification";
 import { useNotification } from "@/context/notification";
 import { useSession,signOut } from "next-auth/react";
+import { userService } from "@/service/userService";
 
 
 export default function Home() {
-
+const {showNotification} = useNotification()
 const Func = useCallback(()=> {
-console.log('ВЫШЕЛ');
-
+  const {status} = useSession()
+userService.Logout(status)
+showNotification('Вы вышли из системы','info')
 signOut()
 },[])
   return (
