@@ -7,7 +7,7 @@ import { Select } from "@/components/UI/select/select";
 import { useCallback, useEffect, useRef } from "react";
 import { Notifications } from "@/components/shared/notification/notification";
 import { useNotification } from "@/context/notification";
-import { useSession } from "next-auth/react";
+import { useSession,signOut } from "next-auth/react";
 
 
 export default function Home() {
@@ -15,9 +15,15 @@ const {data} =useSession();
 useEffect(()=> {
 console.log(data,'session');
 },[data])
+const Func = useCallback(()=> {
+console.log('ВЫШЕЛ');
+
+signOut()
+},[])
   return (
     <>
 <Logo/>
+<Button variant='gray' status={false} size="default" func={Func}>Выйти</Button>
 <Button variant='user' status={false} size="default"/>
 
 <Notifications/>
