@@ -9,9 +9,10 @@ import { Notifications } from "@/components/shared/notification/notification";
 import { useNotification } from "@/context/notification";
 import { useSession,signOut } from "next-auth/react";
 import { userService } from "@/service/userService";
-
+import { useQueryClient } from "@tanstack/react-query";
 
 export default function Home() {
+const query = useQueryClient();
 const {showNotification} = useNotification()
 const {status} = useSession()
 const Func = useCallback(()=> {
@@ -21,8 +22,9 @@ userService.GetId();
 },[])
 const Func2 = useCallback(()=> {
 
+
   showNotification('Вы вышли из системы','info')
-  userService.Logout(status)
+  userService.Logout(status,query)
   },[])
   return (
     <>

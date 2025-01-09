@@ -7,11 +7,11 @@ import { AxiosResponse } from "axios";
 import { signOut,signIn,getSession, useSession } from "next-auth/react";
 import Cookie from 'js-cookie'
 import { useEffect } from "react";
-import { queryClient } from "@/utils/queryClient";
+import { QueryClient} from "@tanstack/react-query";
 
 class UserService {
 
-async Login(name:string,email:string) {
+async Login(name:string,email:string,queryClientt:QueryClient) {
     try {
 const data = await axios.post(UserApi.login,{
     name:name,
@@ -36,22 +36,21 @@ return data.data;
         return(error);
     }
 }
-async Logout(status:'authenticated'|'loading' | 'unauthenticated') {
+async Logout(status:'authenticated'|'loading' | 'unauthenticated',queryClientt:QueryClient) {
     try {
     if(status == 'authenticated') {
       await signOut()
 const data = await axios.get(UserApi.logout,{
     withCredentials:true
 })
-queryClient.invalidateQueries<any>(['checkLogin']);
+queryClientt.invalidateQueries<any>(['checkLogin'])
 return data.data
     }
     else {
-        
         const data = await axios.get(UserApi.logout,{
-            withCredentials:true   
+    withCredentials:true   
     })
-    queryClient.invalidateQueries<any>(['checkLogin']);
+    queryClientt.invalidateQueries<any>(['checkLogin'])
     return data.data;
         
 
@@ -63,7 +62,7 @@ return data.data
     }
     
 }
-async LoginProvider(name:string,email:string) {
+async LoginProvider(name:string,email:string,queryClientt:QueryClient) {
 try {
 const data = await axios.post(UserApi.loginProvider,{
     name:name,

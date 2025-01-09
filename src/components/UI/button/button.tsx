@@ -16,7 +16,7 @@ import { Loading } from "@/components/shared/loading/loading";
 import { useEffect, useState } from "react";
 import { useSession,signIn } from "next-auth/react";
 import { userService } from "@/service/userService";
-
+import { useQueryClient } from "@tanstack/react-query";
 const ButtonConfig: Record<ButtonVariants, any> = {
   cart: {
     icon: <FiShoppingCart />,
@@ -117,6 +117,7 @@ const ButtonConfig: Record<ButtonVariants, any> = {
   },
 };
 export const Button: React.FC<IButton> =(props) => {
+  const query = useQueryClient()
   const { push, back } = useRouter();
 const {showNotification} = useNotification();
   const Variant = props.variant; // вариант кнопки
@@ -219,7 +220,7 @@ if(status =='authenticated') {
       const Name =  SessionData.user?.name;
       const Email = SessionData.user?.email;
       if(Name && Email) {
-      userService.LoginProvider(Name,Email)
+      userService.LoginProvider(Name,Email,query)
       }
     }
   })
