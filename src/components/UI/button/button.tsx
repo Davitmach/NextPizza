@@ -207,12 +207,9 @@ if(CountError || TotalError) {
       const {data} = useQuery({
         queryKey:['checkLogin'],
         queryFn:()=> userService.CheckLogged()
-        
             })
             useEffect(()=> {
  setLogged(data?.status)
-
-
             },[data])
       const {status,data:SessionData} = useSession();
       useEffect(()=> {
