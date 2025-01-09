@@ -11,7 +11,7 @@ import { QueryClient} from "@tanstack/react-query";
 
 class UserService {
 
-async Login(name:string,email:string,queryClientt:QueryClient) {
+async Login(name:string,email:string,queryClient:QueryClient) {
     try {
 const data = await axios.post(UserApi.login,{
     name:name,
@@ -19,6 +19,7 @@ const data = await axios.post(UserApi.login,{
 },{
         withCredentials:true   
 })
+queryClient.invalidateQueries<any>(['checkLogin'])
 return data.data;
     }
     catch(error) {
@@ -36,21 +37,21 @@ return data.data;
         return(error);
     }
 }
-async Logout(status:'authenticated'|'loading' | 'unauthenticated',queryClientt:QueryClient) {
+async Logout(status:'authenticated'|'loading' | 'unauthenticated',queryClient:QueryClient) {
     try {
     if(status == 'authenticated') {
       await signOut()
 const data = await axios.get(UserApi.logout,{
     withCredentials:true
 })
-queryClientt.invalidateQueries<any>(['checkLogin'])
+queryClient.invalidateQueries<any>(['checkLogin'])
 return data.data
     }
     else {
         const data = await axios.get(UserApi.logout,{
     withCredentials:true   
     })
-    queryClientt.invalidateQueries<any>(['checkLogin'])
+    queryClient.invalidateQueries<any>(['checkLogin'])
     return data.data;
         
 
@@ -62,7 +63,7 @@ return data.data
     }
     
 }
-async LoginProvider(name:string,email:string,queryClientt:QueryClient) {
+async LoginProvider(name:string,email:string,queryClient:QueryClient) {
 try {
 const data = await axios.post(UserApi.loginProvider,{
     name:name,
@@ -70,6 +71,7 @@ const data = await axios.post(UserApi.loginProvider,{
 },{
     withCredentials:true
 })
+queryClient.invalidateQueries<any>(['checkLogin'])
 return data.data
 
 
