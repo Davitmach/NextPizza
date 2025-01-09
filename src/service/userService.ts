@@ -8,8 +8,7 @@ import { signOut,signIn,getSession, useSession } from "next-auth/react";
 import Cookie from 'js-cookie'
 import { useEffect } from "react";
 import { QueryClient} from "@tanstack/react-query";
-import { useNotification } from "@/context/notification";
-const {showNotification} = useNotification()
+
 class UserService {
 
 async Login(name:string,email:string,queryClient:QueryClient) {
@@ -21,7 +20,7 @@ const data = await axios.post(UserApi.login,{
         withCredentials:true   
 })
 queryClient.invalidateQueries<any>(['checkLogin'])
-showNotification('Вы успешно вошли в систему','success')
+
 return data.data;
     }
     catch(error) {
@@ -74,7 +73,6 @@ const data = await axios.post(UserApi.loginProvider,{
     withCredentials:true
 })
 queryClient.invalidateQueries<any>(['checkLogin'])
-showNotification('Вы успешно вошли в систему','success')
 return data.data
 
 
