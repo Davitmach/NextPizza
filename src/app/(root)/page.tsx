@@ -22,7 +22,7 @@ userService.GetId();
 const Func2 = useCallback(()=> {
 
   showNotification('Вы вышли из системы','info')
-  userService.Logout()
+  userService.Logout(status)
   },[])
   return (
     <>
