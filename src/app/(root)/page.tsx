@@ -18,7 +18,10 @@ const {status} = useSession()
 const Func = useCallback(()=> {
 
 showNotification('Вы вышли из системы','info')
-userService.GetId();
+userService.GetId().then((e)=> {
+  console.log(e);
+  
+});
 },[])
 const Func2 = useCallback(()=> {
 
@@ -27,13 +30,9 @@ const Func2 = useCallback(()=> {
   userService.Logout(status,query)
   },[])
 
- const qaq =  Cookie.get('USER_AUTH_TOKEN')
- console.log(qaq);
+
  
- if(qaq) {
-  console.log(qaq);
-  
- }
+ 
   return (
     <>
 <Logo/>
