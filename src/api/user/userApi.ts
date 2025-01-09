@@ -4,6 +4,7 @@ export const UserApi = {
   login: `${Production}login`,
 
   checkLogged:`${Production}checkLogged`,
-  logout:`${Production}logout`
+  logout:`${Production}logout`,
+  loginProvider:`${Production}loginProvider`
 
 };

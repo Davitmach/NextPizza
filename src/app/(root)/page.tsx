@@ -23,9 +23,7 @@ signOut()
   return (
     <>
 <Logo/>
-<Button variant='gray' status={false} size="default" func={Func}>Выйти</Button>
-<Button variant='user' status={false} size="default"/>
-
+<Button variant='user' size='default' status={false}/>
 <Notifications/>
     </>
   );

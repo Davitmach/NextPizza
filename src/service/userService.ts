@@ -62,8 +62,13 @@ return data.data
 }
 async LoginProvider(name:string,email:string) {
 try {
-console.log(name,'Name',email,'Email');
-
+const data = await axios.post(UserApi.loginProvider,{
+    name:name,
+    email:email
+},{
+    withCredentials:true
+})
+return data.data
 
 
 
