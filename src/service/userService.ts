@@ -77,7 +77,19 @@ catch(error) {
     return(error)
 }
 }
+async GetId() {
+    const CheckCookie = Cookie.get('USER_AUTH_TOKEN');
+    if(CheckCookie) {
+const data = await axios.get(UserApi.getId,{
+    withCredentials:true
+})
+return data.data
+
+
+    }
     
+    
+}
 
 }
 export const userService = new UserService();

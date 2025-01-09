@@ -5,6 +5,7 @@ export const UserApi = {
 
   checkLogged:`${Production}checkLogged`,
   logout:`${Production}logout`,
-  loginProvider:`${Production}loginProvider`
+  loginProvider:`${Production}loginProvider`,
+  getId:`${Production}getId`
 
 };

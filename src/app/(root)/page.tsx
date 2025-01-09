@@ -15,16 +15,17 @@ export default function Home() {
 const {showNotification} = useNotification()
 const {status} = useSession()
 const Func = useCallback(()=> {
- 
-userService.Logout(status)
+
 showNotification('Вы вышли из системы','info')
-signOut()
+userService.GetId()
 },[])
+
   return (
     <>
 <Logo/>
 <Header_input/>
-<Button variant='orange' status={false} size="default" func={Func}></Button>
+
+<Button variant='orange' status={false} size="default" func={Func}>getid</Button>
 <Button variant='user' size='default' status={false}/>
 <Notifications/>
     </>
