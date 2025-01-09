@@ -83,24 +83,21 @@ catch(error) {
 }
 async GetId() {
     try {
-    const CheckCookie = Cookie.get('USER_AUTH_TOKEN');
-    
-    console.log(CheckCookie);
-    
-    
-    if(CheckCookie) {
-        console.log(CheckCookie,'e');
-const data = await axios.get(UserApi.getId,{
-    headers:{
-Authorization:`Barear`
-    }
-})
-return data.data
+        const CheckCookie = Cookie.get('USER_AUTH_TOKEN');
+        if (CheckCookie) {
+            console.log(CheckCookie, 'e');
+            const data = await axios.get(UserApi.getId, {
+                headers: {
+                    Authorization: `Bearer ${CheckCookie}`,
+                }
+            });
+            return data.data;
+        }
+    } catch (error) {
+        console.error(error);
+        return error;
     }
 }
-catch(error) {
-    return(error);
-} 
-}
+
 }
 export const userService = new UserService();
