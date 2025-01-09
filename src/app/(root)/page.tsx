@@ -17,7 +17,7 @@ const {status} = useSession()
 const Func = useCallback(()=> {
 
 showNotification('Вы вышли из системы','info')
-userService.GetId()
+userService.GetId();
 },[])
 
   return (
