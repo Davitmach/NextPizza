@@ -10,7 +10,7 @@ import { useNotification } from "@/context/notification";
 import { useSession,signOut } from "next-auth/react";
 import { userService } from "@/service/userService";
 import { useQueryClient } from "@tanstack/react-query";
-
+import Cookie from 'js-cookie'
 export default function Home() {
 const query = useQueryClient();
 const {showNotification} = useNotification()
@@ -26,6 +26,8 @@ const Func2 = useCallback(()=> {
   showNotification('Вы вышли из системы','info')
   userService.Logout(status,query)
   },[])
+  console.log(Cookie.get('USER_AUTH_TOKEN'));
+  
   return (
     <>
 <Logo/>
