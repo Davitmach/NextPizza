@@ -82,10 +82,10 @@ catch(error) {
 }
 }
 async GetId() {
-
     try {
     const CheckCookie = Cookie.get('USER_AUTH_TOKEN');
     
+    console.log(CheckCookie);
     
     
     if(CheckCookie) {
