@@ -42,7 +42,7 @@ async Logout(status:'authenticated'|'loading' | 'unauthenticated') {
 const data = await axios.get(UserApi.logout,{
     withCredentials:true
 })
-queryClient.invalidateQueries({queryKey:['checkLogin']});
+queryClient.invalidateQueries<any>(['checkLogin']);
 return data.data
     }
     else {
@@ -50,7 +50,7 @@ return data.data
         const data = await axios.get(UserApi.logout,{
             withCredentials:true   
     })
-    queryClient.invalidateQueries({queryKey:['checkLogin']});
+    queryClient.invalidateQueries<any>(['checkLogin']);
     return data.data;
         
 
@@ -80,14 +80,18 @@ catch(error) {
 }
 }
 async GetId() {
+
     try {
     const CheckCookie = Cookie.get('USER_AUTH_TOKEN');
+    
     
     
     if(CheckCookie) {
         console.log(CheckCookie,'e');
 const data = await axios.get(UserApi.getId,{
-    withCredentials:true
+    headers:{
+Authorization:`Barear`
+    }
 })
 return data.data
     }
