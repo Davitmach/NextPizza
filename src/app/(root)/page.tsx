@@ -23,6 +23,7 @@ signOut()
   return (
     <>
 <Logo/>
+<Header_input/>
 <Button variant='user' size='default' status={false}/>
 <Notifications/>
     </>
