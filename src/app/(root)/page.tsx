@@ -26,8 +26,14 @@ const Func2 = useCallback(()=> {
   showNotification('Вы вышли из системы','info')
   userService.Logout(status,query)
   },[])
-  console.log(Cookie.get('USER_AUTH_TOKEN'));
+
+ const qaq =  Cookie.get('USER_AUTH_TOKEN')
+ console.log(qaq);
+ 
+ if(qaq) {
+  console.log(qaq);
   
+ }
   return (
     <>
 <Logo/>
