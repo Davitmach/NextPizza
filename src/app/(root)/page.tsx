@@ -19,12 +19,16 @@ const Func = useCallback(()=> {
 showNotification('Вы вышли из системы','info')
 userService.GetId();
 },[])
+const Func2 = useCallback(()=> {
 
+  showNotification('Вы вышли из системы','info')
+  userService.Logout()
+  },[])
   return (
     <>
 <Logo/>
 <Header_input/>
-
+<Button variant='orange' status={false} size="default" func={Func2}>выйти</Button>
 <Button variant='orange' status={false} size="default" func={Func}>getid</Button>
 <Button variant='user' size='default' status={false}/>
 <Notifications/>
