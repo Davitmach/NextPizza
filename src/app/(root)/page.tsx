@@ -24,6 +24,7 @@ signOut()
     <>
 <Logo/>
 <Header_input/>
+<Button variant='orange' status={false} size="default" func={Func}></Button>
 <Button variant='user' size='default' status={false}/>
 <Notifications/>
     </>
