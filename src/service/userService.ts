@@ -7,7 +7,7 @@ import { AxiosResponse } from "axios";
 import { signOut,signIn,getSession, useSession } from "next-auth/react";
 import Cookie from 'js-cookie'
 import { useEffect } from "react";
-
+import { queryClient } from "@/utils/queryClient";
 class UserService {
 
 async Login(name:string,email:string) {
@@ -42,6 +42,7 @@ async Logout(status:'authenticated'|'loading' | 'unauthenticated') {
 const data = await axios.get(UserApi.logout,{
     withCredentials:true
 })
+queryClient.invalidateQueries({queryKey:['checkLogin']});
 return data.data
     }
     else {
@@ -49,6 +50,7 @@ return data.data
         const data = await axios.get(UserApi.logout,{
             withCredentials:true   
     })
+    queryClient.invalidateQueries({queryKey:['checkLogin']});
     return data.data;
         
 
