@@ -145,11 +145,11 @@ const {showNotification} = useNotification();
 
 const {data:TotalData,error:TotalError,isLoading:TotalLoading} = useQuery({
   queryKey:['cartBtnTotal'],
-  queryFn:()=> cartService.getTotal(1)
+  queryFn:()=> cartService.getTotal()
 })
 const {data:CountData,error:CountError,isLoading:CountLoading} = useQuery({
   queryKey:['cartBtnCount'],
-  queryFn:()=> cartService.getCartItem(1)
+  queryFn:()=> cartService.getCartItem()
 })
 if(CountError || TotalError) {
   showNotification('Ошибка при получений данных','error');
@@ -213,6 +213,27 @@ if(CountError || TotalError) {
  setLogged(data?.status)
             },[data])
       const {status,data:SessionData} = useSession();
+
+useEffect(()=> {
+if(logged == true) {
+
+ cartService.checkCart().then((e)=> {
+if(e.message) {
+  
+}
+else {
+  cartService.createCart()
+  
+}
+
+
+  
+ })
+
+}
+
+},[logged])
+
       useEffect(()=> {
 if(status =='authenticated') {
   userService.CheckLogged().then(async(e)=> {
@@ -228,11 +249,12 @@ if(status =='authenticated') {
 
       },[status])
       return (
-        <button onClick={()=> {
-    
-          signIn('google')
-        
-        }}
+        <button 
+    onClick={()=> {
+// userService.Verif('040712',query)
+// userService.Login('David','wvime30@gmail.com',query)
+
+    }}
           className={`${ButtonConfig[Variant].style[Size]} ${
             Status == true && "cursor-not-allowed"
           }`}

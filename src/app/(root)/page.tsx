@@ -11,12 +11,13 @@ import { useSession,signOut } from "next-auth/react";
 import { userService } from "@/service/userService";
 import { useQueryClient } from "@tanstack/react-query";
 import Cookie from 'js-cookie'
+import { cartService } from "@/service/cartService";
 export default function Home() {
 const query = useQueryClient();
 const {showNotification} = useNotification()
 const {status} = useSession()
 const Func = useCallback(()=> {
-
+cartService.addCartItem(9,1,1,[3])
 showNotification('Вы вышли из системы','info')
 userService.GetId().then((e)=> {
   console.log(e);
@@ -39,6 +40,7 @@ const Func2 = useCallback(()=> {
 <Header_input/>
 <Button variant='orange' status={false} size="default" func={Func2}>выйти</Button>
 <Button variant='orange' status={false} size="default" func={Func}>getid</Button>
+
 <Button variant='user' size='default' status={false}/>
 <Notifications/>
     </>

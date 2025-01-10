@@ -6,12 +6,9 @@ class CartService {
 
     this.api = CartApi;
   }
- async createCart(userId:number) {
+ async createCart() {
   try {
- const data = await axios.post(this.api.createCart,{
-    userId:userId,
-
- },{
+ const data = await axios.get(this.api.createCart,{
   withCredentials:true
  })
  return data.data;
@@ -26,7 +23,6 @@ async checkCart() {
     const data = await axios.get(this.api.checkCart,{
      withCredentials:true
     })
-  
      return data.data;
   }
   catch(error) {
@@ -34,10 +30,10 @@ async checkCart() {
     
   }
 }
-async getTotal(userId:number) {
+async getTotal() {
   try {
-  const data = await axios.post(this.api.getCartTotal,{
-    userId:userId
+  const data = await axios.get(this.api.getCartTotal,{
+    withCredentials:true
   })
   return data.data
     
@@ -48,12 +44,15 @@ async getTotal(userId:number) {
   }
  
 }
-async getProductQuantity(userId:number,productId:number){
+async getProductQuantity(productId:number){
   try {
   const data = await axios.post(this.api.getProductQuantity,{
-    userId:userId,
+
     productId:productId
-  })
+  },
+{
+  withCredentials:true
+})
   return data.data
 }
 catch(error) {
@@ -61,14 +60,16 @@ catch(error) {
   
 }
 }
-async dicrementCartItemQuantity(cartItemId:number,productId:number,userId:number) {
+async dicrementCartItemQuantity(cartItemId:number,productId:number) {
  
   
   try {
   const data = await axios.post(this.api.decrementCartItemQuantity,{
     cartItemId:cartItemId,
     productId:productId,
-    userId:userId
+
+  },{
+    withCredentials:true
   })
   
 
@@ -81,10 +82,10 @@ catch(error) {
   
 }
 }
-async getCartItem(userId:number) {
+async getCartItem() {
   try {
-  const data = await axios.post(this.api.getCartItem,{
-    userId:userId
+  const data = await axios.get(this.api.getCartItem,{
+    withCredentials:true
   });
   return data.data;
 }
@@ -105,15 +106,15 @@ catch(error) {
   
 }
 }
-async addCartItem(userId:number,productId:number,cartId:number,quantity:number,price:number,ingregients:number[]) {
+async addCartItem(productId:number,quantity:number,price:number,ingregients:number[]) {
   try {
   const data = await axios.post(this.api.addItem,{
     price:price,
     quantity:quantity,
-    userId:userId,
     productId:productId,
-    cartId:cartId,
     ingregients:ingregients
+  },{
+    withCredentials:true
   })
   return data.data;
 }
@@ -122,11 +123,10 @@ catch(error) {
   
 }
 }
-async clearCart(userId:number,cartId:number) {
+async clearCart() {
   try {
-  const data = await axios.post(this.api.clearCart,{
-    userId:userId,
-    cartId:cartId
+  const data = await axios.get(this.api.clearCart,{
+   withCredentials:true
   })
   return data.data
 }
@@ -135,11 +135,13 @@ catch(error) {
   
 }
 }
-async deleteCartItem(userId:number,itemId:number) {
+async deleteCartItem(itemId:number) {
   try {
   const data = await axios.post(this.api.deleteCartItem,{
-    userId:userId,
+
     itemId:itemId
+  },{
+    withCredentials:true
   })
   return data.data
 }
@@ -162,10 +164,10 @@ catch(error) {
   
 }
 }
-async getCartItems(userId:number) {
+async getCartItems() {
   try {
-    const data = await axios.post(this.api.getCartItems,{
-   userId:userId
+    const data = await axios.get(this.api.getCartItems,{
+   withCredentials:true
     })
     return data.data[0].items;
   }

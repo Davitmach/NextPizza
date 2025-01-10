@@ -22,6 +22,7 @@ const data = await axios.post(UserApi.login,{
 queryClient.invalidateQueries<any>(['checkLogin'])
 
 return data.data;
+
     }
     catch(error) {
         return(error);
@@ -74,9 +75,6 @@ const data = await axios.post(UserApi.loginProvider,{
 })
 queryClient.invalidateQueries<any>(['checkLogin'])
 return data.data
-
-
-
 }
 catch(error) {
     return(error)
@@ -95,6 +93,15 @@ async GetId() {
         console.error(error);
         return error;
     }
+}
+async Verif(code:string,queryClient:QueryClient) {
+const data = await axios.post(UserApi.verif,{
+code:code
+},{
+    withCredentials:true
+})
+queryClient.invalidateQueries<any>(['checkLogin'])
+return data.data
 }
 
 }
