@@ -32,9 +32,7 @@ export const ModalPage = ({ id }: { id: number }) => {
   const [isSmallScreen, setIsSmallScreen] = useState(false);
   const [activeIngredient,setActiveIngredient] = useState<number[]>([])
 const query = useQueryClient();
-
   useEffect(() => {
-  
     const Id = Number(id);
     productService.getProduct(Id).then((e) => {
       if (e) {
@@ -54,16 +52,10 @@ const query = useQueryClient();
       }
 
     });
-
-
     const checkScreenSize = () => {
       setIsSmallScreen(window.innerWidth < 1181);  
     };
-
-   
     checkScreenSize();
-
-    
     window.addEventListener("resize", checkScreenSize);
     return () => window.removeEventListener("resize", checkScreenSize);
   }, []);
@@ -80,8 +72,10 @@ const query = useQueryClient();
   };
 
   const handleTouchStart = (e: React.TouchEvent) => {
+    if (modalRef.current && modalRef.current.scrollTop === 0) {  
     setStartY(e.touches[0].clientY); 
     setIsDragging(true);
+    }
   };
 
   const handleTouchMove = (e: React.TouchEvent) => {
@@ -92,13 +86,14 @@ const query = useQueryClient();
 
 
     if (newDeltaY > 0) {
-      setDeltaY(newDeltaY);
-
-    
+      
+      
       if (modalRef.current) {
+        if (modalRef.current.scrollTop === 0) {  
+        setDeltaY(newDeltaY);
         modalRef.current.style.transition = "none"; 
         modalRef.current.style.transform = `translateY(${newDeltaY * 0.4}px)`; 
-      }
+      }}
     }
   };
 
@@ -106,7 +101,7 @@ const query = useQueryClient();
     if (!isSmallScreen) return; 
 
    
-    if (deltaY > 50) {
+    if (deltaY > 500) {
       if (modalRef.current) {
         modalRef.current.style.transition = "transform 0.3s ease"; 
         modalRef.current.style.transform = `translateY(100vh)`;  
@@ -175,8 +170,8 @@ const Buy = useCallback(()=> {
         ) : (
           <>
           {Array.isArray(data.productItem) && data.productItem.length>0 ?<PizzaImg state={active} img={data.imageUrl}/> :<div className="flex-[1 1 500px] flex items-center justify-center"> <Image src={data.imageUrl} alt="Img" width={300} height={300} /></div>}
-            <div className="flex items-center justify-between w-full h-full">
-              <div className="bg-white-cart h-full flex-1 box-border px-[40px] py-[38px] rounded-r-[30px] flex flex-col justify-between">
+            <div className={` flex items-center justify-between w-full h-full`}>
+              <div className={`${Style.info_box} bg-white-cart h-full flex-1 box-border px-[40px] py-[38px] rounded-r-[30px] flex flex-col justify-between`}>
                
                 <ModalTitle>{data.name}</ModalTitle>
               { Array.isArray(data.productItem) && data.productItem.length>0 && <ProductInfo>{`${active =='Маленькая' ? '25см, ': active == 'Средняя' ? '30см, ':'35см, '}${activeType} тесто, ${active == 'Маленькая' &&activeType == 'Тонкое' ? '300 г': active =='Маленькая' && activeType == 'Традиционное' ? '400 г' : active == 'Средняя' && activeType == 'Тонкое'? '450 г': active == 'Средняя' && activeType == 'Традиционное' ? '500 г': active =='Большая' && activeType == 'Тонкое'? '550 г':active =='Большая' && activeType =='Традиционное' &&'600 г'}`}</ProductInfo>}

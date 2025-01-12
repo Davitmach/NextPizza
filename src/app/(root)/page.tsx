@@ -39,8 +39,7 @@ push('/product/8')
 <Button variant='orange' status={false} size="default" func={qaq}>добавить</Button>
 <Button variant='orange' status={false} size="default" func={qaq2}>ВВыйти</Button>
 <Button variant='user' size="default" status={false}/>
-<Toggle class="esh" active={active} arguments={['Маленькая','Средняя','Большая']} func={setActive} />
-<PizzaImg img="https://media.dodostatic.net/image/r:584x584/11EE7D61706D472F9A5D71EB94149304.webp" state={active}/>
+
 <Notifications/>
     </>
   );
