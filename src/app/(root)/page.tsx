@@ -27,8 +27,8 @@ push('/product/8')
 
  },[])
  const qaq2 = useCallback(()=> {
+  if(status == 'unauthenticated' || 'authenticated')
   userService.Logout(status,query)
-  
    },[])
   return (
     <>
