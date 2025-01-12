@@ -19,7 +19,7 @@ import { useQueryClient } from "@tanstack/react-query";
 
 export default function Home() {
   const query = useQueryClient()
-  const {status} = useSession()
+  const {status} =  useSession()
 const [active,setActive] = useState<string | null>(null);
 const {push,refresh} = useRouter()
  const qaq = useCallback(()=> {
@@ -27,8 +27,9 @@ push('/product/8')
 
  },[])
  const qaq2 = useCallback(()=> {
-  if(status == 'unauthenticated' || 'authenticated')
+  if(status == 'unauthenticated' || 'authenticated') {
   userService.Logout(status,query)
+  }
    },[])
   return (
     <>
