@@ -350,7 +350,7 @@ export const Button: React.FC<IButton> = (props) => {
       return (
         <button
           onClick={() => {
-            signIn('google')
+           userService.SignIn()
             // userService.Verif("952354",query); 
             // // userService.Login('David' ,'wvime30@gmail.com',query)
           }}

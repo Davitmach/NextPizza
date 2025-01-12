@@ -103,6 +103,8 @@ code:code
 queryClient.invalidateQueries<any>(['checkLogin'])
 return data.data
 }
-
+async SignIn() {
+    signIn('google')
+}
 }
 export const userService = new UserService();
