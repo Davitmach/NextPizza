@@ -90,7 +90,7 @@ const query = useQueryClient();
       
           
       if (modalRef.current) {
-        modalRef.current.style.overflowY = 'hidden'
+        // modalRef.current.style.overflowY = 'hidden'
         if (modalRef.current.scrollTop === 0) {  
         setDeltaY(newDeltaY);
         modalRef.current.style.transition = "none"; 
@@ -102,7 +102,7 @@ const query = useQueryClient();
   const handleTouchEnd = () => {
     if (!isSmallScreen) return; 
 
-   if(modalRef.current) { modalRef.current.style.overflowY = 'auto'}
+  //  if(modalRef.current) { modalRef.current.style.overflowY = 'auto'}
     if (deltaY > 200) {
       if (modalRef.current) {
 
