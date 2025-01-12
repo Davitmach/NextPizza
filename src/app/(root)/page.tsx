@@ -19,9 +19,8 @@ import { useQueryClient } from "@tanstack/react-query";
 
 export default function Home() {
   const query = useQueryClient()
-  const [statuss,setStatus] = useState()
   const {status} =  useSession()
-const [active,setActive] = useState<string | null>(null);
+
 const {push,refresh} = useRouter()
  const qaq = useCallback(()=> {
 push('/product/8')
@@ -41,7 +40,7 @@ push('/product/8')
 <Button variant='cart' status={false} size="default" ></Button>
 
 <Button variant='orange' status={false} size="default" func={qaq}>добавить</Button>
-<Button variant='orange' status={false} size="default" func={qaq2}>ВВыйти</Button>
+<Button variant='orange' status={false} size="default" func={qaq2}>Выйти</Button>
 <Button variant='user' size="default" status={false}/>
 
 <Notifications/>

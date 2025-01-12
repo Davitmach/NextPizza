@@ -38,16 +38,15 @@ return data.data;
 }
 async Logout(status:'authenticated'|'loading' | 'unauthenticated',queryClient:QueryClient) {
     console.log(status);
-    
     try {
     if(status == 'authenticated') {
-      await signOut()
+      
 const data = await axios.get(UserApi.logout,{
     withCredentials:true
 })
 queryClient.invalidateQueries<any>(['checkLogged'])
 queryClient.invalidateQueries<any>(['checkLogin'])
-
+ signOut()
 
 return data.data
     }
