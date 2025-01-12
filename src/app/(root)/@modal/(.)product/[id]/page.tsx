@@ -1,9 +1,14 @@
-
 import { ModalPage } from '@/components/shared/modal/modal';
-export default async function Modal({params}:{params:{id:number}}) {
 
-const id = params.id;
+type ModalProps = {
+  params: { id: string }; // Dynamic route parameters are usually strings
+};
 
-    return <ModalPage id={id}/>
-    
+export default async function Modal({ params }: ModalProps) {
+  const id = parseInt(params.id, 10); // Convert the `id` to a number if needed
+
+  return <ModalPage id={id} />;
 }
+
+
+  
