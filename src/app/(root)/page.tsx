@@ -19,6 +19,7 @@ import { useQueryClient } from "@tanstack/react-query";
 
 export default function Home() {
   const query = useQueryClient()
+  const [statuss,setStatus] = useState()
   const {status} =  useSession()
 const [active,setActive] = useState<string | null>(null);
 const {push,refresh} = useRouter()
@@ -26,15 +27,13 @@ const {push,refresh} = useRouter()
 push('/product/8')
 
  },[])
- useEffect(()=> {
-console.log(status);
 
- },[status])
- const qaq2 = useCallback(()=> {
-  if(status == 'unauthenticated' || 'authenticated') {
-  userService.Logout(status,query)
+ const qaq2 = useCallback(() => {
+  if (status === 'unauthenticated' || status === 'authenticated') {
+    userService.Logout(status, query);
   }
-   },[])
+}, [status, query]);
+
   return (
     <>
 <Logo/>
