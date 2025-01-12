@@ -101,7 +101,7 @@ const query = useQueryClient();
     if (!isSmallScreen) return; 
 
    
-    if (deltaY > 500) {
+    if (deltaY > 200) {
       if (modalRef.current) {
         modalRef.current.style.transition = "transform 0.3s ease"; 
         modalRef.current.style.transform = `translateY(100vh)`;  
