@@ -1,12 +1,36 @@
 .little {
-    width: 320px;
-    height: 320px;
+    width: 250px;
+    height: 250px;
 }
 .middle{
-    width: 410px;
-    height: 410px;
+    width: 300px;
+    height:300px;
 }
 .big {
-    width: 490px;
-    height: 490px;
+    width: 350px;
+    height:350px;
+}
+.Img_container {
+    @media (max-width:593px) {
+        width: 100%;
+        padding: 20px;
+    }
+}
+.Big {
+    @media (max-width:593px) {
+        width: 320px;
+        height: 320px;
+    }
+}
+.Middle {
+    @media (max-width:593px) {
+        width: 280px;
+        height: 280px;
+    }
+}
+.Little {
+    @media (max-width:593px) {
+        width: 250px;
+        height: 250px;
+    }
 }

@@ -47,6 +47,10 @@
 }
 .info_box {
     @media (max-width:1181px) {
+       
    border-radius: 0 !important;
 }
+@media (max-width:600px) {
+  padding:10px !important;
+ }
 }

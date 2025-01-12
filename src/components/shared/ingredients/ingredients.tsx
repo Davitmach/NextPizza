@@ -10,7 +10,7 @@ export const IngredientsBox = (props:IngredientsBoxProps)=> {
         <>
        <div className="mt-[10px]" key={'Ingredient'}>
         <div><h1 className="text-black-label font-[600] text-[18px]">Ингредиенты</h1></div>
-        <div className="Ingredient_container flex flex-wrap justify-start items-center gap-[10px] h-[200px] overflow-y-auto ">
+        <div className="Ingredient_container  gap-[10px] h-[200px] overflow-y-auto ">
             {Array.isArray(Ingredients) && Ingredients.length >0  && Ingredients.map((i)=> (
                 <Ingredient key={i.id} active={Active} func={Func} createdAt={i.createdAt} name={i.name} price={i.price} id={i.id} imageUrl={i.imageUrl}/>
             )
@@ -20,3 +20,4 @@ export const IngredientsBox = (props:IngredientsBoxProps)=> {
         </>
     )
 }
+// flex flex-wrap justify-start items-center
