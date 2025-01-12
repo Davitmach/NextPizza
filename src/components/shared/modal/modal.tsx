@@ -74,6 +74,7 @@ const query = useQueryClient();
   const handleTouchStart = (e: React.TouchEvent) => {
     if (modalRef.current && modalRef.current.scrollTop === 0) {  
     setStartY(e.touches[0].clientY); 
+
     setIsDragging(true);
     }
   };
@@ -87,8 +88,9 @@ const query = useQueryClient();
 
     if (newDeltaY > 0) {
       
-      
+          
       if (modalRef.current) {
+        modalRef.current.style.overflowY = 'hidden'
         if (modalRef.current.scrollTop === 0) {  
         setDeltaY(newDeltaY);
         modalRef.current.style.transition = "none"; 
@@ -100,9 +102,10 @@ const query = useQueryClient();
   const handleTouchEnd = () => {
     if (!isSmallScreen) return; 
 
-   
+   if(modalRef.current) { modalRef.current.style.overflowY = 'auto'}
     if (deltaY > 200) {
       if (modalRef.current) {
+
         modalRef.current.style.transition = "transform 0.3s ease"; 
         modalRef.current.style.transform = `translateY(100vh)`;  
       }
