@@ -26,6 +26,10 @@ const {push,refresh} = useRouter()
 push('/product/8')
 
  },[])
+ useEffect(()=> {
+console.log(status);
+
+ },[status])
  const qaq2 = useCallback(()=> {
   if(status == 'unauthenticated' || 'authenticated') {
   userService.Logout(status,query)
