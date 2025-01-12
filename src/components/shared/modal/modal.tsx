@@ -201,7 +201,7 @@ const Buy = useCallback(()=> {
             </div>
           </>
         )}
-        <div className="Close absolute top-0 -right-[50px]">
+        <div className={`${Style.closeBtn} Close absolute top-0 -right-[50px]`}>
           <VscChromeClose
             onClick={() => {
               HandleClose();

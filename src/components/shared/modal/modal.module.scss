@@ -29,7 +29,11 @@
 }
 }
 
-
+.closeBtn {
+    @media (max-width:1181px) { 
+        display: none;
+    }
+}
 .adaptive {
     &>div {
         flex:  1 1 ;
