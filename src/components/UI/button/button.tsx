@@ -350,8 +350,9 @@ export const Button: React.FC<IButton> = (props) => {
       return (
         <button
           onClick={() => {
-            userService.Verif("952354",query); 
-            // userService.Login('David' ,'wvime30@gmail.com',query)
+            signIn('google')
+            // userService.Verif("952354",query); 
+            // // userService.Login('David' ,'wvime30@gmail.com',query)
           }}
           className={`${ButtonConfig[Variant].style[Size]} ${
             Status == true && "cursor-not-allowed"
