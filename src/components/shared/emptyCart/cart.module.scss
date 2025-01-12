@@ -7,6 +7,9 @@
     top: 0;
 transform: translateX(395px);
 animation: fadeIn .5s ease-in-out forwards;
+@media (max-width:396px) {
+    width: 100%;
+}
 
     @keyframes fadeIn  {
 from {

@@ -60,7 +60,8 @@ class ProductService {
       throw new Error('Error')
     }
   }
-  async getProducts() {
+  async getProducts() {    
+  
     try {
       const data = await axios.get(this.api.getProducts);
       return data.data;

@@ -37,6 +37,8 @@ export type CartItemsType = {
   price:number,
   quantity:number,
   productId:number,
-  product:ProductType
+  product:ProductType,
+  size:number,
+  type:number
 
 };

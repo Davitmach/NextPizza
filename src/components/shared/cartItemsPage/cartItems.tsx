@@ -27,7 +27,7 @@ export const CartItemsPage = () => {
 
 const { data, error, isLoading } = useQuery({
   queryKey:['cartItems'],
-  queryFn:()=> cartService.getCartItem(1)
+  queryFn:()=> cartService.getCartItem()
 });
 useEffect(()=> {  
   if(data) {
@@ -39,7 +39,7 @@ useEffect(()=> {
   }
   if(error) {
 showNotification('Ошибка в получений данных','error')
-  }
+  }  
 },[error,data])
 
   return (
@@ -68,21 +68,21 @@ showNotification('Ошибка в получений данных','error')
           </div>
           <div className="Items_box w-full flex flex-col items-center gap-[10px]">
 {isLoading ? <Loading type='orange' width={30} borderWidth={5} /> : sort?.map((e:CartItemsType,index:number)=> (
-  <CartItems key={index} productId={e.productId} id={e.id} 
-   img={e.product.imageUrl}   name={e.product.name} price={(e.price * e.quantity) + e.ingredients.reduce((sum:number, ingredient:any) => sum + ingredient.ingredient.price, 0)} size={e.product.productItem.length== 0 || !e.product.productItem ? 'Средняя 30' :
-    e.product.productItem[0].size === 1
+  <CartItems func={setDisable} key={index} productId={e.productId} id={e.id} 
+   img={e.product.imageUrl}   name={e.product.name} price={(e.price * e.quantity) + e.ingredients.reduce((sum:number, ingredient:any) => sum + ingredient.ingredient.price, 0)} size={!e.size ? '' :
+    e.size === 1
       ? "Маленькая 20"
-      : e.product.productItem[0].size === 2
+      : e.size === 2
       ? "Средняя 30"
-      : e.product.productItem[0].size === 3
+      : e.size === 3
       ? "Большая 35"
       : "Маленькая 20"
-  } type={e.product.productItem.length ==0 || !e.product.productItem? 'традиционное' : e.product.productItem[0].pizzaType === 1
+  } type={!e.type? '' : e.type == 1
     ? 'тонкое'
-    : e.product.productItem[0].pizzaType === 2
-    ? 'традиционное' : 'тонкое'
+    :'традиционное'
     } stock={e.quantity}
-    {...(e.ingredients.length > 0 && { ingredients:e.ingredients.map((e:any )=> e.ingredient.name) })}/>
+    {...(e.ingredients.length > 0 && { ingredients:e.ingredients.map((e:any )=> e.ingredient.name) })}
+    />
 ))}
           </div>
         </div>

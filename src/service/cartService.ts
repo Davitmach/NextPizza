@@ -1,5 +1,6 @@
 import { CartApi } from "@/api/cart/cartApi";
 import axios from "axios";
+import { userService } from "./userService";
 class CartService {
    private api;
    constructor() {
@@ -31,6 +32,8 @@ async checkCart() {
   }
 }
 async getTotal() {
+
+  
   try {
   const data = await axios.get(this.api.getCartTotal,{
     withCredentials:true
@@ -106,13 +109,15 @@ catch(error) {
   
 }
 }
-async addCartItem(productId:number,quantity:number,price:number,ingregients:number[]) {
+async addCartItem(productId:number,quantity:number,price:number,ingregients:number[],type:1|2,size:1|2|3) {
   try {
   const data = await axios.post(this.api.addItem,{
     price:price,
     quantity:quantity,
     productId:productId,
-    ingregients:ingregients
+    ingregients:ingregients,
+    type:type,
+    size:size
   },{
     withCredentials:true
   })

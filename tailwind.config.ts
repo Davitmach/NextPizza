@@ -50,7 +50,9 @@ cart:'rgba(244, 241, 238, 1)'
          xmark:'rgba(80, 80, 80, 1)',
          description:'rgba(161, 161, 161, 1)',
          cartBorder:'rgba(237, 237, 237, 1)',
-         dotted:'rgba(223, 223, 223, 1)'
+         dotted:'rgba(223, 223, 223, 1)',
+         toggleBg:'rgba(236, 236, 236, 1)',
+         productInfo:'rgba(119, 119, 119, 1)'
         },
         black:{
           link:'rgba(32, 32, 32, 1)',

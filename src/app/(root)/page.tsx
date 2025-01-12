@@ -1,47 +1,46 @@
 'use client'
-import { CategoryBox } from "@/components/shared/category/category";
+
 import { Logo } from "@/components/shared/logo/logo";
 import { Button } from "@/components/UI/button/button";
 import { Header_input, Input, Price_input } from "@/components/UI/input/input";
 import { Select } from "@/components/UI/select/select";
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Notifications } from "@/components/shared/notification/notification";
-import { useNotification } from "@/context/notification";
-import { useSession,signOut } from "next-auth/react";
-import { userService } from "@/service/userService";
-import { useQueryClient } from "@tanstack/react-query";
+
 import Cookie from 'js-cookie'
 import { cartService } from "@/service/cartService";
+import { Toggle } from "@/components/UI/toggle/toggle";
+import { PizzaImg } from "@/components/UI/pizzaImg/pizzaImg";
+
+import { useRouter } from "next/navigation";
+import { userService } from "@/service/userService";
+import { useSession } from "next-auth/react";
+import { useQueryClient } from "@tanstack/react-query";
+
 export default function Home() {
-const query = useQueryClient();
-const {showNotification} = useNotification()
-const {status} = useSession()
-const Func = useCallback(()=> {
-cartService.addCartItem(9,1,1,[3])
-showNotification('Вы вышли из системы','info')
-userService.GetId().then((e)=> {
-  console.log(e);
-  
-});
-},[])
-const Func2 = useCallback(()=> {
+  const query = useQueryClient()
+  const {status} = useSession()
+const [active,setActive] = useState<string | null>(null);
+const {push,refresh} = useRouter()
+ const qaq = useCallback(()=> {
+push('/product/8')
 
-
-  showNotification('Вы вышли из системы','info')
+ },[])
+ const qaq2 = useCallback(()=> {
   userService.Logout(status,query)
-  },[])
-
-
- 
- 
+  
+   },[])
   return (
     <>
 <Logo/>
 <Header_input/>
-<Button variant='orange' status={false} size="default" func={Func2}>выйти</Button>
-<Button variant='orange' status={false} size="default" func={Func}>getid</Button>
+<Button variant='cart' status={false} size="default" ></Button>
 
-<Button variant='user' size='default' status={false}/>
+<Button variant='orange' status={false} size="default" func={qaq}>добавить</Button>
+<Button variant='orange' status={false} size="default" func={qaq2}>ВВыйти</Button>
+<Button variant='user' size="default" status={false}/>
+<Toggle class="esh" active={active} arguments={['Маленькая','Средняя','Большая']} func={setActive} />
+<PizzaImg img="https://media.dodostatic.net/image/r:584x584/11EE7D61706D472F9A5D71EB94149304.webp" state={active}/>
 <Notifications/>
     </>
   );

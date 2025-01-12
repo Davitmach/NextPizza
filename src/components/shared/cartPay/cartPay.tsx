@@ -6,7 +6,7 @@ import { useEffect } from "react"
 export const CartPay = ()=> {
     const {data,isSuccess,error} = useQuery({
 queryKey:['payTotal'],
-queryFn:()=> cartService.getTotal(1)
+queryFn:()=> cartService.getTotal()
 
     })
 

@@ -6,7 +6,7 @@ export const Notifications = () => {
   const { notifications } = useNotification();
 
   return (
-    <div className={`fixed bottom-4 right-4 z-50 space-y-2 w-[300px] overflow-hidden `}>
+    <div className={`fixed bottom-4 right-4 z-[1500000] space-y-2 w-[300px] overflow-hidden `}>
 
 
       {notifications.map((notif) => (
