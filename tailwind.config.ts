@@ -31,7 +31,8 @@ border:'rgba(239, 239, 239, 1)',
 DEFAULT:'rgba(255, 255, 255, 1)',
 hover:'rgba(255, 250, 246, 1)',
 category:'rgba(250, 250, 250, 1)',
-cart:'rgba(244, 241, 238, 1)'
+cart:'rgba(244, 241, 238, 1)',
+productCart:'rgba(255, 247, 238, 1)'
         },
         gray: {
          dark:'#888888',
@@ -52,7 +53,8 @@ cart:'rgba(244, 241, 238, 1)'
          cartBorder:'rgba(237, 237, 237, 1)',
          dotted:'rgba(223, 223, 223, 1)',
          toggleBg:'rgba(236, 236, 236, 1)',
-         productInfo:'rgba(119, 119, 119, 1)'
+         productInfo:'rgba(119, 119, 119, 1)',
+         productCartDescription:'rgba(177, 177, 177, 1)'
         },
         black:{
           link:'rgba(32, 32, 32, 1)',

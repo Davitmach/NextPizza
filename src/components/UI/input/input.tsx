@@ -1,9 +1,7 @@
 "use client";
 import { useRef, useState, useEffect } from "react";
-
 import Style from "./input.module.scss";
 import { InputProps, PriceInput } from "@/types/UI/input/InputProps";
-import { searchService } from "@/service/searchService";
 import { SearchedData } from "@/types/class/searchService";
 import Image from "next/image";
 import { HighlightedSearch } from "@/utils/highlightSearch";
@@ -12,6 +10,8 @@ import { useRouter } from "next/navigation";
 import axios from "axios";
 import Cookie from 'js-cookie'
 import { FaXmark } from "react-icons/fa6";
+import { productService } from "@/service/productService";
+import { Loading } from "@/components/shared/loading/loading";
 export const Input = (inputProps: InputProps) => {
   const Error_message = inputProps.ErrorMessage;
   const Error_state = inputProps.ErrorState;
@@ -43,52 +43,43 @@ export const Input = (inputProps: InputProps) => {
 
 export const Header_input = () => {
   const { push } = useRouter();
-  const [active, setActive] = useState(false);
+  const [products,setProduct] = useState<SearchedData[]|null>(null)
+  const [active, setActive] = useState<boolean>(false);
   const [searchValue, setValue] = useState<string>("");
-  const [searchedValue, setSearchedValue] = useState<SearchedData[] | null>(null);
-  const [lastSearched,setLastSearched] = useState<SearchedData[] | null>(null)
+  const [filterProduct,setFilter] = useState<SearchedData[] |null>(null)
   const ref = useRef<HTMLInputElement>(null);
 
-  const HandleInput = (event: React.FormEvent<HTMLInputElement>) => {
-    const input = event.target as HTMLInputElement;
-    setValue(input.value);
-    if (input.value.length == 0) {
-      setActive(false);
-      setSearchedValue(null);
-    }
-    if (!active) setActive(true);
-  };
+
+  useEffect(()=> {
+productService.getProducts().then((e)=> {
+  setProduct(e)  
+})
+  },[])
   useEffect(() => {
     if (searchValue) {
-      searchService.SetSearchValue(searchValue);
+const FilterProduct = products?.filter((e)=>    e.name.toLowerCase().includes(searchValue.toLowerCase()) || 
+e.category.name.toLowerCase().includes(searchValue.toLowerCase()));
+if(FilterProduct) {
+  setFilter(FilterProduct);
+}
+    }
+    else {
+      setFilter(null);   
     }
   }, [searchValue]);
 
-  // useEffect чтобы при каждом рендере компонента брал недавние поиски из localStorage, и их показал тоже
-  async function FetchData() {
-    const LastData = Cookie.get('FIND_LAST_DATA');
-    if(LastData) {
-      const Response = await axios.post('/api/jwtEncode',{
-        jwtToken:LastData
-      })
-      setLastSearched([Response.data.encode])
-    }
-    
-    }
-  useEffect(() => {
-FetchData()
-  }, []);
-
-  const ClearLastItems =()=> {
-    Cookie.remove('FIND_LAST_DATA');
-    setLastSearched(null)
-    setActive(false)
-    
-  }
+ const HandleInput = (event:React.ChangeEvent<HTMLInputElement>) => {
+  setActive(true)
+setValue(event.target.value)
+if(event.target.value.length == 0) {
+  setActive(false)
+}
+ }
 
 
   return (
     <div className="Input_box relative">
+       
       {" "}
       <div
         className={`fixed left-0 top-0 w-full h-svh z-10  ${
@@ -101,19 +92,7 @@ FetchData()
         } px-5 relative rounded-custom h-[50px] bg-[#F9F9F9] overflow-hidden`}
       >
         <svg
-          onClick={async () => {
-            const Response = await searchService.Search();
-            if (Response && Array.isArray(Response) && Response.length > 0) {
-              setSearchedValue(Response);
-              const response = await axios.post('/api/jwt',{
-                token:Response[0]
-              });
-              Cookie.set('FIND_LAST_DATA',response.data.token)
-              FetchData()
-              
-
-            }
-          }}
+          
           className="cursor-pointer absolute top-[35%] left-3"
           width="16"
           height="16"
@@ -128,58 +107,30 @@ FetchData()
         </svg>
 
         <input
+       onInput={HandleInput}
           ref={ref}
           placeholder="Поиск пиццы..."
-          onInput={(event) => {
-            HandleInput(event);
-          }}
+    
           className=" bg-[#F9F9F9] px-3 w-full h-full outline-none placeholder:text-gray-light4 placeholder:text-base font-normal"
         />
+       
       </div>
-      {active==true &&!searchedValue? (<div className="w-full  mt-[10px] rounded-[10px] bg-white absolute z-50">{ lastSearched?.map((item,index)=> (
-          <div
-         
-          key={item?.id}
-          className={`cursor-pointer py-[10px] flex gap-3 px-[19px] justify-between items-center  mt-[13px] duration-500 hover:bg-white-hover ${
-            index == lastSearched.length - 1 ? "mb-[13px]" : "mb-0"
-          }`}
-        >
-          <div className="flex items-center gap-3 w-full"  onClick={() => {
-            push(`product/${item?.id}`);
-            setActive(false);
-            setSearchedValue([]);
-          }}> <div>
-            <Image
-              alt="Pizza Image"
-              width={30}
-              height={30}
-              src={item?.imageUrl}
-            />
-          </div>
-          <div>
-            <HighlightedSearch
-              searchValue={searchValue}
-              itemName={item?.name}
-            />
-          </div>
-          <div className="text-gray-price">{item?.price}₽</div></div>
-          <div><FaXmark onClick={()=> ClearLastItems()} style={{fontSize:'25px'}}/></div>
-         
-        </div>
-      ))}</div>) 
-       : searchedValue && (
+      {active==true &&filterProduct && 
+       (
         <div className="w-full  mt-[10px] rounded-[10px] bg-white absolute z-50">
           {" "}
-          {searchedValue.map((item, index) => (
+          {filterProduct.map((item, index) => (
             <div
               onClick={() => {
+                
+                
                 push(`product/${item.id}`);
                 setActive(false);
-                setSearchedValue([]);
+                setFilter(null)
               }}
               key={item.id}
               className={`cursor-pointer py-[10px] flex gap-3 px-[19px] mt-[13px] duration-500 hover:bg-white-hover ${
-                index == searchedValue.length - 1 ? "mb-[13px]" : "mb-0"
+                index == filterProduct.length - 1 ? "mb-[13px]" : "mb-0"
               }`}
             >
               <div>

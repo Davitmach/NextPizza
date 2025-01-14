@@ -6,7 +6,9 @@ export type ProductPayload = {
     price:number,
     catId:number,
     productItem:ProductItem[],
-    id:number
+    id:number,
+    ingredients:ingredient[]
+
 }
 type ProductItem = {
 id:number,
@@ -15,3 +17,11 @@ price:number,
 productId:number,
 size:number
 }
+type ingredient = {
+    id:number,
+    createdAt:string,   
+   imageUrl:string,
+    name:string,
+    price:number
+    }
+    

@@ -12,7 +12,8 @@ class ProductService {
     stock: number,
     img: string,
     price: number,
-    catId: number
+    catId: number,
+    ingredients:{id:number}[]
   ) {
     try {
       const data = await axios.post(this.api.addProduct, {
@@ -22,6 +23,7 @@ class ProductService {
         img: img,
         price: price,
         catId: catId,
+        ingredients:ingredients
       });
       return data.data;
     } catch (error) {

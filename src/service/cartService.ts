@@ -109,7 +109,7 @@ catch(error) {
   
 }
 }
-async addCartItem(productId:number,quantity:number,price:number,ingregients:number[],type:1|2,size:1|2|3) {
+async addCartItem(productId:number,quantity:number,price:number,ingregients:number[],type?:1|2,size?:1|2|3) {
   try {
   const data = await axios.post(this.api.addItem,{
     price:price,

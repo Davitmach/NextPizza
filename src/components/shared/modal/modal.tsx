@@ -31,8 +31,10 @@ export const ModalPage = ({ id }: { id: number }) => {
   const modalRef = useRef<HTMLDivElement | null>(null);
   const [isSmallScreen, setIsSmallScreen] = useState(false);
   const [activeIngredient,setActiveIngredient] = useState<number[]>([])
+
 const query = useQueryClient();
   useEffect(() => {
+    document.body.style.overflow= 'hidden';
     const Id = Number(id);
     productService.getProduct(Id).then((e) => {
       if (e) {
@@ -66,7 +68,9 @@ const query = useQueryClient();
       Modal.classList.toggle(Style.closeAnim);
 
       Modal.addEventListener("animationend", () => {
+        document.body.style.overflow= 'auto';
         back();
+        
       });
     }
   };
@@ -74,7 +78,6 @@ const query = useQueryClient();
   const handleTouchStart = (e: React.TouchEvent) => {
     if (modalRef.current && modalRef.current.scrollTop === 0) {  
     setStartY(e.touches[0].clientY); 
-
     setIsDragging(true);
     }
   };
@@ -84,13 +87,8 @@ const query = useQueryClient();
 
     const touchMoveY = e.touches[0].clientY;
     const newDeltaY = touchMoveY - startY; 
-
-
     if (newDeltaY > 0) {
-      
-          
       if (modalRef.current) {
-        // modalRef.current.style.overflowY = 'hidden'
         if (modalRef.current.scrollTop === 0) {  
         setDeltaY(newDeltaY);
         modalRef.current.style.transition = "none"; 
@@ -102,7 +100,7 @@ const query = useQueryClient();
   const handleTouchEnd = () => {
     if (!isSmallScreen) return; 
 
-  //  if(modalRef.current) { modalRef.current.style.overflowY = 'auto'}
+
     if (deltaY > 200) {
       if (modalRef.current) {
 
@@ -112,6 +110,7 @@ const query = useQueryClient();
 
  
       setTimeout(() => {
+        document.body.style.overflow= 'auto';
         back()
       }, 300);
     } else {
@@ -161,6 +160,7 @@ const Buy = useCallback(()=> {
       }}
       className="Modal_Container fixed left-0 top-0 bg-black-modalBg w-full h-[100vh] z-[300000] flex items-center justify-center"
     >
+      
       <div
         ref={modalRef}
         onTouchStart={handleTouchStart}
@@ -175,8 +175,10 @@ const Buy = useCallback(()=> {
           {Array.isArray(data.productItem) && data.productItem.length>0 ?<PizzaImg state={active} img={data.imageUrl}/> :<div className="flex-[1 1 500px] flex items-center justify-center"> <Image src={data.imageUrl} alt="Img" width={300} height={300} /></div>}
             <div className={` flex items-center justify-between w-full h-full`}>
               <div className={`${Style.info_box} bg-white-cart h-full flex-1 box-border px-[40px] py-[38px] rounded-r-[30px] flex flex-col justify-between`}>
-               
+               <div>
                 <ModalTitle>{data.name}</ModalTitle>
+                {data.productItem.length==0 ? <ProductInfo>{data.description}</ProductInfo> : ''}
+                </div>
               { Array.isArray(data.productItem) && data.productItem.length>0 && <ProductInfo>{`${active =='Маленькая' ? '25см, ': active == 'Средняя' ? '30см, ':'35см, '}${activeType} тесто, ${active == 'Маленькая' &&activeType == 'Тонкое' ? '300 г': active =='Маленькая' && activeType == 'Традиционное' ? '400 г' : active == 'Средняя' && activeType == 'Тонкое'? '450 г': active == 'Средняя' && activeType == 'Традиционное' ? '500 г': active =='Большая' && activeType == 'Тонкое'? '550 г':active =='Большая' && activeType =='Традиционное' &&'600 г'}`}</ProductInfo>}
                <div className="mt-[20px] flex flex-col gap-[10px]">
               {  Array.isArray(data.productItem) && data.productItem.length>0 && (<> <Toggle
@@ -197,7 +199,7 @@ const Buy = useCallback(()=> {
                   func={setActiveType}
                   arguments={data.productItem[0].pizzaType ===1 ? ['Тонкое']: ['Тонкое','Традиционное']}
                 /></>)}
-                {Array.isArray(data.productItem) && data.productItem.length>0 && ingredients && <IngredientsBox active={activeIngredient} func={setActiveIngredient} ingredients={ingredients}/>}
+                {Array.isArray(data.productItem) && data.productItem.length>0 && ingredients && <IngredientsBox data={data.ingredients} active={activeIngredient} func={setActiveIngredient} ingredients={ingredients}/>}
                <Button func={Buy} variant='orange' status={false} size="default">Добавить в корзину за {data.price + calculateIngredientsPrice()}₽</Button>
                 </div>
               </div>

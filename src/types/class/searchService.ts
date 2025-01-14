@@ -5,5 +5,10 @@ export type SearchedData = {
     stock:number,
     imageUrl:string,
     price:number,
-    categoryId:number
+    categoryId:number,
+    category:{
+        createdAt:string,
+        id:number,
+        name:string
+    }
 }

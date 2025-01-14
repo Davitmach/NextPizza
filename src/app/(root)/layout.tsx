@@ -13,11 +13,13 @@ const nunito = Nunito({
 export default function RootLayout({
   children,
   modal,
-  cart
+  cart,
+  login
 }: Readonly<{
   children: React.ReactNode;
   modal: React.ReactNode;
-  cart:React.ReactNode
+  cart:React.ReactNode,
+  login:React.ReactNode
 }>) {
   return (
     <html lang="en">
@@ -45,9 +47,11 @@ export default function RootLayout({
         <link rel="manifest" href="/site.webmanifest" />
       </head>
       <body className={nunito.className}>
+   
         {children}
         {modal}
         {cart}
+        {login}
       </body>
     </html>
   );
