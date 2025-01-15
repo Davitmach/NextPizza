@@ -24,3 +24,18 @@ z-index: 300;
       -moz-appearance: textfield; /* Для Firefox */
     }
 }
+.products {
+    &::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: #FE5F00; 
+        border-radius: 53px; 
+        cursor: pointer;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: #f1f1f1; 
+    }
+}

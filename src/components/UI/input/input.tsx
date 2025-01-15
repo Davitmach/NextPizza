@@ -12,6 +12,7 @@ import Cookie from 'js-cookie'
 import { FaXmark } from "react-icons/fa6";
 import { productService } from "@/service/productService";
 import { Loading } from "@/components/shared/loading/loading";
+import { useNotification } from "@/context/notification";
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
   ({ placeholder, Label, InputType, ErrorMessage, ErrorState, className,required }, ref) => {
@@ -45,6 +46,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 
 Input.displayName = "Input";
 export const Header_input = () => {
+  const {showNotification} = useNotification()
   const { push } = useRouter();
   const [products,setProduct] = useState<SearchedData[]|null>(null)
   const [active, setActive] = useState<boolean>(false);
@@ -120,7 +122,7 @@ if(event.target.value.length == 0) {
       </div>
       {active==true &&filterProduct && 
        (
-        <div className="w-full  mt-[10px] rounded-[10px] bg-white absolute z-50">
+        <div className={`${Style.products} w-full h-[500px] overflow-y-auto  mt-[10px] rounded-[10px] bg-white absolute z-50`}>
           {" "}
           {filterProduct.map((item, index) => (
             <div
@@ -128,6 +130,7 @@ if(event.target.value.length == 0) {
                 
                 
                 push(`product/${item.id}`);
+                showNotification('Вы открыли продукт','info')
                 setActive(false);
                 setFilter(null)
               }}

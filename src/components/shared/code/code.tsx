@@ -69,8 +69,9 @@ export const Code = () => {
       userService.Verif(allValues, query).then((e) => {
         if (e.Token) {
           setLoading(false);
-          showNotification("Вы успешно вошли в систему", "success");
           back();
+          showNotification("Вы успешно вошли в систему", "success");
+          
         }
        
       }).catch((e)=> {
