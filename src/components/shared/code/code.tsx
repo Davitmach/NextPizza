@@ -70,7 +70,7 @@ export const Code = () => {
         if (e.Token) {
           setLoading(false);
           window.history.back();
-          showNotification("Вы успешно вошли в систему", "success");
+          // showNotification("Вы успешно вошли в систему", "success");
           
         }
        
