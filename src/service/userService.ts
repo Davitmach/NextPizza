@@ -44,8 +44,8 @@ async Logout(status:'authenticated'|'loading' | 'unauthenticated',queryClient:Qu
 const data = await axios.get(UserApi.logout,{
     withCredentials:true
 })
-queryClient.invalidateQueries<any>(['checkLogged'])
-queryClient.invalidateQueries<any>(['checkLogin'])
+await queryClient.invalidateQueries<any>(['checkLogged'])
+await queryClient.invalidateQueries<any>(['checkLogin'])
  signOut()
 
 return data.data
@@ -54,8 +54,10 @@ return data.data
         const data = await axios.get(UserApi.logout,{
     withCredentials:true   
     })
-    queryClient.invalidateQueries<any>(['checkLogged'])
-    queryClient.invalidateQueries<any>(['checkLogin'])
+    console.log('qaq');
+    await queryClient.invalidateQueries<any>(['checkLogin'])
+   await  queryClient.invalidateQueries<any>(['checkLogged'])
+    
 
     return data.data;   
     }
@@ -73,7 +75,7 @@ const data = await axios.post(UserApi.loginProvider,{
 },{
     withCredentials:true
 })
-queryClient.invalidateQueries<any>(['checkLogin'])
+await queryClient.invalidateQueries<any>(['checkLogin'])
 return data.data
 }
 catch(error) {
@@ -100,7 +102,7 @@ code:code
 },{
     withCredentials:true
 })
-queryClient.invalidateQueries<any>(['checkLogin'])
+await queryClient.invalidateQueries<any>(['checkLogin'])
 return data.data
 }
 async SignIn() {
@@ -111,7 +113,7 @@ const data = await axios.post(UserApi.register,{
     name:name,
     email:email
 })
-queryClient.invalidateQueries<any>(['checkLogin'])
+await queryClient.invalidateQueries<any>(['checkLogin'])
 return data.data;
 }
 } 
