@@ -11,15 +11,13 @@ export const Code = () => {
   const [allFilled, setAllFilled] = useState(false);
   const [loading, setLoading] = useState<boolean>(false);
   const { showNotification } = useNotification();
-  const { back } = useRouter();
+  const { back,refresh } = useRouter();
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>, index: number) => {
     const target = e.target;
 
-    // Allow only numeric input
+   
     target.value = target.value.replace(/\D/, "");
-
-    // Handle pasting
     if (target.value.length > 1) {
       const pastedValue = target.value.split("");
       pastedValue.forEach((char, i) => {
@@ -28,7 +26,7 @@ export const Code = () => {
         }
       });
 
-      // Focus on the next empty input
+    
       const nextIndex = index + pastedValue.length;
       if (inputRefs.current[nextIndex]) {
         inputRefs.current[nextIndex]?.focus();
@@ -38,7 +36,7 @@ export const Code = () => {
       return;
     }
 
-    // Handle single character input
+    
     if (target.value && inputRefs.current[index + 1]) {
       inputRefs.current[index + 1]?.focus();
     } else if (!target.value && inputRefs.current[index - 1]) {
@@ -68,7 +66,7 @@ export const Code = () => {
       const allValues = inputRefs.current.map((input) => input?.value || "").join("");
       userService.Verif(allValues, query).then((e) => {
         if (e.Token) {
-          back()
+          
           // setLoading(false);
          
           // showNotification("Вы успешно вошли в систему", "success");
