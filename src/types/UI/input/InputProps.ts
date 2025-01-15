@@ -5,7 +5,10 @@ export type InputProps = {
     ErrorState:Boolean,
     InputType:InputTypes,
     Label?:string,
-    ref:React.Ref<HTMLInputElement>
+    ref:React.Ref<HTMLInputElement>,
+    placeholder?:string,
+    className?:string,
+    required:boolean
 }
 
 export type PriceInput = {

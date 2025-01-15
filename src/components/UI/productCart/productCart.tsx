@@ -115,7 +115,7 @@ cartService.addCartItem(Id,1,Price,[])
         
         <div className='mt-[20px] flex items-center justify-between'>
             <div><h1 className='text-[20px] font-[700]'><span className='font-[400] text-[20px] text-black-label'>от </span>{Price} ₽</h1></div>
-            <div>{InCart == false ? <Button func={AddCart} variant='add' size='default' status={false}/> :<Counter 
+            <div>{InCart == false ? <Button  func={AddCart} variant='add' size='default' status={false}/> :<Counter 
             firstFunc={Minus}
             secondFunc={Plus}
             defaultState={Quantity as number}/>}</div>

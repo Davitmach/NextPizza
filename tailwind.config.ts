@@ -54,7 +54,8 @@ productCart:'rgba(255, 247, 238, 1)'
          dotted:'rgba(223, 223, 223, 1)',
          toggleBg:'rgba(236, 236, 236, 1)',
          productInfo:'rgba(119, 119, 119, 1)',
-         productCartDescription:'rgba(177, 177, 177, 1)'
+         productCartDescription:'rgba(177, 177, 177, 1)',
+         loginDescription:'rgba(124, 124, 124, 1)'
         },
         black:{
           link:'rgba(32, 32, 32, 1)',

@@ -7,6 +7,7 @@ export const UserApi = {
   logout:`${Production}logout`,
   loginProvider:`${Production}loginProvider`,
   getId:`${Production}getId`,
-  verif:`${Production}verif`
+  verif:`${Production}verif`,
+  register:`${Production}register`
 
 };

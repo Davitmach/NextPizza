@@ -22,7 +22,7 @@ export const InfoBlock = (props:InfoBlockType)=> {
                   </div>
                 </div>
                 <div className="Svg">
-                   <Image  src={props.img} alt="img" width={340} height={346}/>
+                   <Image priority    src={props.img} alt="img" width={340} height={346}/>
         </div>
                </div>
     )

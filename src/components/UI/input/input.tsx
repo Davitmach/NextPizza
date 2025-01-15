@@ -1,46 +1,49 @@
 "use client";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, forwardRef } from "react";
 import Style from "./input.module.scss";
 import { InputProps, PriceInput } from "@/types/UI/input/InputProps";
 import { SearchedData } from "@/types/class/searchService";
 import Image from "next/image";
 import { HighlightedSearch } from "@/utils/highlightSearch";
 import { useRouter } from "next/navigation";
-
+import React from "react";
 import axios from "axios";
 import Cookie from 'js-cookie'
 import { FaXmark } from "react-icons/fa6";
 import { productService } from "@/service/productService";
 import { Loading } from "@/components/shared/loading/loading";
-export const Input = (inputProps: InputProps) => {
-  const Error_message = inputProps.ErrorMessage;
-  const Error_state = inputProps.ErrorState;
-  const Input_type = inputProps.InputType;
-  const Label = inputProps.Label;
-  const Ref = inputProps.ref;
-  return (
-    <div className="Input_box">
-      {Label && (
-        <div className="text-black-label font-[700] text-[14px] mb-[5px]">
-          {Label}
-        </div>
-      )}
-      <input
-        ref={Ref}
-        type={Input_type}
-        className={`w-full outline-none border border-white-border rounded-[10px] px-[18px] py-[13px] ${
-          Error_state == true && Style.Error_input
-        }`}
-      />
-      {Error_state == true && (
-        <span className="Error_message text-red-error_message font-[400] text-[14px]">
-          {Error_message && Error_message}
-        </span>
-      )}
-    </div>
-  );
-};
 
+export const Input = forwardRef<HTMLInputElement, InputProps>(
+  ({ placeholder, Label, InputType, ErrorMessage, ErrorState, className,required }, ref) => {
+    return (
+      <div className={`input-wrapper ${className || ""}`}>
+        
+        <label className="block text-gray-700 text-sm font-medium mb-1">
+          {Label}
+        </label>
+
+        
+        <input
+        required={required}
+          type={InputType}
+          placeholder={placeholder}
+          ref={ref}
+          className={` w-full px-4 py-[13px] border rounded-lg outline-none  ${
+            ErrorState ? "border-red-500 focus:ring-red-500" : "border-gray-300 focus:ring-blue-500"
+          }`}
+        />
+
+   
+        {ErrorMessage && ErrorState ? (
+          <span className="text-red-500 text-sm mt-1 h-[30px]">{ErrorMessage}</span>
+        ) : <span className="text-red-500 text-sm mt-1 h-[30px]"></span>}
+      </div>
+    );
+  }
+);
+
+
+Input.displayName = "Input";
 export const Header_input = () => {
   const { push } = useRouter();
   const [products,setProduct] = useState<SearchedData[]|null>(null)

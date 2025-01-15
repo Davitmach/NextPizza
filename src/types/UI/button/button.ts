@@ -9,5 +9,5 @@ export interface IButton {
     link?:string,
     status:boolean,
     size:ButtonSizes,
-
+className?:string
 }

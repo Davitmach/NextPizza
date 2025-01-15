@@ -5,7 +5,7 @@ import axios from "axios";
 import { AxiosResponse } from "axios";
 import { signOut,signIn,getSession, useSession } from "next-auth/react";
 import { QueryClient} from "@tanstack/react-query";
-
+import Cookie from 'js-cookie'
 class UserService {
 
 async Login(name:string,email:string,queryClient:QueryClient) {
@@ -37,7 +37,7 @@ return data.data;
     }
 }
 async Logout(status:'authenticated'|'loading' | 'unauthenticated',queryClient:QueryClient) {
-    console.log(status);
+    Cookie.remove('CODE_STATUS');
     try {
     if(status == 'authenticated') {
       
@@ -106,5 +106,13 @@ return data.data
 async SignIn() {
     signIn('google')
 }
+async Register(name:string,email:string,queryClient:QueryClient) {
+const data = await axios.post(UserApi.register,{
+    name:name,
+    email:email
+})
+queryClient.invalidateQueries<any>(['checkLogin'])
+return data.data;
 }
+} 
 export const userService = new UserService();

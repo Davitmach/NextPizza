@@ -143,10 +143,10 @@ const ButtonConfig: Record<ButtonVariants, any> = {
   },
   orangeBorder: {
     default:
-      "flex justify-center items-center gap-[4px] border border-orange  rounded-[10px] w-[30px] h-[30px]  text-orange font-[700] duration-[.4s]  ",
-    full: " flex items-center justify-center gap-[4px] border border-orange rounded-[15px] h-[30px] w-[100%] text-orange font-[700] duration-[.4s]  ",
+      "flex justify-center items-center gap-[4px] border border-orange  rounded-[10px]  h-[30px] px-[20px] py-[10px]  text-orange font-[700] duration-[.4s]  ",
+    full: " flex items-center justify-center gap-[4px] border border-orange rounded-[15px] h-[50px] w-[100%] text-orange font-[700] duration-[.4s]  ",
     large:
-      " flex items-center justify-center gap-[4px] border border-orange rounded-[15px] h-[38px] w-[38px]  text-orange font-[700] duration-[.4s]  ",
+      " flex items-center justify-center gap-[4px] border border-orange rounded-[15px] h-[50px] w-[38px]  text-orange font-[700] duration-[.4s]  ",
   },
 };
 
@@ -161,7 +161,7 @@ export const Button: React.FC<IButton> = (props) => {
   const Status = props.status; // статус ссылки
   const Text = props.children; // текст кнопки
   const Size = props.size; // размер кнопки
-
+  const ClassName = props.className // стили кнопки
   switch (Variant) {
     case "orange":
       return (
@@ -312,13 +312,14 @@ export const Button: React.FC<IButton> = (props) => {
       });
       useEffect(() => {
         
+        if (data === undefined && !isLoading) {
+          refetch();
+        }
         if (isLoading === false) {
           setLogged(data?.status); 
         }
 
-        if (data === undefined && !isLoading) {
-          refetch();
-        }
+      
       }, [data, isLoading, refetch]);
 
       const { status, data: SessionData } = useSession();
@@ -351,8 +352,6 @@ export const Button: React.FC<IButton> = (props) => {
         <button
           onClick={() => {
            userService.SignIn()
-            // userService.Verif("952354",query); 
-            // // userService.Login('David' ,'wvime30@gmail.com',query)
           }}
           className={`${ButtonConfig[Variant].style[Size]} ${
             Status == true && "cursor-not-allowed"
@@ -453,7 +452,7 @@ export const Button: React.FC<IButton> = (props) => {
               Link && push(Link);
             }
           }}
-          className={`${ButtonConfig[Variant][Size]} ${
+          className={` ${ClassName} ${ButtonConfig[Variant][Size]} ${
             Status == true && "cursor-not-allowed"
           }`}
         >
