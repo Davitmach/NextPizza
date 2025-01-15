@@ -68,8 +68,9 @@ export const Code = () => {
       const allValues = inputRefs.current.map((input) => input?.value || "").join("");
       userService.Verif(allValues, query).then((e) => {
         if (e.Token) {
-          setLoading(false);
-          window.history.back();
+          back()
+          // setLoading(false);
+         
           // showNotification("Вы успешно вошли в систему", "success");
           
         }
