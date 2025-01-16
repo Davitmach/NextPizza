@@ -130,7 +130,7 @@ export const Code = () => {
   const [allFilled, setAllFilled] = useState(false);
   const [loading, setLoading] = useState<boolean>(false);
   const { showNotification } = useNotification();
-  const { back } = useRouter();
+  const { back,push,replace,} = useRouter();
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>, index: number) => {
     const target = e.target;
@@ -191,7 +191,7 @@ export const Code = () => {
           setLoading(false);
          
           showNotification("Вы успешно вошли в систему", "success");
-          // back()
+          replace('/')
         }
        
       }).catch((e)=> {
@@ -205,7 +205,7 @@ export const Code = () => {
           }
         });
         
-      });
+      })
       inputRefs.current.map((e) => {
         if (e) {
           e.style.borderColor = 'green'
