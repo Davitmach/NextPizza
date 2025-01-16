@@ -130,7 +130,7 @@ export const Code = () => {
   const [allFilled, setAllFilled] = useState(false);
   const [loading, setLoading] = useState<boolean>(false);
   const { showNotification } = useNotification();
-  const { back,push,replace,} = useRouter();
+  const { back,push,replace,refresh} = useRouter();
 
   const handleInput = (e: React.ChangeEvent<HTMLInputElement>, index: number) => {
     const target = e.target;
