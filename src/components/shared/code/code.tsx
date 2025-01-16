@@ -123,7 +123,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import React, { useEffect, useRef, useState } from "react";
 import { BigLoading } from "../loading/loading";
 import { useRouter } from "next/navigation";
-
+import Style from './code.module.scss'
 export const Code = () => {
   const query = useQueryClient();
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
@@ -191,7 +191,7 @@ export const Code = () => {
           setLoading(false);
          
           showNotification("Вы успешно вошли в систему", "success");
-          back()
+          // back()
         }
        
       }).catch((e)=> {
@@ -216,7 +216,7 @@ export const Code = () => {
   }, [allFilled]);
 
   return (
-    <div className="flex w-full gap-[15px] justify-center">
+    <div className="flex w-full gap-[15px] justify-center my-[10px]">
       {loading === true && <BigLoading />}
       {Array(6)
         .fill("")
@@ -228,7 +228,7 @@ export const Code = () => {
             pattern="[0-9]*"
             maxLength={6}
             type="text"
-            className="text-center w-[45px] h-[45px] rounded-[10px] bg-transparent border border-gray-cartBorder outline-none flex items-center justify-center"
+            className={`text-center w-[45px] h-[45px] rounded-[10px] bg-transparent border border-gray-cartBorder outline-none flex items-center justify-center ${Style.code}`}
             onChange={(e) => handleInput(e, index)}
             onKeyDown={(e) => handleKeyDown(e, index)}
           />

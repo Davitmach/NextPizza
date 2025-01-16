@@ -54,7 +54,7 @@ return data.data
         const data = await axios.get(UserApi.logout,{
     withCredentials:true   
     })
-    console.log('qaq');
+
     await queryClient.invalidateQueries<any>(['checkLogin'])
    await  queryClient.invalidateQueries<any>(['checkLogged'])
     

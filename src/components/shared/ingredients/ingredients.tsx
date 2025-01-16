@@ -7,9 +7,7 @@ import './ingredient.scss';
 export const IngredientsBox = (props: IngredientsBoxProps) => {
   const { ingredients, func, active, data } = props;
 
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
+
 
   const filteredIngredients = ingredients.filter(
     (ingredient) => !data.some((item) => item.id === ingredient.id)

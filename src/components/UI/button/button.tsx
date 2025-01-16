@@ -313,11 +313,7 @@ export const Button: React.FC<IButton> = (props) => {
 
      
       useEffect(() => {
- console.log(data);
- if(data === undefined) {
-  console.log('qaq');
-  
- }
+
         
         if (data === undefined && !isLoading) {
           refetch();
