@@ -1,5 +1,5 @@
 .form {
-@media(max-width:719px) {
+@media(max-width:546px) {
     padding:32px 30px ;
     width: 90%;
 }
@@ -9,11 +9,12 @@
 }
 }
 .xmark{
-    @media(max-width:719px) {
-        right: 10px;
-        top: 10px;
+    @media(max-width:546px) {
+        right: 10px !important;
+        top: 10px !important;
+       
         svg {
-            
+
             fill: black;
         }
     }

@@ -27,7 +27,6 @@ refresh();
             }
             
         }).catch((e)=> {
-            console.log(e,'error');
             setInput(true)
             showNotification('Произошла ошибка во время регистраций','error');
             
