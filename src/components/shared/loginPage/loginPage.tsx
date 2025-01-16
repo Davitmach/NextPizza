@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 import { Code } from "../code/code";
 import Cookie from 'js-cookie'
 export const LoginPage=()=> {
-    const {replace} = useRouter();
+    const {replace,refresh} = useRouter();
     const [code,setCode] = useState<boolean>(false);
 const [page,setPage] = useState<'log'|'sign'>('log')
    const HandleChangePage = ()=> {
@@ -31,10 +31,10 @@ if(Check == 'true') {
    },[])
    return(
 <div className={`fixed w-full h-[100vh] left-0 top-0 bg-gray-background flex items-center justify-center `}>
-    <div className={`${Style.form} bg-white w-[450px] rounded-[18px] py-[42px] px-[45px] relative`}>
+    <div className={`${Style.form} bg-white w-[450px] flex flex-col justify-between min-h-[546px] rounded-[18px] py-[42px] px-[45px] relative`}>
     
    <div> {code == true ? <Code/> :page == 'log' ? <Login func={setCode}/> :<Signup/>}</div>
-{code == false &&<div><Button func={HandleChangePage} variant='orangeBorder' status={false} size="full">{page=='log' ? 'Регистрация': 'Вход'}</Button></div>  }  
+{code == false &&<div className='mt-[10px]'><Button func={HandleChangePage} variant='orangeBorder' status={false} size="full">{page=='log' ? 'Регистрация': 'Вход'}</Button></div>  }  
 
 <div className={`${Style.xmark} absolute -right-[40px] top-0`}>
 <FaXmark className={Style.svg} onClick={HandleClose} cursor={'pointer'} fontSize={'30px'} color="white"/>
