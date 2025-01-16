@@ -16,6 +16,7 @@ export const Signup = ()=> {
         const query = useQueryClient();
     const {handleSubmit} = useForm();
     const HandleSubmit = async()=> {
+        showNotification('Регистрация','info')
       if(refMail.current && refName.current) {
         userService.Register(refName.current.value,refMail.current.value,query).then((e)=> {
             if(e) {
