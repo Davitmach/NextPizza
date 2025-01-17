@@ -38,9 +38,6 @@ const query = useQueryClient();
     const Id = Number(id);
     productService.getProduct(Id).then((e) => {
       if (e) {
-        
-        
-        
         if(Array.isArray(e.productItem) && e.productItem.length >0) {
             ingredientsService.getIngredients().then((e)=> {
                 setIngredients(e)

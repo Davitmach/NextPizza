@@ -23,3 +23,28 @@
         background: #f1f1f1; 
     }
 }
+.Ingredient_container_page {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(130px, 1fr));
+@media (max-width:1368px) {
+  grid-template-columns: repeat(3, minmax(130px, 1fr));
+}
+@media (max-width:529px) {
+  grid-template-columns: repeat(2, minmax(130px, 1fr));
+}
+
+// column-gap: 10px;
+  &::-webkit-scrollbar {
+      width: 5px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+      background-color: #FE5F00; 
+      border-radius: 53px; 
+      cursor: pointer;
+  }
+
+  &::-webkit-scrollbar-track {
+      background: #f1f1f1; 
+  }
+}

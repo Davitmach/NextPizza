@@ -4,7 +4,7 @@ export type ProductPayload = {
     stock:number,
     imageUrl:string,
     price:number,
-    catId:number,
+    categoryId:number,
     productItem:ProductItem[],
     id:number,
     ingredients:ingredient[]

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Nunito } from "next/font/google";
 import "./globals.scss";
+import { Header } from "@/components/shared/header/header";
 
 export const metadata: Metadata = {
   title: "Next Pizza",
@@ -47,7 +48,7 @@ export default function RootLayout({
         <link rel="manifest" href="/site.webmanifest" />
       </head>
       <body className={nunito.className}>
-   
+   <Header/>
         {children}
         {modal}
         {cart}

@@ -14,7 +14,7 @@ refresh();
 
     return (
       <>
-       <Header/>
+<Header/>
        <InfoBlock title="Доступ запрещён" description="Данную страницу могут просматривать только авторизованные пользователи" img="/svg/notOpen.svg"/>
       </>
     );

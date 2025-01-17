@@ -34,7 +34,7 @@ push('/log')
 
   return (
     <>
-<Header/>
+
 
 <Button variant='orange' status={false} size="default" func={qaq}>добавить</Button>
 <Button variant='orange' status={false} size="default" func={qaq2}>Выйти</Button>

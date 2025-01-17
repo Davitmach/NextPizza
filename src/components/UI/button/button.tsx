@@ -167,7 +167,7 @@ export const Button: React.FC<IButton> = (props) => {
     case "orange":
       return (
         <button
-          className={`${ButtonConfig[Variant][Size]} ${
+          className={`${ClassName} ${ButtonConfig[Variant][Size]} ${
             Status == true && "cursor-not-allowed"
           }`}
           onClick={() => {

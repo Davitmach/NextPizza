@@ -6,7 +6,7 @@ export default function NotFound() {
 
     return (
       <>
-       <Header/>
+      <Header/>
        <InfoBlock title="Страница не найдена" description="Проверьте корректность введённого адреса или повторите попытку позже" img="/svg/notFound.svg"/>
       </>
     );

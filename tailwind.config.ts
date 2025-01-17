@@ -17,6 +17,9 @@ const config: Config = {
       'l':{'max':'1125px'}, 
       'lMin':{'min':'1126px'}, 
       'xxs':{'max':'437px'}, 
+      '1360max':{'max':'1360px'}, 
+      '1133max':{'max':'1133px'}, 
+      '571max':{'max':'571px'}
     },
     extend: {
       borderRadius: {
@@ -64,7 +67,9 @@ productCart:'rgba(255, 247, 238, 1)'
         black:{
           link:'rgba(32, 32, 32, 1)',
           label:'rgba(0, 0, 0, 1)',
-          modalBg:'rgba(0, 0, 0, 0.6)'
+          modalBg:'rgba(0, 0, 0, 0.6)',
+          breadScrumbs:'rgba(55, 55, 55, 1)',
+          breadTransparent:'rgba(55, 55, 55, 0.6)'
         },
         red:{
           error_message:'rgba(254, 0, 0, 1)'
