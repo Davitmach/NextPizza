@@ -3,13 +3,21 @@ import Style from './user.module.scss';
 import { useSession } from 'next-auth/react';
 import { useQueryClient } from '@tanstack/react-query';
 import { useState } from 'react';
+import { useNotification } from '@/context/notification';
 
 export const UserBtnMenu = () => {
   const { status } = useSession();
+  const {showNotification} = useNotification()
   const query = useQueryClient();
  
   const handleLogout = () => {
-    userService.Logout(status, query);
+    userService.Logout(status, query).then((e)=> {
+     if(e && e== 'Cookie deleted') {
+      showNotification('Вы вышли из аккаунта','info');
+      
+     }
+      
+    });
   
   };
 
