@@ -101,13 +101,13 @@ productService.getProduct(Number(id)).then((e)=> {
   else {
     return(<>
         <div className="flex flex-col items-center product_container mt-[100px] px-[74px] 571max:px-[30px] 571max:mt-[30px] max-w-[1478px] mx-auto">
-        {category && data &&  <div className="cursor-pointer mb-[40px] font-[400] text-[14px] flex justify-start text-black-breadScrumbs"><span onClick={()=> {
+        {category && data &&  <div className="w-full text-left cursor-pointer mb-[40px] font-[400] text-[14px] flex justify-start text-black-breadScrumbs"><span onClick={()=> {
 replace('/')
             }}>Главная</span> / {category?.name} / <span className="text-black-breadTransparent ">{data?.name}</span> </div> }  
-            <div className="flex items-start justify-between 1133max:flex-col ">
+            <div className="flex items-start justify-between 1133max:flex-col gap-8 w-full 1133max:items-center ">
           
                 <div className=" bg-white-productCart rounded-[20px] inline-flex p-[35px] max-w-[570px] 1133max:w-full "><Image alt="img" width={500} height={500} src={data.imageUrl}/></div>
-                <div className="Info  max-w-[631px] w-full flex flex-col items-center 1360max:max-w-[400px] 1133max:w-full 1133max:max-w-full ">
+                <div className="Info  max-w-[631px] w-full flex flex-col items-left 1360max:max-w-[430px] 1133max:w-full 1133max:max-w-full  ">
                     <ProductPageTitle>{data.name}</ProductPageTitle>
                      { Array.isArray(data.productItem) && data.productItem.length>0 && <ProductInfo>{`${active =='Маленькая' ? '25см, ': active == 'Средняя' ? '30см, ':'35см, '}${activeType} тесто, ${active == 'Маленькая' &&activeType == 'Тонкое' ? '300 г': active =='Маленькая' && activeType == 'Традиционное' ? '400 г' : active == 'Средняя' && activeType == 'Тонкое'? '450 г': active == 'Средняя' && activeType == 'Традиционное' ? '500 г': active =='Большая' && activeType == 'Тонкое'? '550 г':active =='Большая' && activeType =='Традиционное' &&'600 г'}`}</ProductInfo>}
                 {  Array.isArray(data.productItem) && data.productItem.length>0 && (<div className="my-[25px] w-[420px] 571max:w-full flex flex-col gap-[20px]"> <Toggle 
@@ -129,7 +129,7 @@ replace('/')
                                 arguments={data.productItem[0].pizzaType ===1 ? ['Тонкое']: ['Тонкое','Традиционное']}
                               /></div>)}
                                  {Array.isArray(data.productItem) && data.productItem.length>0 && ingredients && <IngredientsBoxPage  data={data.ingredients} active={activeIngredient} func={setActiveIngredient} ingredients={ingredients}/>}
-                <Button className="!my-[63px]" func={Buy} variant='orange' status={false} size="default">Добавить в корзину за {data.price + calculateIngredientsPrice()}₽</Button>
+              <div className=" w-[297px]"> <Button className="!my-[63px]" func={Buy} variant='orange' status={false} size='default'>Добавить в корзину за {data.price + calculateIngredientsPrice()}₽</Button></div> 
                 </div>
             </div>
     <Recommend Data={data}  />

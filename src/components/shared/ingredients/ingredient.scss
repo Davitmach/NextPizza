@@ -26,11 +26,12 @@
 .Ingredient_container_page {
   display: grid;
   grid-template-columns: repeat(4, minmax(130px, 1fr));
+
 @media (max-width:1368px) {
   grid-template-columns: repeat(3, minmax(130px, 1fr));
 }
-@media (max-width:529px) {
-  grid-template-columns: repeat(2, minmax(130px, 1fr));
+@media (max-width:1334px) {
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
 }
 
 // column-gap: 10px;

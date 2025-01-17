@@ -49,7 +49,7 @@ export const IngredientsBoxPage = (props: IngredientsBoxProps) => {
 
   return (
     <>
-      <div className="mt-[10px]" key={'Ingredient'}>
+      <div className=" mt-[10px]" key={'Ingredient'}>
         <div>
           <h1 className="text-black-label font-[600] text-[18px]">Ингредиенты</h1>
         </div>
