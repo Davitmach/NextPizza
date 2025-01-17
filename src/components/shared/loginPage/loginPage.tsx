@@ -31,7 +31,7 @@ if(Check == 'true') {
    },[])
    return(
 <div className={`fixed w-full h-[100vh] left-0 top-0 bg-gray-background flex items-center justify-center `}>
-    <div className={`${Style.form} bg-white w-[450px] flex flex-col justify-between min-h-[546px] rounded-[18px] py-[42px] px-[45px] relative`}>
+    <div className={`${Style.form} bg-white w-[450px] flex flex-col justify-between  rounded-[18px] py-[42px] px-[45px] relative`}>
     
    <div className='h-full'> {code == true ? <Code/> :page == 'log' ? <Login func={setCode}/> :<Signup/>}</div>
 {code == false &&<div className='mt-[10px]'><Button func={HandleChangePage} variant='orangeBorder' status={false} size="full">{page=='log' ? 'Регистрация': 'Вход'}</Button></div>  }  

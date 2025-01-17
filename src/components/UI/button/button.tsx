@@ -17,6 +17,7 @@ import { useEffect, useState } from "react";
 import { useSession, signIn } from "next-auth/react";
 import { userService } from "@/service/userService";
 import { useQueryClient } from "@tanstack/react-query";
+import { UserBtnMenu } from "@/components/shared/userBtnMenu/userBtnMenu";
 const ButtonConfig: Record<ButtonVariants, any> = {
   cart: {
     icon: {
@@ -304,6 +305,7 @@ export const Button: React.FC<IButton> = (props) => {
           </button>);}  
     case "user":
       const [logged, setLogged] = useState<boolean | null>(null);
+      const [menu,setMenu] = useState<boolean>(false);
      const  { data,isLoading ,refetch} = useQuery({
         queryKey: ["checkLogin"],
         queryFn: () => userService.CheckLogged(),
@@ -333,8 +335,12 @@ export const Button: React.FC<IButton> = (props) => {
             if (e.message) {
             } else {
               cartService.createCart();
+              
             }
           });
+        }
+        else {
+          setMenu(false)
         }
       }, [logged]);
 
@@ -352,9 +358,15 @@ export const Button: React.FC<IButton> = (props) => {
         }
       }, [status]);
       return (
+        <div className="inline-flex flex-col relative ">
         <button
           onClick={() => {
-           userService.SignIn()
+           if(logged == true) {
+            setMenu(!menu)
+           }
+           else {
+            push('/log');
+           }
           }}
           className={`${ButtonConfig[Variant].style[Size]} ${
             Status == true && "cursor-not-allowed"
@@ -370,6 +382,8 @@ export const Button: React.FC<IButton> = (props) => {
             "Войти"
           )}
         </button>
+        {menu == true && <UserBtnMenu/>}
+        </div>
       );
     case "back":
       return (

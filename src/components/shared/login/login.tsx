@@ -54,7 +54,7 @@ userService.SignIn();
                 <div><h1 className="text-black-label font-[600] text-[30px]">Вход в аккаунт</h1></div>
                 <div><p className="text-gray-loginDescription font-[400] text-[16px]">Введите свою почту, чтобы войти в свой аккаунт</p></div>
             </div>
-            <div><Image quality={100} alt="img" src={'/phone.png'} width={60} height={60}/></div>
+            <div><Image priority quality={100} alt="img" src={'/phone.png'} width={60} height={60}/></div>
         </div>
         <div className="mt-[20px]"><form onSubmit={handleSubmit(HandleSubmit)} action="">
             <Input required={true} placeholder="Введите почту" ErrorMessage="Неправильно ввели почту" ErrorState={input}   InputType='email' Label="E-Mail" ref={refMail}/>

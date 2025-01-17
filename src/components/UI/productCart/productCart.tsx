@@ -104,7 +104,7 @@ cartService.addCartItem(Id,1,Price,[])
         <div className='ProductCart inline-flex flex-col gap-[15px] cursor-pointer'>
             <div  onClick={()=> {
             HandleOpenModal()
-        }} className='Img_box bg-white-productCart rounded-custom py-[24px] px-[37px]'><Image priority={false} quality={100} src={Img} alt='Img' width={210} height={210} /></div>
+        }} className='Img_box bg-white-productCart rounded-custom py-[24px] px-[37px]'><Image priority quality={100} src={Img} alt='Img' width={210} height={210} /></div>
             <div className='Info_box'>
 <div  onClick={()=> {
             HandleOpenModal()

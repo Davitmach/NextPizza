@@ -24,7 +24,8 @@ const config: Config = {
         foreground: "var(--foreground)",
         orange: {
           DEFAULT: '#FE5F00', 
-          addBtnBg:'rgba(255, 250, 244, 1)'
+          addBtnBg:'rgba(255, 250, 244, 1)',
+          hover:'rgba(255, 250, 246, 1)'
         },
         white:{
 border:'rgba(239, 239, 239, 1)',
