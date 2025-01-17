@@ -17,6 +17,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import { Button } from "@/components/UI/button/button";
 import { Notifications } from "@/components/shared/notification/notification";
 import { categoryService } from "@/service/categoryService";
+import { Recommend } from "@/components/shared/recommend/recommend";
 export default function Page() {
     const query = useQueryClient();
     const {replace} =useRouter();
@@ -26,7 +27,8 @@ export default function Page() {
   const [activeType, setActiveType] = useState<string | null>(null);
   const [ingredients,setIngredients] = useState<Ingredients[]|null>(null);
   const [activeIngredient,setActiveIngredient] = useState<number[]>([]);
-  const [category,setCategory] = useState<any>(null)
+  const [category,setCategory] = useState<any>(null);
+
 const {id} = useParams();
     useEffect(()=> {
         if(id) {
@@ -39,6 +41,7 @@ productService.getProduct(Number(id)).then((e)=> {
                     })
                 }
         setData(e)
+
 
        
     }
@@ -129,7 +132,7 @@ replace('/')
                 <Button className="!my-[63px]" func={Buy} variant='orange' status={false} size="default">Добавить в корзину за {data.price + calculateIngredientsPrice()}₽</Button>
                 </div>
             </div>
-            <div></div>
+    <div><Recommend Data={data}  /></div>
         </div>
 
         <Notifications/>

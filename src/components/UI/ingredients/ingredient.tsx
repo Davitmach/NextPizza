@@ -35,3 +35,31 @@ export const Ingredient = (props:Ingredients)=> {
         </div>
     )
 }
+export const IngredientPage = (props:Ingredients)=> {
+    const Img = props.imageUrl;
+    const Id = props.id;
+    const Name = props.name;
+    const Price = props.price;
+    const Func = props.func;
+    const Active = props.active;
+    const AddIngredient = ()=> {
+        if (!Active.includes(Id)) {
+            Func([...Active, Id]);
+        }
+        else {
+            const Filter = Active.filter((e)=> e !== Id);
+            Func(Filter)
+        }
+    }
+
+    return(
+        <div onClick={()=> {
+            AddIngredient()
+        }} className={`duration-100 relative bg-white w-full h-[193px] flex-shrink-0 rounded-[15px] py-[0px] px-[10px] flex flex-col items-center justify-around border-2 border-white ${Active.includes(Id) && ' !border-orange'}`}>
+            <div className="w-full flex items-center justify-center"><Image src={Img} alt="Img Ingr." width={110} height={110}/></div>
+            <div className="text-black-label text-[12px] font-[400]">{Name.length > 16 ? Name.substring(0,16)+'...' :Name}</div>
+            <div className="text-[14px] font-[600] text-black-label">{Price} ₽</div>
+         
+        </div>
+    )
+}

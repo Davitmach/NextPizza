@@ -1,6 +1,6 @@
 import { CartApi } from "@/api/cart/cartApi";
 import axios from "axios";
-import { userService } from "./userService";
+
 class CartService {
    private api;
    constructor() {

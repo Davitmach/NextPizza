@@ -1,5 +1,5 @@
 'use client'
-import { Ingredient } from "@/components/UI/ingredients/ingredient";
+import { Ingredient, IngredientPage } from "@/components/UI/ingredients/ingredient";
 import { IngredientsBoxProps } from "@/types/UI/ingredients/ingredientsBoxProps";
 import { useEffect, useState } from "react";
 import './ingredient.scss';
@@ -55,7 +55,7 @@ export const IngredientsBoxPage = (props: IngredientsBoxProps) => {
         </div>
         <div className="Ingredient_container_page gap-[10px] h-[200px] overflow-y-auto overflow-x-hidden">
           {Array.isArray(filteredIngredients) && filteredIngredients.length > 0 && filteredIngredients.map((i) => (
-            <Ingredient
+            <IngredientPage
               key={i.id}
               active={active}
               func={func}

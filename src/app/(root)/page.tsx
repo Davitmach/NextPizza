@@ -22,7 +22,6 @@ export default function Home() {
 
 const {push,refresh} = useRouter()
  const qaq = useCallback(()=> {
-push('/log')
 
  },[])
 
@@ -30,7 +29,7 @@ push('/log')
   if (status === 'unauthenticated' || status === 'authenticated') {
     userService.Logout(status, query);
   }
-}, [status, query]);
+}, []);
 
   return (
     <>

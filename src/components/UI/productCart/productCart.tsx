@@ -59,14 +59,21 @@ export const ProductCart = (props:ProductCartProps)=> {
     const HandleOpenModal = ()=> {
 push(`/product/${Id}`)
     }
-    const AddCart = useCallback(()=> {
+    const AddCart = useCallback(async()=> {
         if(Type && Size) {
-            cartService.addCartItem(Id,1,Price,[],Type as 1|2,Size as 1|2|3)
+            cartService.addCartItem(Id,1,Price,[],Type as 1|2,Size as 1|2|3).then(async(e)=> {
+                    queryClient.invalidateQueries<any>(['cartItems'])      
+            })
+
         }
         else {
-cartService.addCartItem(Id,1,Price,[])
+cartService.addCartItem(Id,1,Price,[]).then((e)=> {
+        queryClient.invalidateQueries<any>(['cartItems'])
+})
+
         }
     },[Id])
+
 
     const {mutate:plusMutate,isPending:plusPending} = useMutation({
         mutationKey: ['mutateStock'],
