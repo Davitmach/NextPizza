@@ -33,14 +33,14 @@ export const Counter: React.FC<CounterProps> = (props) => {
       return (
         <div className='inline-flex gap-[10px] justify-center items-center'>
           
-          <Button  func={()=>props.firstFunc()}  variant='orangeBorder' size='default' status={false}><svg width="11" height="2" viewBox="0 0 11 2" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <Button className='w-[30px] h-[30px] !p-0'  func={()=>props.firstFunc()}  variant='orangeBorder' size='default' status={false}><svg width="11" height="2" viewBox="0 0 11 2" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M9.28683 1L1.42969 1" stroke="#FE5F00" strokeWidth="1.5" strokeLinecap="round"/>
 </svg>
 
   
   </Button>
           <p className='text-black-link font-[700] text-[20px]'>{props.defaultState}</p>
-          <Button func={()=>props.secondFunc()} variant='orangeBorder' size='default' status={false}><svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <Button className='w-[30px] h-[30px] !p-0' func={()=>props.secondFunc()} variant='orangeBorder' size='default' status={false}><svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M9.32502 4.46436H5.88115V1.25007C5.88115 1.10799 5.82067 0.971729 5.71303 0.871263C5.60539 0.770797 5.4594 0.714355 5.30717 0.714355C5.15494 0.714355 5.00894 0.770797 4.9013 0.871263C4.79366 0.971729 4.73319 1.10799 4.73319 1.25007V4.46436H1.28931C1.13708 4.46436 0.991089 4.5208 0.883447 4.62126C0.775805 4.72173 0.715332 4.85799 0.715332 5.00007C0.715332 5.14215 0.775805 5.27841 0.883447 5.37888C0.991089 5.47934 1.13708 5.53578 1.28931 5.53578H4.73319V8.75007C4.73319 8.89215 4.79366 9.02841 4.9013 9.12888C5.00894 9.22935 5.15494 9.28579 5.30717 9.28579C5.4594 9.28579 5.60539 9.22935 5.71303 9.12888C5.82067 9.02841 5.88115 8.89215 5.88115 8.75007V5.53578H9.32502C9.47725 5.53578 9.62325 5.47934 9.73089 5.37888C9.83853 5.27841 9.899 5.14215 9.899 5.00007C9.899 4.85799 9.83853 4.72173 9.73089 4.62126C9.62325 4.5208 9.47725 4.46436 9.32502 4.46436Z" fill="#FE5F00"/>
 </svg>
 
