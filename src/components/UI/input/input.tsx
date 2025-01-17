@@ -54,7 +54,15 @@ export const Header_input = () => {
   const [filterProduct,setFilter] = useState<SearchedData[] |null>(null)
   const ref = useRef<HTMLInputElement>(null);
 
+useEffect(()=> {
+if(Array.isArray(filterProduct) && filterProduct.length >0) {
+  setActive(true)
+}
+else {
+  setActive(false);
+}
 
+},[filterProduct])
   useEffect(()=> {
 productService.getProducts().then((e)=> {
   setProduct(e)  
@@ -66,15 +74,17 @@ const FilterProduct = products?.filter((e)=>    e.name.toLowerCase().includes(se
 e.category.name.toLowerCase().includes(searchValue.toLowerCase()));
 if(FilterProduct) {
   setFilter(FilterProduct);
+
 }
     }
     else {
       setFilter(null);   
+    
     }
   }, [searchValue]);
 
  const HandleInput = (event:React.ChangeEvent<HTMLInputElement>) => {
-  setActive(true)
+  
 setValue(event.target.value)
 if(event.target.value.length == 0) {
   setActive(false)
@@ -122,7 +132,7 @@ if(event.target.value.length == 0) {
       </div>
       {active==true &&filterProduct && 
        (
-        <div className={`${Style.products} w-full h-[500px] overflow-y-auto  mt-[10px] rounded-[10px] bg-white absolute z-50`}>
+        <div className={`${Style.products} w-full max-h-[500px] overflow-y-auto  mt-[10px] rounded-[10px] bg-white absolute z-50`}>
           {" "}
           {filterProduct.map((item, index) => (
             <div
