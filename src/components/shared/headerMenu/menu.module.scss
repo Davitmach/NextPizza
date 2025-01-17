@@ -1,0 +1,20 @@
+.fadeIn {
+    animation: FadeIn .8s ease-in-out forwards;
+    @keyframes FadeIn {
+        from {
+            transform: translateX(100vh);
+        }
+        to {
+            transform: translateX(0);
+        }
+    }
+}
+.fadeOut {
+    animation: FadeOut .8s ease-in-out forwards;
+    @keyframes FadeOut {
+      
+        to {
+            transform: translateX(-100%);
+        }
+    }
+}

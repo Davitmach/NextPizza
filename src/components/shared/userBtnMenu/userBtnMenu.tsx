@@ -2,7 +2,7 @@ import { userService } from '@/service/userService';
 import Style from './user.module.scss';
 import { useSession } from 'next-auth/react';
 import { useQueryClient } from '@tanstack/react-query';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNotification } from '@/context/notification';
 
 export const UserBtnMenu = () => {
@@ -20,7 +20,6 @@ export const UserBtnMenu = () => {
     });
   
   };
-
 
   return (
     <div className='w-full bg-white mt-[6px] rounded-[10px] shadow-lg py-[13px] absolute top-full'>

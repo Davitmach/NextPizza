@@ -25,6 +25,10 @@ z-index: 300;
     }
 }
 .products {
+
+    @media (max-height:815px) {
+        max-height: 300px;
+    }
     &::-webkit-scrollbar {
         width: 5px;
     }
@@ -36,6 +40,7 @@ z-index: 300;
     }
 
     &::-webkit-scrollbar-track {
-        background: #f1f1f1; 
+        background: rgba(255, 255, 255, 1); 
+        
     }
 }

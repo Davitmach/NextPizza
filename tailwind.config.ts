@@ -14,7 +14,9 @@ const config: Config = {
     screens: {
       'xs':{'max':'893px'}, 
       's':{'max':'593px'}, 
-     
+      'l':{'max':'1125px'}, 
+      'lMin':{'min':'1126px'}, 
+      'xxs':{'max':'437px'}, 
     },
     extend: {
       borderRadius: {

@@ -274,7 +274,7 @@ export const Button: React.FC<IButton> = (props) => {
               Status == true && "cursor-not-allowed"
             }`}
           >
-            <div>{TotalData?.full?.toFixed(2)} ₽</div>
+            <div className="text-nowrap">{TotalData?.full?.toFixed(2)} ₽</div>
             <span className=" h-[25px] bg-white w-[1px]"></span>
             <div className="Right_side flex relative">
               <div className="Counter flex items-center gap-2 group-hover:opacity-0 duration-150">

@@ -97,7 +97,7 @@ if(event.target.value.length == 0) {
        
       {" "}
       <div
-        className={`fixed left-0 top-0 w-full h-svh z-10  ${
+        className={`fixed left-0 top-0 w-full h-svh z-[50]  ${
           active ? Style.Active : Style.Disable
         }`}
       ></div>
@@ -132,7 +132,7 @@ if(event.target.value.length == 0) {
       </div>
       {active==true &&filterProduct && 
        (
-        <div className={`${Style.products} w-full max-h-[500px] overflow-y-auto  mt-[10px] rounded-[10px] bg-white absolute z-50`}>
+        <div className={`${Style.products} w-full max-h-[500px] overflow-y-auto  mt-[10px] rounded-l-[10px] bg-white absolute z-50`}>
           {" "}
           {filterProduct.map((item, index) => (
             <div
@@ -163,7 +163,7 @@ if(event.target.value.length == 0) {
                   itemName={item.name}
                 />
               </div>
-              <div className="text-gray-price">{item.price}₽</div>
+              <div className="text-gray-price xxs:text-[13px]">{item.price}₽</div>
             </div>
           ))}
         </div>
