@@ -29,11 +29,18 @@ else {
         
       };
 
+      const HandleScroll = ()=> {
+        setActive(false)
+      }
+
    useEffect(()=> {
     window.addEventListener("resize", checkScreenSize);
     return () => window.removeEventListener("resize", checkScreenSize);
    }, []);
-
+   useEffect(()=> {
+    window.addEventListener('scroll', HandleScroll);
+    return () => window.removeEventListener("scroll", HandleScroll);
+   }, []);
     return(
         <>
         <header className="w-full flex justify-between items-center border border-b-gray-cartBorder py-[44px] px-[2%] gap-12">
