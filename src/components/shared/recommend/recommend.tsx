@@ -19,14 +19,8 @@ const {data:cartData} = useQuery({
     queryKey:['cartItems'],
     queryFn:()=> cartService.getCartItem()
 })
-useEffect(()=> {
-console.log(cartData,'qaqs');
 
-},[cartData])
   useEffect(()=> {
-
-
-
 productService.getProducts().then((e)=> {
     if(e) {
         if(Array.isArray(e) && e.length >0) {
@@ -64,9 +58,9 @@ setFilter(filter);
 
 
     return(
-       <div className="flex flex-col gap-4 py-[50px]">
+       <div className="flex flex-col gap-4 py-[50px] w-full">
         <div><Title>Рекомендаций</Title></div>
-        <div className="w-full flex justify-between">
+        <div className="w-full grid grid-cols-[repeat(4,minmax(140px,1fr))] gap-9 1073max:grid-cols-[repeat(3,minmax(140px,1fr))] 937max:grid-cols-[repeat(2,minmax(140px,1fr))] 653max:grid-cols-[repeat(1,minmax(140px,1fr))]">
         {!data || !cartData? <div className="flex justify-between w-full">{Array.from({ length: 4 }, (_, index) => {
         return(
             <ProductCartLoading key={index}/>

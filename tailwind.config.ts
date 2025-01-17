@@ -19,7 +19,10 @@ const config: Config = {
       'xxs':{'max':'437px'}, 
       '1360max':{'max':'1360px'}, 
       '1133max':{'max':'1133px'}, 
-      '571max':{'max':'571px'}
+      '571max':{'max':'571px'},
+      '1073max':{'max':'1073px'},
+      '937max':{'max':'937px'},
+      '653max':{'max':'653px'}
     },
     extend: {
       borderRadius: {
