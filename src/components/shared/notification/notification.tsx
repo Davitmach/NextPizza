@@ -27,7 +27,7 @@ export const Notifications = () => {
   }, [notifications]);
 
   return (
-    <div className={`fixed bottom-4 right-4 z-[1500000000000000000000000000] space-y-2 w-[300px] overflow-hidden `}>
+    <div className={`fixed bottom-4 right-4 z-[150000000000000] space-y-2 w-[300px] overflow-hidden `}>
       {notifications.map((notif) => (
         <div
           key={notif.id}
