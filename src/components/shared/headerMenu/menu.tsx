@@ -9,7 +9,7 @@ export const Menu = ({ status ,click}: { status: boolean,click:boolean }) => {
     
 if(status == true) {
     return (
-        <div className={`${Style.fadeIn} py-[20px] px-[30px] fixed left-0 top-[143px] translate-x-full w-full   bg-white flex justify-center gap-5 flex-col-reverse `}>
+        <div className={`${Style.fadeIn} py-[20px] px-[30px] fixed left-0 top-[143px] translate-x-[100vh] w-full   bg-white flex justify-center gap-5 flex-col-reverse shadow-2xl rounded-b-3xl`}>
               <div className=" "><Header_input/></div>
                         <div className="flex gap-[16px] justify-center ">
                             <div><Button variant='user' status={false} size="default"  /></div>
@@ -21,7 +21,7 @@ if(status == true) {
 else {
     if(click == true) {
 return (
-        <div className={`${Style.fadeOut} py-[20px] px-[30px] fixed left-0   top-[144px]  w-full  bg-white flex justify-center gap-5 flex-col-reverse `}>
+        <div className={`${Style.fadeOut} py-[20px] px-[30px] fixed left-0   top-[144px]  w-full  bg-white flex justify-center gap-5 flex-col-reverse  shadow-2xl   rounded-b-3xl`}>
               <div className="flex-[2] "><Header_input/></div>
                         <div className="flex gap-[16px] justify-center flex-1 ">
                             <div><Button variant='user' status={false} size="default"  /></div>
@@ -32,7 +32,7 @@ return (
     }
     else {
         return (
-        <div className={` py-[20px] px-[30px] fixed left-0 -translate-x-full  top-[143px]  w-full  bg-white flex justify-center gap-5 flex-col-reverse `}>
+        <div className={` py-[20px] px-[30px] fixed left-0 -translate-x-full  top-[143px]  w-full  bg-white flex justify-center gap-5 flex-col-reverse  shadow-2xl rounded-b-3xl `}>
               <div className="flex-[2] "><Header_input/></div>
                         <div className="flex gap-[16px] justify-center flex-1 ">
                             <div><Button variant='user' status={false} size="default"  /></div>

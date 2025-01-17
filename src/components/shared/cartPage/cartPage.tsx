@@ -18,6 +18,7 @@ export const CartPage = ()=> {
 setDisable(true)
 ref.current?.addEventListener('animationend',()=> {
     back()
+     document.body.style.overflow = 'auto'
     
 })
     },[])
@@ -31,6 +32,7 @@ useEffect(()=> {
         })
     }
     FetchData();
+    document.body.style.overflow = 'hidden'
 },[])
 
     return(

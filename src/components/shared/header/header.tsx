@@ -43,7 +43,7 @@ else {
    }, []);
     return(
         <>
-        <header className="w-full flex justify-between items-center border border-b-gray-cartBorder py-[44px] px-[2%] gap-12">
+        <header className={`w-full flex justify-between items-center border   ${active == false ?' border-b-gray-cartBorder' : 'border-b-transparent'} py-[44px] px-[2%] gap-12`}>
             <div className="flex-1 z-20 "><Logo/></div>
             <div className="flex-[2] l:hidden"><Header_input/></div>
             <div className="flex gap-[16px] justify-center flex-1 l:hidden">
