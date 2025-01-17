@@ -2,7 +2,7 @@
 import { useRef, useState, useCallback, useEffect } from "react";
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import CartStyle from "../emptyCart/cart.module.scss";
-
+import Style from './cartItemsPage.module.scss'
 import { useRouter } from "next/navigation";
 import { Xmark} from "@/components/UI/xmark/xmark";
 import { CartItems } from "@/components/UI/cartItems/cartItems";
@@ -52,7 +52,7 @@ showNotification('Ошибка в получений данных','error')
           disable == true && CartStyle.disable
         }`}
       >
-        <div className="First_row w-full">
+        <div className={`${Style.cart_page} First_row w-full m-h-[615px] overflow-y-auto`}>
           <div className="flex items-center justify-between p-[20px] ">
             <div>
               <span className="font-[400] text-[20px] text-black-label flex items-center justify-center gap-[6px]">
