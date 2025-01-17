@@ -1,7 +1,10 @@
 .Ingredient_container {
     display: grid;
+    grid-template-columns: repeat(3, minmax(130px, 1fr));
+    @media (max-width:1181px) { 
     grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); /* заполняет все пространство */
   gap: 13px;
+    }
   @media (max-width:435px) {
     grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
   }

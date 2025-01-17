@@ -1,34 +1,55 @@
 .little {
     width: 250px;
     height: 250px;
+    @media (min-width:593px) {
+        width: 300px;
+        height: 300px;
+    }
 }
 .middle{
     width: 300px;
     height:300px;
+    @media (min-width:593px) {
+        width: 375px;
+        height: 375px;
+    }
 }
 .big {
     width: 350px;
     height:350px;
+    @media (min-width:593px) {
+        width: 450px;
+        height: 450px;
+    }
 }
 .Img_container {
+    @media (max-width:1181px) {
+        padding: 20px;
+    }
     @media (max-width:593px) {
         width: 100%;
-        padding: 20px;
+       
     }
 }
 .Big {
+    width: 420px;
+    height: 420px;
     @media (max-width:593px) {
         width: 320px;
         height: 320px;
     }
 }
 .Middle {
+    width: 345px;
+    height: 345px;
     @media (max-width:593px) {
         width: 280px;
         height: 280px;
     }
 }
 .Little {
+    width: 300px;
+    height: 300px;
     @media (max-width:593px) {
         width: 250px;
         height: 250px;

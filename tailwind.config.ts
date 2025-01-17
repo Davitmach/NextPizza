@@ -13,6 +13,7 @@ const config: Config = {
   theme: {
     screens: {
       'xs':{'max':'893px'}, 
+      's':{'max':'593px'}, 
      
     },
     extend: {
