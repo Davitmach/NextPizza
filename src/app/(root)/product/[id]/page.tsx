@@ -19,7 +19,7 @@ import { Notifications } from "@/components/shared/notification/notification";
 import { categoryService } from "@/service/categoryService";
 export default function Page() {
     const query = useQueryClient();
-    const {back} =useRouter();
+    const {replace} =useRouter();
     const {showNotification} = useNotification();
     const [data,setData] = useState<ProductPayload | null>(null)
     const [active, setActive] = useState<string | null>(null);
@@ -56,7 +56,7 @@ productService.getProduct(Number(id)).then((e)=> {
         return selectedIngredients.reduce((total, ingredient) => total + ingredient.price, 0);
       };
     useEffect(()=> {
-        console.log(data);
+     
         
         if(data) {
  categoryService.getCategory().then((e)=> {
@@ -88,10 +88,7 @@ productService.getProduct(Number(id)).then((e)=> {
         
     },[data, active, activeType, activeIngredient])
 
-useEffect(()=> {
-console.log(category,'qaq');
 
-},[category])
 
   if(!data) {
     return(
@@ -102,7 +99,7 @@ console.log(category,'qaq');
     return(<>
         <div className="product_container mt-[100px] px-[74px] 571max:px-[30px] 571max:mt-[30px]">
         {category && data &&  <div className="cursor-pointer mb-[40px] font-[400] text-[14px] text-black-breadScrumbs"><span onClick={()=> {
-back()
+replace('/')
             }}>Главная</span> / {category?.name} / <span className="text-black-breadTransparent ">{data?.name}</span> </div> }  
             <div className="flex items-start justify-between 1133max:flex-col ">
           

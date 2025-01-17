@@ -92,7 +92,7 @@ async GetId() {
             return data.data;
         
     } catch (error) {
-        console.error(error);
+
         return error;
     }
 }
