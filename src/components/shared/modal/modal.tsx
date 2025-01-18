@@ -17,6 +17,7 @@ import { ingredientsService } from "@/service/ingredientsService";
 import { Ingredients } from "@/types/UI/ingredients/ingredients";
 import { Button } from "@/components/UI/button/button";
 import { cartService } from "@/service/cartService";
+import { FaArrowDown } from "react-icons/fa6";
 import { useQueryClient } from "@tanstack/react-query";
 export const ModalPage = ({ id }: { id: number }) => {
   const { showNotification } = useNotification();
@@ -77,7 +78,20 @@ const query = useQueryClient();
       });
     }
   };
+const HandleCloseIos = ()=> {
+  if (modalRef.current) {
 
+    modalRef.current.style.transition = "transform 0.3s ease"; 
+    modalRef.current.style.transform = `translateY(100vh)`;  
+  }
+
+
+  setTimeout(() => {
+    document.body.style.overflow= 'auto';
+    back()
+  }, 300);
+
+}
   const handleTouchStart = (e: React.TouchEvent) => {
     if (modalRef.current && modalRef.current.scrollTop === 0) {  
     setStartY(e.touches[0].clientY); 
@@ -171,6 +185,10 @@ const Buy = useCallback(()=> {
         onTouchEnd={handleTouchEnd}
         className={`Modal ${Style.adaptive} rounded-[30px] w-[1000px] flex items-center justify-between bg-white h-[580px] relative ${Style.openAnim}`}
       >
+        {ios == true && <div onClick={()=>{
+         HandleCloseIos()
+          
+        }} className=" z-50 absolute left-[20px] top-[20px] rounded-full border border-black-label w-[40px] h-[40px] flex items-center justify-center"><FaArrowDown/></div>}
         {!data ? (
           <BigLoading />
         ) : (

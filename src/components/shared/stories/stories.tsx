@@ -61,7 +61,7 @@ export const StoriesBox = () => {
           ))}
     </div>
     {open && (
-          <div className="bg-gray-background fixed left-2/4 top-2/4 -translate-x-2/4 -translate-y-2/4 w-full h-full bg-black/80 flex items-center justify-center z-30">
+          <div className="bg-gray-background fixed left-2/4 top-2/4 -translate-x-2/4 -translate-y-2/4 w-full h-full bg-black/80 flex items-center justify-center z-50">
              
              <div className={Style.stories_container}>
   <Stories
