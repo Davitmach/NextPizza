@@ -6,10 +6,13 @@ import { StoriesBox } from "@/components/shared/stories/stories";
 import { BigContainer } from "@/components/UI/container/container";
 import { Select } from "@/components/UI/select/select";
 import { Title } from "@/components/UI/title/title";
+import { useEffect } from "react";
 
 export default function Home() {
 
-
+useEffect(()=> {
+localStorage.setItem('qaq','qaq')
+},[])
 
 
 
@@ -24,7 +27,7 @@ export default function Home() {
    </div> 
  </BigContainer>
 
-
+{localStorage.getItem('qaq')}
   <BigContainer>
   <StoriesBox/>
 </BigContainer>
