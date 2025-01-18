@@ -45,16 +45,13 @@ const query = useQueryClient();
       if (e) {
         if(Array.isArray(e.productItem) && e.productItem.length >0) {
             ingredientsService.getIngredients().then((e)=> {
-                setIngredients(e)
-                
+                setIngredients(e)               
             })
-        }
-        
+        }        
         setData(e);
       } else {
         showNotification("Не найден продукт", "error");
       }
-
     });
     const checkScreenSize = () => {
       setIsSmallScreen(window.innerWidth < 1181);  
