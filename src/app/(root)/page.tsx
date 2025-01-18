@@ -18,7 +18,7 @@ export default function Home() {
 
 <BigContainer className="flex flex-col gap-3  overflow-hidden " parentClassName="shadow-lg"> 
   <Title>Все пиццы</Title>
-  <div className="w-full flex items-center justify-between xs:flex-col xs:items-start">
+  <div className="w-full flex items-center justify-between xs:flex-col xs:items-start xs:gap-4">
     <CategoryBox type='server'/>
     <Select/>
    </div> 

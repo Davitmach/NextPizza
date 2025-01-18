@@ -31,9 +31,13 @@ export const ModalPage = ({ id }: { id: number }) => {
   const modalRef = useRef<HTMLDivElement | null>(null);
   const [isSmallScreen, setIsSmallScreen] = useState(false);
   const [activeIngredient,setActiveIngredient] = useState<number[]>([])
-
+const [ios,setIos] = useState<boolean>(false);
 const query = useQueryClient();
   useEffect(() => {
+    if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !(window as any).MSStream) {
+      setIos(true);
+    }
+    
     document.body.style.overflow= 'hidden';
     const Id = Number(id);
     productService.getProduct(Id).then((e) => {
@@ -197,7 +201,7 @@ const Buy = useCallback(()=> {
                   arguments={data.productItem[0].pizzaType ===1 ? ['Тонкое']: ['Тонкое','Традиционное']}
                 /></>)}
                 {Array.isArray(data.productItem) && data.productItem.length>0 && ingredients && <IngredientsBox data={data.ingredients} active={activeIngredient} func={setActiveIngredient} ingredients={ingredients}/>}
-               <Button func={Buy} variant='orange' status={false} size="default">Добавить в корзину за {data.price + calculateIngredientsPrice()}₽</Button>
+               <Button className={ios==true ? 'py-[100px]' :''}  func={Buy} variant='orange' status={false} size="default">Добавить в корзину за {data.price + calculateIngredientsPrice()}₽</Button>
                 </div>
               </div>
             </div>
