@@ -11,13 +11,12 @@ import { BigContainer } from '@/components/UI/container/container';
 export const Header = ()=> {
     const [active,setActive] = useState<boolean>(false);
     const [click,setClick] = useState<boolean>(false);
-    const [activeBtn,setActiveBtn] = useState<boolean>(true);
     const ref = useRef<HTMLDivElement>(null);
     const Handler = ()=> {
-        if(activeBtn == true) {
+       
         setClick(true)
         setActive(!active);
-        }
+        
     }
     useEffect(()=> {
 if(active == true) {
@@ -38,19 +37,7 @@ else {
 
    useEffect(()=> {
 
-    if(ref.current) {
-    ref.current.addEventListener('animationstart',()=> {
-        setActiveBtn(false)
-        
-    })
-    ref.current.addEventListener('animationend',()=> {
-        setActiveBtn(true) 
-        
-    })
-}
-setTimeout(() => {
-    setActiveBtn(true)
-}, 800);
+ 
     window.addEventListener("resize", checkScreenSize);
     return () => window.removeEventListener("resize", checkScreenSize);
    }, []);
