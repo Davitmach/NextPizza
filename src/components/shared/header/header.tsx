@@ -7,6 +7,7 @@ import { FaBars } from "react-icons/fa";
 import { FaXmark } from "react-icons/fa6";
 import { useEffect, useState } from 'react';
 import { Menu } from '../headerMenu/menu';
+import { BigContainer } from '@/components/UI/container/container';
 export const Header = ()=> {
     const [active,setActive] = useState<boolean>(false);
     const [click,setClick] = useState<boolean>(false)
@@ -43,7 +44,9 @@ else {
    }, []);
     return(
         <>
-        <header className={`w-full flex justify-between items-center border   ${active == false ?' border-b-gray-cartBorder' : 'border-b-transparent'} py-[44px] px-[2%] gap-12`}>
+        <header className={`sticky top-0 bg-white w-full  mx-auto flex justify-between items-center border-b   ${active == false ?' border-b-gray-cartBorder' : 'border-b-transparent'} py-[24px] px-[2%] gap-12`}>
+     
+          <BigContainer className='flex justify-between w-full mx-auto'>
             <div className="flex-1 z-20 "><Logo/></div>
             <div className="flex-[2] l:hidden"><Header_input/></div>
             <div className="flex gap-[16px] justify-center flex-1 l:hidden">
@@ -51,6 +54,7 @@ else {
                 <div><Button variant="cart" size="default" status={false}/></div>
             </div>
             <div className='cursor-pointer z-20 lMin:hidden' onClick={Handler}>{active == true ? <FaXmark className='text-[30px] text-orange'/> :<FaBars className='text-[30px] text-orange'/>}</div>
+            </BigContainer>
         </header>
         <Menu click={click} status={active}/> 
         </>

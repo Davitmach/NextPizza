@@ -45,7 +45,7 @@ export const StoriesBox = () => {
         ? stories.map((story) => (
             <Image
               key={story.id}
-              className="rounded-2xl cursor-pointer flex-shrink-0"
+              className={`rounded-2xl cursor-pointer flex-shrink-0 ${Style.img}`}
               onClick={() => onClickStory(story)}
               alt="img"
               src={story.previewImageUrl}

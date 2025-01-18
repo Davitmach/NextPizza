@@ -44,7 +44,7 @@ export const CategoryBox = (CategoryProps: CategoryBoxProps) => {
   }, []);
 
  return (
-  <div className={`Scroll overflow-x-scroll xs:px-[5px] ${Style.Scrollbar}`}><div className="inline-flex gap-[5px] bg-white-category py-[6px] px-[5px] rounded-[15px] ">
+  <div className={`Scroll w-full overflow-x-scroll xs:px-[5px] ${Style.Scrollbar}`}><div className="inline-flex gap-[5px] bg-white-category py-[6px] px-[5px] rounded-[15px] ">
     {Type == "custom"
       ? data
       : data?.map((cats, index) => (

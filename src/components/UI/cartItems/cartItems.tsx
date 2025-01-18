@@ -7,9 +7,10 @@
     import { useNotification } from "@/context/notification";
     import { useMutation, useQuery } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
-import { CartItemsType } from "@/types/payload/cartItemsData";
+
 import { useQueryClient } from "@tanstack/react-query";
 import { BigLoading } from "@/components/shared/loading/loading";
+import { FaTrash } from "react-icons/fa";
     export const CartItems =(props:cartItemsProps)=> {
         const {back,push} = useRouter();
         const queryClient = useQueryClient();
@@ -29,6 +30,8 @@ import { BigLoading } from "@/components/shared/loading/loading";
         const {data:cartStockData,isSuccess,error} = useQuery({
             queryKey:[`${Id}cartStock`],
             queryFn:()=> cartService.getProductQuantity(ProductId),
+            staleTime:Infinity,
+            refetchOnWindowFocus: true,
         })
 
 useEffect(()=> {
@@ -74,7 +77,17 @@ if(cartStockData) {
             
             <>
             {plusPending || minusPending ?<BigLoading/> :''}
-        <div  className="flex bg-white w-full p-[20px] gap-[24px] cursor-pointer">
+        <div  className="flex bg-white w-full p-[20px] gap-[24px] cursor-pointer relative">
+            <FaTrash onClick={()=> {
+                cartService.deleteCartItem(Id).then(async(e)=> {
+                    if(e.id) {
+                        await queryClient.invalidateQueries<any>(['cartItems'])
+                        showNotification('Вы удалили предмет из корзины','info')
+                    }
+                    
+                })
+
+            }} className="text-black-label absolute right-3 top-3 text-[13px]"/>
             <div onClick={()=> {
 Func(true)
 back()
@@ -86,11 +99,12 @@ setTimeout(() => {
             
         }}><Image src={Img} alt="Img" width={65} height={65}/></div>
             <div className="flex flex-col gap-[12px] w-full">
+
                 <div className="border-b border-b-gray-cartBorder pb-[12px]" onClick={()=> {
 Func(true)
 back()
 setTimeout(() => {
-    push(`/product/${ProductId}`); // После возврата делаем переход
+    push(`/product/${ProductId}`); 
 }, 1);
 
             

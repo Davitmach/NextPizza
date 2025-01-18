@@ -5,7 +5,7 @@ import './title.scss';
 export const Title =(TitleProps:TitleProps)=> {
     const Title = TitleProps.children;
     return(
-        <div className='text-black-label font-[800] text-[36px] cursor-pointer'>{Title}</div>
+        <div className='text-black-label font-[800] text-[36px] cursor-pointer xs:text-[30px]'>{Title}</div>
     )
 }
 export const ModalTitle =(TitleProps:TitleProps)=> {

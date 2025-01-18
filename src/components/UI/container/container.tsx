@@ -12,3 +12,12 @@ export const Container = (containerProps:ContainerProps)=> {
         </div>
     )
 }
+export const BigContainer = (props:{children:React.ReactNode,className?:string,parentClassName?:string})=> {
+    return(
+        <div className={`${props.parentClassName} w-full`}>
+        <div className={`${props.className} max-w-[1500px] w-full mx-auto py-[30px] px-[30px] xxs:px-[15px]`}>
+{props.children}
+        </div>
+        </div>
+    )
+}
