@@ -63,17 +63,7 @@ const query = useQueryClient();
     return () => window.removeEventListener("resize", checkScreenSize);
   }, []);
 
-  useEffect(()=> {
-if(ios == true) {
-  document.body.addEventListener('touchmove', function(e) {
-    // Блокируем прокрутку только в верхней части страницы
-    if (window.scrollY === 0 && e.touches[0].clientY > 10) {
-      e.preventDefault(); // Блокируем растягивание
-    }
-  }, { passive: false });
-  
-}
-  },[ios])
+
 
   const HandleClose = () => {
     const Modal = modalRef.current;

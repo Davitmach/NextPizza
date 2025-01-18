@@ -39,7 +39,7 @@ else {
 
     return(
         <>
-        <header className={`sticky top-0 bg-white w-full  mx-auto flex justify-between items-center border-b   ${active == false ?' border-b-gray-cartBorder' : 'border-b-transparent'} py-[24px] px-[2%] gap-12`}>
+        <header className={` z-50 sticky top-0 bg-white w-full  mx-auto flex justify-between items-center border-b   ${active == false ?' border-b-gray-cartBorder' : 'border-b-transparent'} py-[24px] px-[2%] gap-12`}>
      
           <BigContainer className='flex justify-between w-full mx-auto'>
             <div className="flex-1 z-20 "><Logo/></div>
