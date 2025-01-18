@@ -63,6 +63,16 @@ const query = useQueryClient();
     return () => window.removeEventListener("resize", checkScreenSize);
   }, []);
 
+  useEffect(()=> {
+if(ios == true) {
+  document.body.addEventListener('touchmove', function(e) {
+    if (window.scrollY === 0) {
+      e.preventDefault(); 
+    }
+  }, { passive: false });
+}
+  },[ios])
+
   const HandleClose = () => {
     const Modal = modalRef.current;
     if (Modal) {
