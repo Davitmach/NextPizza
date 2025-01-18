@@ -30,18 +30,20 @@ else {
         
       };
 
-      const HandleScroll = ()=> {
-        setActive(false)
-      }
+    //   const HandleScroll = (e)=> {
+    //     console.log(e);
+        
+    //     setActive(false)
+    //   }
 
    useEffect(()=> {
     window.addEventListener("resize", checkScreenSize);
     return () => window.removeEventListener("resize", checkScreenSize);
    }, []);
-   useEffect(()=> {
-    window.addEventListener('scroll', HandleScroll);
-    return () => window.removeEventListener("scroll", HandleScroll);
-   }, []);
+//    useEffect(()=> {
+//     window.addEventListener('scroll', HandleScroll);
+//     return () => window.removeEventListener("scroll", HandleScroll);
+//    }, []);
     return(
         <>
         <header className={`sticky top-0 bg-white w-full  mx-auto flex justify-between items-center border-b   ${active == false ?' border-b-gray-cartBorder' : 'border-b-transparent'} py-[24px] px-[2%] gap-12`}>
