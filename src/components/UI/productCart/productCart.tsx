@@ -62,12 +62,25 @@ push(`/product/${Id}`)
     const AddCart = useCallback(async()=> {
         if(Type && Size) {
             cartService.addCartItem(Id,1,Price,[],Type as 1|2,Size as 1|2|3).then(async(e)=> {
+                if(e.info == "Вы не вошли в аккаунт") {
+                    showNotification(e.info,'error')
+                   }
+                   else {
+                    showNotification('Предмет добавлен в корзину','success')
+                   }
+                
                     queryClient.invalidateQueries<any>(['cartItems'])      
             })
 
         }
         else {
 cartService.addCartItem(Id,1,Price,[]).then((e)=> {
+   if(e.info == "Вы не вошли в аккаунт") {
+    showNotification(e.info,'error')
+   }
+   else {
+    showNotification('Предмет добавлен в корзину','success')
+   }
         queryClient.invalidateQueries<any>(['cartItems'])
 })
 
@@ -109,18 +122,21 @@ cartService.addCartItem(Id,1,Price,[]).then((e)=> {
     }, [plusMutate]);
     return(
         <div className='ProductCart inline-flex flex-col gap-[15px] cursor-pointer h-[425px] justify-between'>
-            <div  onClick={()=> {
+           <div className='flex flex-col gap-4'><div  onClick={()=> {
             HandleOpenModal()
         }} className='Img_box bg-white-productCart rounded-custom py-[24px] px-[37px]'><Image priority quality={100} src={Img} alt='Img' width={210} height={210} /></div>
-            <div className='Info_box'>
+
 <div  onClick={()=> {
             HandleOpenModal()
-        }}><ProductTitle >{Name}</ProductTitle></div>
-<div className='mt-[7px]'  onClick={()=> {
+        }}><ProductTitle >{Name.length>20 ? Name.substring(0,20)+'...':Name}</ProductTitle></div>
+<div   onClick={()=> {
             HandleOpenModal()
         }}><p className='text-gray-productCartDescription'>{Description}</p></div>
+        </div> 
+            <div className='Info_box'>
+
         
-        <div className='mt-[20px] flex items-center justify-between'>
+        <div className='mt-[2px] flex items-center justify-between'>
             <div><h1 className='text-[20px] font-[700]'><span className='font-[400] text-[20px] text-black-label'>от </span>{Price} ₽</h1></div>
             <div>{InCart == false ? <Button  func={AddCart} variant='add' size='default' status={false}/> :<Counter 
             firstFunc={Minus}

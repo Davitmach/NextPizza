@@ -1,19 +1,15 @@
 'use client'
 
-import { Logo } from "@/components/shared/logo/logo";
 import { Button } from "@/components/UI/button/button";
-import { Header_input, Input, Price_input } from "@/components/UI/input/input";
-
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Notifications } from "@/components/shared/notification/notification";
 import { useRouter } from "next/navigation";
 import { userService } from "@/service/userService";
 import { useSession } from "next-auth/react";
 import { useQueryClient } from "@tanstack/react-query";
-import { ProductCart, ProductCartLoading } from "@/components/UI/productCart/productCart";
+import { ProductCart} from "@/components/UI/productCart/productCart";
 import { productService } from "@/service/productService";
-import { categoryService } from "@/service/categoryService";
-import { Header } from "@/components/shared/header/header";
+import { StoriesBox } from "@/components/shared/stories/stories";
 
 export default function Home() {
   const query = useQueryClient()
@@ -22,7 +18,7 @@ export default function Home() {
 
 const {push,refresh} = useRouter()
  const qaq = useCallback(()=> {
-
+productService.addProduct('Чоризо фреш','Чоризо фреш',35,'https://media.dodostatic.net/image/r:584x584/11EE7D61706D472F9A5D71EB94149304.webp',392,1,[{id:1},{id:7},{id:13},{id:9},{id:3},])
  },[])
 
  const qaq2 = useCallback(() => {
@@ -34,7 +30,7 @@ const {push,refresh} = useRouter()
   return (
     <>
 
-
+<StoriesBox/>
 <Button variant='orange' status={false} size="default" func={qaq}>добавить</Button>
 <Button variant='orange' status={false} size="default" func={qaq2}>Выйти</Button>
 

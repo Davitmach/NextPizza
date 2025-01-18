@@ -17,6 +17,7 @@ const data = await axios.post(UserApi.login,{
         withCredentials:true   
 })
 queryClient.invalidateQueries<any>(['checkLogin'])
+await queryClient.invalidateQueries<any>(['cartItems'])
 
 return data.data;
 
@@ -46,6 +47,7 @@ const data = await axios.get(UserApi.logout,{
 })
 await queryClient.invalidateQueries<any>(['checkLogged'])
 await queryClient.invalidateQueries<any>(['checkLogin'])
+await queryClient.invalidateQueries<any>(['cartItems'])
  signOut()
 
 return data.data
@@ -57,6 +59,7 @@ return data.data
 
     await queryClient.invalidateQueries<any>(['checkLogin'])
    await  queryClient.invalidateQueries<any>(['checkLogged'])
+   await queryClient.invalidateQueries<any>(['cartItems'])
     
 
     return data.data;   
@@ -76,6 +79,8 @@ const data = await axios.post(UserApi.loginProvider,{
     withCredentials:true
 })
 await queryClient.invalidateQueries<any>(['checkLogin'])
+await queryClient.invalidateQueries<any>(['cartItems'])
+
 return data.data
 }
 catch(error) {
@@ -103,6 +108,7 @@ code:code
     withCredentials:true
 })
 await queryClient.invalidateQueries<any>(['checkLogin'])
+await queryClient.invalidateQueries<any>(['cartItems'])
 return data.data
 }
 async SignIn() {
@@ -114,6 +120,7 @@ const data = await axios.post(UserApi.register,{
     email:email
 })
 await queryClient.invalidateQueries<any>(['checkLogin'])
+await queryClient.invalidateQueries<any>(['cartItems'])
 return data.data;
 }
 } 

@@ -4,6 +4,7 @@ import { ProductCart, ProductCartLoading } from "@/components/UI/productCart/pro
 import { Title } from "@/components/UI/title/title";
 import { cartService } from "@/service/cartService";
 import { productService } from "@/service/productService";
+import { userService } from "@/service/userService";
 import { ProductPayload } from "@/types/payload/productPayload";
 import { cartItemsProps } from "@/types/UI/cartItems/cartItemsProps";
 import { useQuery } from "@tanstack/react-query";
@@ -14,11 +15,24 @@ export const Recommend = ({Data}:{Data:ProductPayload})=> {
 
   const [data,setData] = useState<ProductPayload[]|null>(null);
   const [filter,setFilter] = useState<ProductPayload[]|null>(null);
+const [logged,setLogged] = useState<boolean | null>(false);
 
 const {data:cartData} = useQuery({
     queryKey:['cartItems'],
     queryFn:()=> cartService.getCartItem()
 })
+
+const {data:LoginData} = useQuery({
+  queryKey:['checkLogin'],
+  queryFn:()=> userService.CheckLogged()
+})
+
+useEffect(()=> {
+if(LoginData) {
+  setLogged(LoginData.status)
+}
+
+},[LoginData])
 
   useEffect(()=> {
 productService.getProducts().then((e)=> {
@@ -47,6 +61,8 @@ const MatchesName = (target:string,product:string)=> {
 
 
   useEffect(()=> {
+  
+    
 if(Array.isArray(data) && data.length >0) {
 const filter = data.filter((e)=> e.price <= Data.price && MatchesName(Data.name,e.name)).slice(0,4);
 setFilter(filter);
@@ -61,12 +77,13 @@ setFilter(filter);
        <div className="flex flex-col gap-4 py-[50px] w-full">
         <div><Title>Рекомендаций</Title></div>
         <div className="w-full grid grid-cols-[repeat(4,minmax(140px,1fr))] gap-9 1073max:grid-cols-[repeat(3,minmax(140px,1fr))] 937max:grid-cols-[repeat(2,minmax(140px,1fr))] 653max:grid-cols-[repeat(1,minmax(140px,1fr))]">
-        {!data || !cartData? <div className="flex justify-between w-full">{Array.from({ length: 4 }, (_, index) => {
+        {!data || !cartData? <>{Array.from({ length: 4 }, (_, index) => {
         return(
             <ProductCartLoading key={index}/>
         )
-      })}</div>  : cartData && Array.isArray(filter) && filter.length > 0 &&
-  filter.map((e) => {
+      })} </> : logged == true ? cartData && Array.isArray(filter) && filter.length > 0 &&
+  filter?.map((e) => {
+ 
     const cartItem = cartData.find((item: any) => item.productId === e.id);
     const inCart = !!cartItem; 
     const cartQuantity = cartItem ? cartItem.quantity : 0; 
@@ -86,7 +103,24 @@ setFilter(filter);
         productId={e.id}
       />
     );
-  })}
+  }) :  filter?.map((e) => {
+ 
+   
+    return (
+      <ProductCart   
+        key={e.id}
+        inCart={false}
+        size={e.productItem[0]?.size}
+        type={e.productItem[0]?.pizzaType}
+        description={e.description}
+        img={e.imageUrl}
+        name={e.name}
+        price={e.price}
+        productId={e.id}
+      />
+    );
+  }) }
+
 
 
         </div>
