@@ -201,7 +201,7 @@ const Buy = useCallback(()=> {
                   arguments={data.productItem[0].pizzaType ===1 ? ['Тонкое']: ['Тонкое','Традиционное']}
                 /></>)}
                 {Array.isArray(data.productItem) && data.productItem.length>0 && ingredients && <IngredientsBox data={data.ingredients} active={activeIngredient} func={setActiveIngredient} ingredients={ingredients}/>}
-               <Button className={ios==true ? 'py-[100px]' :''}  func={Buy} variant='orange' status={false} size="default">Добавить в корзину за {data.price + calculateIngredientsPrice()}₽</Button>
+               <Button className={ios==true ? 'mb-[100px]' :''}  func={Buy} variant='orange' status={false} size="default">Добавить в корзину за {data.price + calculateIngredientsPrice()}₽</Button>
                 </div>
               </div>
             </div>
