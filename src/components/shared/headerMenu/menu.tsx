@@ -9,17 +9,25 @@ export const Menu = ({ status ,click,ref}: { status: boolean,click:boolean,ref:R
     
 const path = usePathname();
 const [active,setActive] = useState<boolean>(false);
-useEffect(()=> {
-if(status ==true) {
-    if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !(window as any).MSStream) {
-        document.body.addEventListener('touchmove', function(e) {
-          if (window.scrollY === 0) {
-            e.preventDefault(); 
-          }
-        }, { passive: false });
-      }
-}
-},[status])
+useEffect(() => {
+    const handleTouchMove = (e: TouchEvent) => {
+        if (window.scrollY === 0) {
+            e.preventDefault();
+        }
+    };
+    if (status) {
+        if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !(window as any).MSStream) {
+            document.body.addEventListener('touchmove', handleTouchMove, { passive: false });
+        }
+    } else {
+       
+        document.body.removeEventListener('touchmove', handleTouchMove);
+    }
+    return () => {
+        document.body.removeEventListener('touchmove', handleTouchMove);
+    };
+}, [status]);
+
 useEffect(()=> {
 if(path.includes('product')) {
     setActive(true)

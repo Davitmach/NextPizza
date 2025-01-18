@@ -13,9 +13,6 @@ export const Header = ()=> {
     const [click,setClick] = useState<boolean>(false);
     const [activeBtn,setActiveBtn] = useState<boolean>(true);
     const ref = useRef<HTMLDivElement>(null);
-    useEffect(()=> {
-console.log(activeBtn);
-    },[activeBtn])
     const Handler = ()=> {
         if(activeBtn == true) {
         setClick(true)
