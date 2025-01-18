@@ -13,6 +13,9 @@ export const Header = ()=> {
     const [click,setClick] = useState<boolean>(false);
     const [activeBtn,setActiveBtn] = useState<boolean>(true);
     const ref = useRef<HTMLDivElement>(null);
+    useEffect(()=> {
+console.log(activeBtn);
+    },[activeBtn])
     const Handler = ()=> {
         if(activeBtn == true) {
         setClick(true)
@@ -37,16 +40,20 @@ else {
    
 
    useEffect(()=> {
+
     if(ref.current) {
     ref.current.addEventListener('animationstart',()=> {
         setActiveBtn(false)
         
     })
     ref.current.addEventListener('animationend',()=> {
-        setActiveBtn(true)
+        setActiveBtn(true) 
         
     })
 }
+setTimeout(() => {
+    setActiveBtn(true)
+}, 800);
     window.addEventListener("resize", checkScreenSize);
     return () => window.removeEventListener("resize", checkScreenSize);
    }, []);
