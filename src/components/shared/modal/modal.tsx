@@ -67,7 +67,7 @@ const query = useQueryClient();
 if(ios == true) {
   document.body.addEventListener('touchmove', function(e) {
     if (window.scrollY === 0) {
-      e.preventDefault(); 
+      e.preventDefault();
     }
   }, { passive: false });
 }

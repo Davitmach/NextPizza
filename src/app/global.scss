@@ -4,4 +4,9 @@
 
 html,body {
     scroll-behavior: smooth;
+    overflow-x: hidden; 
+    height: 100%;
 }
+body {
+    -webkit-overflow-scrolling: touch; /* Разрешаем прокрутку на мобильных устройствах */
+  }
