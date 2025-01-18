@@ -5,15 +5,19 @@ import { Logo } from "../logo/logo"
 import { Button } from "@/components/UI/button/button"
 import { FaBars } from "react-icons/fa";
 import { FaXmark } from "react-icons/fa6";
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Menu } from '../headerMenu/menu';
 import { BigContainer } from '@/components/UI/container/container';
 export const Header = ()=> {
     const [active,setActive] = useState<boolean>(false);
-    const [click,setClick] = useState<boolean>(false)
+    const [click,setClick] = useState<boolean>(false);
+    const [activeBtn,setActiveBtn] = useState<boolean>(true);
+    const ref = useRef<HTMLDivElement>(null);
     const Handler = ()=> {
+        if(activeBtn == true) {
         setClick(true)
         setActive(!active);
+        }
     }
     useEffect(()=> {
 if(active == true) {
@@ -33,6 +37,16 @@ else {
    
 
    useEffect(()=> {
+    if(ref.current) {
+    ref.current.addEventListener('animationstart',()=> {
+        setActiveBtn(false)
+        
+    })
+    ref.current.addEventListener('animationend',()=> {
+        setActiveBtn(true)
+        
+    })
+}
     window.addEventListener("resize", checkScreenSize);
     return () => window.removeEventListener("resize", checkScreenSize);
    }, []);
@@ -51,7 +65,7 @@ else {
             <div className='cursor-pointer z-20 lMin:hidden' onClick={Handler}>{active == true ? <FaXmark className='text-[30px] text-orange'/> :<FaBars className='text-[30px] text-orange'/>}</div>
             </BigContainer>
         </header>
-        <Menu click={click} status={active}/> 
+        <Menu ref={ref} click={click} status={active}/> 
         </>
     )
 }
