@@ -10,9 +10,7 @@ import { useEffect } from "react";
 
 export default function Home() {
 
-useEffect(()=> {
-localStorage.setItem('qaq','qaq')
-},[])
+
 
 
 
@@ -27,7 +25,6 @@ localStorage.setItem('qaq','qaq')
    </div> 
  </BigContainer>
 
-{localStorage.getItem('qaq')}
   <BigContainer>
   <StoriesBox/>
 </BigContainer>
