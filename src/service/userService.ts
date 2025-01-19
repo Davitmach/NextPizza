@@ -22,10 +22,10 @@ const data = await axios.post(UserApi.login,{
 })
 console.log(data);
 
-const token = data.headers['Authorization']; 
+const token = data.data.Authorization
 if (token) {
  
-  localStorage.setItem('USER_AUTH_TOKEN', token);
+  localStorage.setItem('NEXT_PIZZA_USER_AUTH_TOKEN', token);
 }
 
 queryClient.invalidateQueries<any>(['checkLogin'])
