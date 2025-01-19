@@ -8,13 +8,19 @@ import { StoriesBox } from "@/components/shared/stories/stories";
 import { BigContainer } from "@/components/UI/container/container";
 import { Select } from "@/components/UI/select/select";
 import { Title } from "@/components/UI/title/title";
-import { useEffect } from "react";
-
+import { useCallback, useEffect, useState } from "react";
+import {Button} from '@/components/UI/button/button'
+import axios from "axios";
 export default function Home() {
+const [data,setData] = useState<any>();
 
 
-
-
+const qaq = useCallback(async()=> {
+const data = await axios.get('https://nodejs-production-b751.up.railway.app/check',{
+  withCredentials:true
+})
+setData(JSON.stringify(data))
+},[])
 
   return (
     <>
@@ -31,8 +37,8 @@ export default function Home() {
   <StoriesBox/>
 </BigContainer>
 
-
-
+<Button variant='orangeBorder' status={false} size="default" func={qaq}>qaq</Button>
+{data}
 <Notifications/>
     </>
   );
