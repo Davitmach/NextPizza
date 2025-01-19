@@ -153,10 +153,16 @@ async GetId() {
     }
 }
 async Verif(code:string,queryClient:QueryClient) {
+   const CheckDisable = localStorage.getItem('NEXT_PIZZA_DISABLE_USER_AUTH_TOKEN');
+    const CheckLogged = '4343';
 const data = await axios.post(UserApi.verif,{
 code:code
 },{
-    withCredentials:true
+    withCredentials:true,
+    headers:{
+        'Authorization':`Bearer ${CheckDisable}`,
+        'logged': `Bearer ${CheckLogged}` 
+    }
 })
 await queryClient.invalidateQueries<any>(['checkLogin'])
 await queryClient.invalidateQueries<any>(['cartItems'])
