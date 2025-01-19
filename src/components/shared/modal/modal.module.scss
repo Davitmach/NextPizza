@@ -35,7 +35,7 @@
     }
 }
 .adaptive {
-    overscroll-behavior-y: contain;
+    
     &>div {
         flex:  1 1 ;
     }
@@ -73,5 +73,5 @@
  }
 }
 .Modal_container {
-    overscroll-behavior-y: contain
+   
 }
