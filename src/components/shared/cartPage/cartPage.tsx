@@ -36,7 +36,7 @@ useEffect(()=> {
 },[])
 
     return(
-        <div className={`fixed left-0 top-0 z-50 w-full h-[100vh] bg-gray-background  `}>
+        <div className={`absolute left-0 top-0 z-50 w-full h-[100vh] bg-gray-background  `}>
             {data == 'empty' ?<EmptyCartPage/> : data == 'has' ? <CartItemsPage/> : '' }
     
     </div>

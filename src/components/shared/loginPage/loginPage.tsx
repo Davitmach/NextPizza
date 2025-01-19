@@ -30,7 +30,7 @@ if(Check == 'true') {
 
    },[])
    return(
-<div className={`fixed w-full h-[100vh] left-0 top-0 bg-gray-background flex items-center justify-center z-[500000000] `}>
+<div className={`absolute w-full h-[100vh] left-0 top-0 bg-gray-background flex items-center justify-center z-[500000000] `}>
     <div className={`${Style.form} bg-white w-[450px] flex flex-col justify-between  rounded-[18px] py-[42px] px-[45px] relative`}>
     
    <div className='h-full'> {code == true ? <Code/> :page == 'log' ? <Login func={setCode}/> :<Signup/>}</div>

@@ -2,8 +2,32 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
-    domains: ['cdn.inappstory.ru','cs2.pikabu.ru','media.dodostatic.com','s3-alpha-sig.figma.com','media.dodostatic.net','cdn.dodostatic.net'],
-    
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'cdn.inappstory.ru',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cs2.pikabu.ru',
+      },
+      {
+        protocol: 'https',
+        hostname: 'media.dodostatic.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 's3-alpha-sig.figma.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'media.dodostatic.net',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cdn.dodostatic.net',
+      },
+    ],
   },
 };
 

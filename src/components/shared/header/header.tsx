@@ -8,6 +8,13 @@ import { FaXmark } from "react-icons/fa6";
 import { useEffect, useRef, useState } from 'react';
 import { Menu } from '../headerMenu/menu';
 import { BigContainer } from '@/components/UI/container/container';
+import { Nunito}from "next/font/google";
+
+const nunito = Nunito({
+  weight:['1000','200','300','400','500','600','700','800','900'],
+  subsets:['latin','cyrillic'],
+  
+})
 export const Header = ()=> {
     const [active,setActive] = useState<boolean>(false);
     const [click,setClick] = useState<boolean>(false);
@@ -44,7 +51,7 @@ else {
 
     return(
         <>
-        <header className={` z-50 sticky top-0 bg-white w-full  mx-auto flex justify-between items-center border-b   ${active == false ?' border-b-gray-cartBorder' : 'border-b-transparent'} py-[24px] px-[2%] gap-12`}>
+        <header className={`${nunito.className} z-50 sticky top-0 bg-white w-full  mx-auto flex justify-between items-center border-b   ${active == false ?' border-b-gray-cartBorder' : 'border-b-transparent'} py-[24px] px-[2%] gap-12`}>
      
           <BigContainer className='flex justify-between w-full mx-auto'>
             <div className="flex-1 z-20 "><Logo/></div>

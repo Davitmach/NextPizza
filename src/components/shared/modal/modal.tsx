@@ -172,7 +172,7 @@ const Buy = useCallback(()=> {
           HandleClose();
         }
       }}
-      className="Modal_Container fixed left-0 top-0 bg-black-modalBg w-full h-[100vh] z-[300000] flex items-center justify-center"
+      className="Modal_Container  absolute left-0 top-0 bg-black-modalBg w-full h-[100vh] z-[300000] flex items-center justify-center"
     >
       
       <div
