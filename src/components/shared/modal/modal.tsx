@@ -38,11 +38,13 @@ const query = useQueryClient();
   useEffect(() => {
     if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !(window as any).MSStream) {
       setIos(true);
+      setPhone(true); 
     }
     if ('ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.maxTouchPoints > 0) {
       setPhone(true); 
-      setIos(true);
+     
   }
+
   
    
     const Id = Number(id);
@@ -63,7 +65,10 @@ const query = useQueryClient();
     };
     checkScreenSize();
     window.addEventListener("resize", checkScreenSize);
-    return () => window.removeEventListener("resize", checkScreenSize);
+    return () => {
+      window.removeEventListener("resize", checkScreenSize)
+    
+    };
   }, []);
 
 
@@ -177,7 +182,7 @@ const Buy = useCallback(()=> {
           HandleClose();
         }
       }}
-      className="Modal_Container  absolute left-0 top-0 bg-black-modalBg w-full h-[100vh] z-[300000] flex items-center justify-center"
+      className={`${Style.Modal_container} Modal_Container  absolute left-0 top-0 bg-black-modalBg w-full h-[100vh] z-[300000] flex items-center justify-center`}
     >
       
       <div
