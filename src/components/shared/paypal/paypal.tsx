@@ -12,9 +12,9 @@ const PayPalButtonComponent = () => {
   }, []);
 
   useEffect(() => {
-    if (paypalLoaded && window.paypal) {
-      window.paypal.Buttons({
-        createOrder: (data, actions) => {
+    if (paypalLoaded && (window as any).paypal) {
+      (window as any).paypal.Buttons({
+        createOrder: (data:any, actions:any) => {
           return actions.order.create({
             purchase_units: [
               {
@@ -26,7 +26,7 @@ const PayPalButtonComponent = () => {
             ],
           });
         },
-        onApprove: async (data, actions) => {
+        onApprove: async (data:any, actions:any) => {
           // Подтверждение оплаты
           const order = await actions.order.capture();
 
@@ -34,7 +34,7 @@ const PayPalButtonComponent = () => {
           const redirectUrl = `https://www.paypal.com/checkoutnow?token=${data.orderID}&locale=ru_RU`; // Указываем локаль ru_RU
           window.location.href = redirectUrl; // Перенаправление на PayPal
         },
-        onError: (err) => {
+        onError: (err:any) => {
           console.error('Ошибка PayPal:', err);
           alert('Произошла ошибка при обработке платежа');
         },
