@@ -6,9 +6,9 @@ html,body {
     scroll-behavior: smooth;
     overflow-x: hidden; 
     height: 100%;
-    overscroll-behavior-y: none;
+    overscroll-behavior-y: contain;
 }
 body {
     -webkit-overflow-scrolling: touch; /* Разрешаем прокрутку на мобильных устройствах */
-    overscroll-behavior-y: none;
+    overscroll-behavior-y: contain;
   }
