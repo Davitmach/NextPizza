@@ -14,7 +14,11 @@ const data = await axios.post(UserApi.login,{
     name:name,
     email:email
 },{
-        withCredentials:true   
+        withCredentials:true   ,
+        headers: {
+            'Accept': 'application/json', // Возможно, сервер ожидает этот заголовок
+            'Content-Type': 'application/json' // Обычно нужно для POST-запросов с JSON
+          }
 })
 console.log(data);
 
