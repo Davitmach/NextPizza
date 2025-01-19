@@ -24,12 +24,9 @@ const data = await axios.post(UserApi.login,{
 if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !(window as any).MSStream) {
     const token = data.data.Authorization
     if (token) {
-      localStorage.setItem('NEXT_PIZZA_USER_AUTH_TOKEN', token);
+      localStorage.setItem('NEXT_PIZZA_DISABLE_USER_AUTH_TOKEN', token);
     }    
   }
-
-
-
 queryClient.invalidateQueries<any>(['checkLogin'])
 await queryClient.invalidateQueries<any>(['cartItems'])
 
