@@ -71,7 +71,27 @@ const query = useQueryClient();
     };
   }, []);
 
+  useEffect(() => {
+    // Запрещаем прокрутку на body страницы
+    document.body.style.overflow = "hidden";
 
+    // Добавляем обработчики событий для предотвращения прокрутки за пределами модального окна
+    const preventScroll = (e: TouchEvent) => {
+      if (modalRef.current && !modalRef.current.contains(e.target as Node)) {
+        e.preventDefault();
+      }
+    };
+
+    // Добавляем обработчик событий для предотвращения прокрутки на странице
+    window.addEventListener("touchstart", preventScroll, { passive: false });
+    window.addEventListener("touchmove", preventScroll, { passive: false });
+
+    return () => {
+      window.removeEventListener("touchstart", preventScroll);
+      window.removeEventListener("touchmove", preventScroll);
+      document.body.style.overflow = "auto"; // Восстанавливаем прокрутку на body при закрытии модалки
+    };
+  }, []);;
 
   const HandleClose = () => {
     const Modal = modalRef.current;
