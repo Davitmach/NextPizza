@@ -57,7 +57,7 @@ export const StoriesBox = () => {
         : Array.from({ length: 6 }, (_, index) => (
             <div
               key={index}
-              className=" flex-shrink-0 flex w-[200px] h-[250px] bg-gray-200 rounded-md animate-pulse"
+              className={`${Style.img} flex-shrink-0 flex w-[200px] h-[250px] bg-gray-200 rounded-md animate-pulse`}
             />
           ))}
     </div>
