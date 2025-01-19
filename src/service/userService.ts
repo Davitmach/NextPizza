@@ -10,14 +10,17 @@ class UserService {
 
 async Login(name:string,email:string,queryClient:QueryClient) {
     try {
+         const check = localStorage.getItem('NEXT_PIZZA_USER_AUTH_TOKEN');
+   
 const data = await axios.post(UserApi.login,{
     name:name,
     email:email
 },{
-        withCredentials:true   ,
+        withCredentials:true,
         headers: {
             'Accept': 'application/json',
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization':`Barear ${check}`   
           }
 })
 
@@ -38,6 +41,16 @@ return data.data;
     }
 }
 async CheckLogged() {
+    if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !(window as any).MSStream) {
+        const check = localStorage.getItem('USER_AUTH_TOKEN');
+        if(check) {
+            return {status:true}
+        }
+        else {
+            return {status:false}
+        }
+    }
+    else {
     try {
 const data = await axios.get(UserApi.checkLogged,{
         withCredentials:true   
@@ -48,7 +61,31 @@ return data.data;
         return(error);
     }
 }
+}
 async Logout(status:'authenticated'|'loading' | 'unauthenticated',queryClient:QueryClient) {
+    if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !(window as any).MSStream) {
+        Cookie.remove('CODE_STATUS');
+        if(status == 'authenticated') {
+           localStorage.removeItem('USER_AUTH_TOKEN');
+           await queryClient.invalidateQueries<any>(['checkLogged'])
+await queryClient.invalidateQueries<any>(['checkLogin'])
+await queryClient.invalidateQueries<any>(['cartItems'])
+await queryClient.invalidateQueries<any>(['checkLogCheckout'])
+
+ signOut()
+        }
+        else {
+            localStorage.removeItem('USER_AUTH_TOKEN');
+            await queryClient.invalidateQueries<any>(['checkLogged'])
+            await queryClient.invalidateQueries<any>(['checkLogin'])
+            await queryClient.invalidateQueries<any>(['cartItems'])
+            await queryClient.invalidateQueries<any>(['checkLogCheckout'])
+        }
+        
+
+     }
+
+    else {
     Cookie.remove('CODE_STATUS');
     try {
     if(status == 'authenticated') {
@@ -81,7 +118,7 @@ return data.data
     catch(error) {
         return(error)
     }
-    
+}
 }
 async LoginProvider(name:string,email:string,queryClient:QueryClient) {
 try {
@@ -91,11 +128,7 @@ const data = await axios.post(UserApi.loginProvider,{
 },{
     withCredentials:true
 })
-const token = data.headers['authorization']; 
-if (token) {
- 
-  localStorage.setItem('USER_AUTH_TOKEN', token);
-}
+
 await queryClient.invalidateQueries<any>(['checkLogin'])
 await queryClient.invalidateQueries<any>(['cartItems'])
 

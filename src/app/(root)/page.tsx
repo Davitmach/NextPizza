@@ -12,7 +12,7 @@ import { useCallback, useEffect, useState } from "react";
 import {Button} from '@/components/UI/button/button'
 import axios from "axios";
 export default function Home() {
-
+const qaq = localStorage.getItem('NEXT_PIZZA_DISABLE_USER_AUTH_TOKEN');
 
   return (
     <>
@@ -24,7 +24,7 @@ export default function Home() {
     <Select/>
    </div> 
  </BigContainer>
-
+{qaq && qaq}
   <BigContainer>
   <StoriesBox/>
 </BigContainer>
