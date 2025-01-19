@@ -33,13 +33,18 @@ export const ModalPage = ({ id }: { id: number }) => {
   const [isSmallScreen, setIsSmallScreen] = useState(false);
   const [activeIngredient,setActiveIngredient] = useState<number[]>([])
 const [ios,setIos] = useState<boolean>(false);
+const [phone,setPhone] = useState<boolean>(false);
 const query = useQueryClient();
   useEffect(() => {
     if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !(window as any).MSStream) {
       setIos(true);
     }
-    
-    // document.body.style.overflow= 'hidden';
+    if ('ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.maxTouchPoints > 0) {
+      setPhone(true); 
+      setIos(true);
+  }
+  
+   
     const Id = Number(id);
     productService.getProduct(Id).then((e) => {
       if (e) {
@@ -182,7 +187,7 @@ const Buy = useCallback(()=> {
         onTouchEnd={handleTouchEnd}
         className={`Modal ${Style.adaptive} rounded-[30px] w-[1000px] flex items-center justify-between bg-white h-[580px] relative ${Style.openAnim}`}
       >
-        {ios == true && <div onClick={()=>{
+        {phone == true && <div onClick={()=>{
          HandleCloseIos()
           
         }} className=" z-50 absolute left-[20px] top-[20px] rounded-full border border-black-label w-[40px] h-[40px] flex items-center justify-center"><FaArrowDown/></div>}
