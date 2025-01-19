@@ -16,13 +16,13 @@ const data = await axios.post(UserApi.login,{
 },{
         withCredentials:true   ,
         headers: {
-            'Accept': 'application/json', // Возможно, сервер ожидает этот заголовок
-            'Content-Type': 'application/json' // Обычно нужно для POST-запросов с JSON
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
           }
 })
 console.log(data);
 
-const token = data.headers['authorization']; 
+const token = data.headers['Authorization']; 
 if (token) {
  
   localStorage.setItem('USER_AUTH_TOKEN', token);
