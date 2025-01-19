@@ -16,7 +16,7 @@ const data = await axios.post(UserApi.login,{
 },{
         withCredentials:true   
 })
-console.log(data.headers);
+console.log(data);
 
 const token = data.headers['authorization']; 
 if (token) {
