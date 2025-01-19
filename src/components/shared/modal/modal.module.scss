@@ -74,4 +74,5 @@
 }
 .Modal_container {
    overflow: hidden;
+   overscroll-behavior-y: contain;
 }
