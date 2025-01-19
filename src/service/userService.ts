@@ -80,6 +80,11 @@ const data = await axios.post(UserApi.loginProvider,{
 },{
     withCredentials:true
 })
+const token = data.headers['authorization']; 
+if (token) {
+ 
+  localStorage.setItem('USER_AUTH_TOKEN', token);
+}
 await queryClient.invalidateQueries<any>(['checkLogin'])
 await queryClient.invalidateQueries<any>(['cartItems'])
 
