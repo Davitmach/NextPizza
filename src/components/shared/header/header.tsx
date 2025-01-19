@@ -60,3 +60,54 @@ else {
         </>
     )
 }
+export const HeaderCheckOut = ()=> {
+    const [active,setActive] = useState<boolean>(false);
+    const [click,setClick] = useState<boolean>(false);
+    const ref = useRef<HTMLDivElement>(null);
+    const Handler = ()=> {
+       
+        setClick(true)
+        setActive(!active);
+        
+    }
+    useEffect(()=> {
+if(active == true) {
+    document.body.style.overflow = 'hidden'
+}
+else {
+    document.body.style.overflow = 'auto'
+}
+    },[active]);
+    const checkScreenSize = () => {
+        if(window.innerWidth >1125) {
+            setActive(false)
+        }
+        
+      };
+
+   
+
+   useEffect(()=> {
+
+ 
+    window.addEventListener("resize", checkScreenSize);
+    return () => window.removeEventListener("resize", checkScreenSize);
+   }, []);
+
+    return(
+        <>
+        <header className={` z-50 sticky top-0 bg-white-checkOutBg w-full  mx-auto flex justify-between items-center border-b   ${active == false ?' border-b-gray-cartBorder' : 'border-b-transparent'} py-[24px] px-[2%] gap-12`}>
+     
+          <BigContainer className='flex justify-between w-full mx-auto border-b border-white-checkOutBorder'>
+            <div className="flex-1 z-20 "><Logo/></div>
+          
+
+                <div><Button variant='user' status={false} size="default"  /></div>
+
+            <div className='cursor-pointer z-20 lMin:hidden' onClick={Handler}>{active == true ? <FaXmark className='text-[30px] text-orange'/> :<FaBars className='text-[30px] text-orange'/>}</div>
+            </BigContainer>
+        </header>
+        <Menu ref={ref} click={click} status={active}/> 
+        </>
+    )
+}

@@ -48,6 +48,8 @@ const data = await axios.get(UserApi.logout,{
 await queryClient.invalidateQueries<any>(['checkLogged'])
 await queryClient.invalidateQueries<any>(['checkLogin'])
 await queryClient.invalidateQueries<any>(['cartItems'])
+await queryClient.invalidateQueries<any>(['checkLogCheckout'])
+
  signOut()
 
 return data.data
@@ -60,7 +62,7 @@ return data.data
     await queryClient.invalidateQueries<any>(['checkLogin'])
    await  queryClient.invalidateQueries<any>(['checkLogged'])
    await queryClient.invalidateQueries<any>(['cartItems'])
-    
+   await queryClient.invalidateQueries<any>(['checkLogCheckout'])
 
     return data.data;   
     }

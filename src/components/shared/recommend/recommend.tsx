@@ -5,6 +5,7 @@ import { Title } from "@/components/UI/title/title";
 import { cartService } from "@/service/cartService";
 import { productService } from "@/service/productService";
 import { userService } from "@/service/userService";
+import { useLogged } from "@/store";
 import { ProductPayload } from "@/types/payload/productPayload";
 import { cartItemsProps } from "@/types/UI/cartItems/cartItemsProps";
 import { useQuery } from "@tanstack/react-query";
@@ -15,24 +16,12 @@ export const Recommend = ({Data}:{Data:ProductPayload})=> {
 
   const [data,setData] = useState<ProductPayload[]|null>(null);
   const [filter,setFilter] = useState<ProductPayload[]|null>(null);
-const [logged,setLogged] = useState<boolean | null>(false);
 
+const {logged,setLogged} = useLogged()
 const {data:cartData} = useQuery({
     queryKey:['cartItems'],
     queryFn:()=> cartService.getCartItem()
 })
-
-const {data:LoginData} = useQuery({
-  queryKey:['checkLogin'],
-  queryFn:()=> userService.CheckLogged()
-})
-
-useEffect(()=> {
-if(LoginData) {
-  setLogged(LoginData.status)
-}
-
-},[LoginData])
 
   useEffect(()=> {
 productService.getProducts().then((e)=> {

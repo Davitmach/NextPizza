@@ -51,6 +51,7 @@ export const StoriesBox = () => {
               src={story.previewImageUrl}
               width={200}
               height={250}
+              priority
             />
           ))
         : Array.from({ length: 6 }, (_, index) => (

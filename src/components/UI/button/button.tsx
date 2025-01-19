@@ -18,6 +18,7 @@ import { useSession, signIn } from "next-auth/react";
 import { userService } from "@/service/userService";
 import { useQueryClient } from "@tanstack/react-query";
 import { UserBtnMenu } from "@/components/shared/userBtnMenu/userBtnMenu";
+import { useLogged } from "@/store";
 const ButtonConfig: Record<ButtonVariants, any> = {
   cart: {
     icon: {
@@ -180,14 +181,9 @@ export const Button: React.FC<IButton> = (props) => {
       );
     case "cart":
       
-      const {data:CheckData,error:CheckError,isLoading:CheckLoading}=useQuery({
-        queryKey:['checkLogged'],
-        queryFn:()=> userService.CheckLogged(),
-        staleTime:Infinity,
-        refetchOnWindowFocus: true,
-      })
-      
-      const isUserLogged = log && !!CheckData;
+     
+      const {logged:log} = useLogged()
+      const isUserLogged = log && !!log;
       const {
         data: TotalData,
         error: TotalError,
@@ -213,16 +209,16 @@ export const Button: React.FC<IButton> = (props) => {
       });
 
       useEffect(() => {        
-     if(CheckData&& CheckData.status == true) {
+     if(log&& log == true) {
     setLog(true)
      }
-     if(CheckData && CheckData.status == false) {
+     if( log == false) {
 
  query.cancelQueries<any>(['cartBtnTotal','cartBtnCount'])
 
       setLog(false) 
      }
-      }, [CheckData]);
+      }, [log]);
 
 
 
@@ -305,6 +301,7 @@ export const Button: React.FC<IButton> = (props) => {
           </button>);}  
     case "user":
       const [logged, setLogged] = useState<boolean | null>(null);
+      const {logged:login,setLogged:setLog} = useLogged()
       const [menu,setMenu] = useState<boolean>(false);
      const  { data,isLoading ,refetch} = useQuery({
         queryKey: ["checkLogin"],
@@ -315,6 +312,12 @@ export const Button: React.FC<IButton> = (props) => {
 
      
       useEffect(() => {
+if(data && data.status == true) {
+  setLog(true)
+}
+else {
+  setLog(false)
+}
 
         
         if (data === undefined && !isLoading) {

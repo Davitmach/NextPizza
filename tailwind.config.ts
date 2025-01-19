@@ -42,7 +42,9 @@ DEFAULT:'rgba(255, 255, 255, 1)',
 hover:'rgba(255, 250, 246, 1)',
 category:'rgba(250, 250, 250, 1)',
 cart:'rgba(244, 241, 238, 1)',
-productCart:'rgba(255, 247, 238, 1)'
+productCart:'rgba(255, 247, 238, 1)',
+checkOutBg:'rgba(244, 241, 238, 1)',
+checkOutBorder:'rgba(222, 222, 222, 1)'
         },
         gray: {
          dark:'#888888',

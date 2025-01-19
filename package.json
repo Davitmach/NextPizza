@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@paypal/checkout-server-sdk": "^1.0.3",
     "@tanstack/react-query": "^5.62.16",
     "@types/express": "^5.0.0",
     "axios": "^1.7.7",
@@ -29,6 +30,7 @@
     "@types/js-cookie": "^3.0.6",
     "@types/jsonwebtoken": "^9.0.7",
     "@types/node": "^20",
+    "@types/paypal__checkout-server-sdk": "^1.0.8",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "postcss": "^8",
