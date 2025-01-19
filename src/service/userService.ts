@@ -42,7 +42,7 @@ return data.data;
 }
 async CheckLogged() {
     if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !(window as any).MSStream) {
-        const check = localStorage.getItem('USER_AUTH_TOKEN');
+        const check = localStorage.getItem('NEXT_PIZZA_USER_AUTH_TOKEN');
         if(check) {
             return {status:true}
         }
@@ -154,7 +154,7 @@ async GetId() {
 }
 async Verif(code:string,queryClient:QueryClient) {
    const CheckDisable = localStorage.getItem('NEXT_PIZZA_DISABLE_USER_AUTH_TOKEN');
-    const CheckLogged = '4343';
+    const CheckLogged = localStorage.getItem('NEXT_PIZZA_USER_AUTH_TOKEN');;
 const data = await axios.post(UserApi.verif,{
 code:code
 },{
