@@ -34,8 +34,7 @@ export const ModalPage = ({ id }: { id: number }) => {
   const [activeIngredient,setActiveIngredient] = useState<number[]>([])
 const [ios,setIos] = useState<boolean>(false);
 const [phone,setPhone] = useState<boolean>(false);
-const query = useQueryClient(); 
-
+const query = useQueryClient();
   useEffect(() => {
     if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !(window as any).MSStream) {
       setIos(true);
@@ -73,26 +72,20 @@ const query = useQueryClient();
   }, []);
 
   useEffect(() => {
-    // Запрещаем прокрутку на body страницы
-    document.body.style.overflow = "hidden";
-
-    // Добавляем обработчики событий для предотвращения прокрутки за пределами модального окна
     const preventScroll = (e: TouchEvent) => {
-      if (modalRef.current && !modalRef.current.contains(e.target as Node)) {
-        e.preventDefault();
-      }
+      e.preventDefault(); // Это предотвратит прокрутку и обновление страницы
     };
-
-    // Добавляем обработчик событий для предотвращения прокрутки на странице
-    window.addEventListener("touchstart", preventScroll, { passive: false });
-    window.addEventListener("touchmove", preventScroll, { passive: false });
-
+  
+    // Добавляем обработчик для мобильных устройств
+    window.addEventListener('touchstart', preventScroll, { passive: false });
+    window.addEventListener('touchmove', preventScroll, { passive: false });
+  
     return () => {
-      window.removeEventListener("touchstart", preventScroll);
-      window.removeEventListener("touchmove", preventScroll);
-      document.body.style.overflow = "auto"; // Восстанавливаем прокрутку на body при закрытии модалки
+      // Убираем обработчики при закрытии модального окна
+      window.removeEventListener('touchstart', preventScroll);
+      window.removeEventListener('touchmove', preventScroll);
     };
-  }, []);;
+  }, []);
 
   const HandleClose = () => {
     const Modal = modalRef.current;
