@@ -11,15 +11,7 @@ import { Title } from "@/components/UI/title/title";
 import { useEffect, useState } from "react";
 
 export default function Home() {
-  const [token, setToken] = useState<string | null>(null);
 
-  useEffect(() => {
-    // Это код будет выполняться только на клиенте
-    if (typeof window !== 'undefined') {
-      const storedToken = localStorage.getItem('NEXT_PIZZA_DISABLE_USER_AUTH_TOKEN');
-      setToken(storedToken);
-    }
-  }, []);
 
   return (
     <>
@@ -31,7 +23,7 @@ export default function Home() {
         </div> 
       </BigContainer>
 
-      {token && <div>{token}</div>} {/* Выводим токен, если он есть */}
+   
 
       <BigContainer>
         <StoriesBox/>
