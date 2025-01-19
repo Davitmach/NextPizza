@@ -35,6 +35,7 @@
     }
 }
 .adaptive {
+    overscroll-behavior-y: none;
     &>div {
         flex:  1 1 ;
     }
