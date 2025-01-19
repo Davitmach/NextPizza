@@ -34,7 +34,8 @@ export const ModalPage = ({ id }: { id: number }) => {
   const [activeIngredient,setActiveIngredient] = useState<number[]>([])
 const [ios,setIos] = useState<boolean>(false);
 const [phone,setPhone] = useState<boolean>(false);
-const query = useQueryClient();
+const query = useQueryClient(); 
+
   useEffect(() => {
     if (/iPad|iPhone|iPod/.test(navigator.userAgent) && !(window as any).MSStream) {
       setIos(true);
