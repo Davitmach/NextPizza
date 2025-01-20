@@ -8,7 +8,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import { useNotification } from "@/context/notification";
 import { useRouter } from "next/navigation";
 export const Signup = ()=> {
-    const {replace,refresh} = useRouter()
+    const {replace,refresh,back} = useRouter()
      const refMail = useRef<HTMLInputElement|null>(null);
         const refName = useRef<HTMLInputElement|null>(null);
         const [input,setInput] = useState<boolean>(false);
@@ -22,8 +22,7 @@ export const Signup = ()=> {
             if(e) {
                 if(e.info == "Вы успешно зарегестрировались") {
 showNotification(e.info,'success');
-replace('/');
-refresh();
+back()
                 }
             }
             
