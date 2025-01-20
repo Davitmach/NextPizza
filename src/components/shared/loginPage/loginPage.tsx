@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 import { Code } from "../code/code";
 import Cookie from 'js-cookie'
 export const LoginPage=()=> {
-    const {replace,refresh} = useRouter();
+    const {replace,refresh,back} = useRouter();
     const [code,setCode] = useState<boolean>(false);
 const [page,setPage] = useState<'log'|'sign'>('log')
    const HandleChangePage = ()=> {
@@ -19,7 +19,8 @@ const [page,setPage] = useState<'log'|'sign'>('log')
 
    const HandleClose = ()=> {
     document.body.style.overflow = 'auto'; 
-    replace('/') 
+    // replace('/') 
+    back()
 
    }
    useEffect(()=> {

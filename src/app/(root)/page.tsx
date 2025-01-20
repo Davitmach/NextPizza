@@ -1,7 +1,6 @@
 'use client';
 import { CategoryBox } from "@/components/shared/category/category";
 import { Notifications } from "@/components/shared/notification/notification";
-import PayPalButton from "@/components/shared/paypal/paypal";
 
 import { StoriesBox } from "@/components/shared/stories/stories";
 
