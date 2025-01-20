@@ -19,7 +19,7 @@ const [page,setPage] = useState<'log'|'sign'>('log')
 
    const HandleClose = ()=> {
     document.body.style.overflow = 'auto'; 
-    // replace('/') 
+   
     back()
 
    }

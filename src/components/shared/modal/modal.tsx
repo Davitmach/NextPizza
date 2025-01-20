@@ -72,21 +72,7 @@ const query = useQueryClient();
     };
   }, []);
 
-  useEffect(() => {
-    const preventScroll = (e: TouchEvent) => {
-      e.preventDefault(); // Это предотвратит прокрутку и обновление страницы
-    };
-  
-    // Добавляем обработчик для мобильных устройств
-    window.addEventListener('touchstart', preventScroll, { passive: false });
-    window.addEventListener('touchmove', preventScroll, { passive: false });
-  
-    return () => {
-      // Убираем обработчики при закрытии модального окна
-      window.removeEventListener('touchstart', preventScroll);
-      window.removeEventListener('touchmove', preventScroll);
-    };
-  }, []);
+
 
   const HandleClose = () => {
     const Modal = modalRef.current;
