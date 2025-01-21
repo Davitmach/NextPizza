@@ -7,34 +7,35 @@ import { StoriesBox } from "@/components/shared/stories/stories";
 import { BigContainer } from "@/components/UI/container/container";
 import { Select } from "@/components/UI/select/select";
 import { Title } from "@/components/UI/title/title";
+import axios from "axios";
 import { useEffect, useState } from "react";
 
 export default function Home() {
-
   const createPayment = async () => {
-    const paymentData = {
-      amount: 1000,  // Пример суммы
-      description: 'Оплата за товар',
-      email: 'user@example.com',
-      address: 'Москва, ул. Тверская, 1',
-      postalCode: '123456',
-    };
-  
     try {
-      const response = await fetch('https://nodejs-production-b751.up.railway.app/create-payment', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(paymentData),
+      const response = await axios.post('https://nodejs-production-b751.up.railway.app/create-payment', {
+        firstName:"David",
+            lastName:"Machkalyan",
+            phone:"+37443703717",
+            address:"Azatutyan St. 2",
+            comment:"Побыстрее бы :)",
+            amount:"300",
+            email:"wvime30@gmail.com",
+            items:[{
+              qaq:"qaq"
+            },
+            {
+              qaq:"qaq"
+            }
+            ]
+    
       });
   
-      const data = await response.json();
-      if (data.confirmation) {
-        window.location.href = data.confirmation.confirmation_url; // Переход к оплате
-      } else {
-        console.error('Ошибка при создании платежа:', data.error);
-      }
+      const data = await response.data;
+    if(data.confirmationUrl) {
+window.location.href = data.confirmationUrl
+    }
+    
     } catch (error) {
       console.error('Ошибка при отправке запроса:', error);
     }
