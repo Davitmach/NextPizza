@@ -35,25 +35,40 @@ interface Yookassa {
 }
 
 export async function POST(request: Request) {
-  try {
-    const data: Yookassa = await request.json();
-
-    if (data && data.object && data.object.id && data.object.status) {
-      const PaymentId = data.object.id;
-      await paymentService.changeStatus(data.object.status, PaymentId);
-      return new Response(
-        JSON.stringify({ message: "Status updated successfully" }),
-        { status: 200 }
-      );
-    } else {
-      return new Response(JSON.stringify({ error: "Invalid data structure" }), {
-        status: 400,
+    try {
+      const data: Yookassa = await request.json();
+  
+      if (data?.object?.id && data.object.status) {
+        const PaymentId = data.object.id;
+  
+        // Ensure the function does not throw unexpectedly
+        try {
+          await paymentService.changeStatus(data.object.status, PaymentId);
+        } catch (serviceError) {
+          console.error("Error in paymentService.changeStatus:", serviceError);
+          return new Response(
+            JSON.stringify({ error: "Failed to update payment status" }),
+            { status: 500 }
+          );
+        }
+  
+        return new Response(
+          JSON.stringify({ message: "Status updated successfully" }),
+          { status: 200 }
+        );
+      } else {
+        // Missing or invalid data structure
+        return new Response(JSON.stringify({ error: "Invalid data structure" }), {
+          status: 400,
+        });
+      }
+    } catch (error) {
+      console.error("Error processing POST request:", error);
+  
+      // General catch-all for unexpected errors
+      return new Response(JSON.stringify({ error: "Internal server error" }), {
+        status: 500,
       });
     }
-  } catch (error) {
-    console.error("Error processing POST request:", error);
-    return new Response(JSON.stringify({ error: "Internal server error" }), {
-      status: 500,
-    });
   }
-}
+  
