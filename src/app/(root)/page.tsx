@@ -29,6 +29,8 @@ export default function Home() {
             }
             ]
     
+      },{
+        withCredentials:true
       });
   
       const data = await response.data;
