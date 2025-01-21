@@ -45,6 +45,18 @@ window.location.href = data.confirmationUrl
     
   }
 }
+async getOrders() {
+  try {
+ const data = await axios.get(this.api.getOrder,{
+  withCredentials:true
+ })
+ return data.data;
+  }
+  catch(error) {
+    throw new Error('Error')
+    
+  }
+}
 
 
 }

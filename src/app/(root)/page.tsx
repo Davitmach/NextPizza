@@ -13,7 +13,11 @@ import { useCallback, useEffect, useState } from "react";
 
 export default function Home() {
 const Buy  = useCallback(()=> {
-paymentService.createPayment('David','Qaq','+43284284','adawda','dedae','344','wsswi@gmail.com',[{qaq:1},{qaq:2}])
+// paymentService.createPayment('David','Qaq','+43284284','adawda','dedae','344','wsswi@gmail.com',[{qaq:1},{qaq:2}])
+paymentService.getOrders().then((e)=> {
+  console.log(e);
+  
+});
 },[])
   
   return (
@@ -31,7 +35,7 @@ paymentService.createPayment('David','Qaq','+43284284','adawda','dedae','344','w
       <BigContainer>
         <StoriesBox/>
       </BigContainer>
-<button onClick={Buy}>qaq</button>
+<button onClick={Buy}>get</button>
       <Notifications/>
     </>
   );
