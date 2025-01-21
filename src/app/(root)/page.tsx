@@ -7,41 +7,14 @@ import { StoriesBox } from "@/components/shared/stories/stories";
 import { BigContainer } from "@/components/UI/container/container";
 import { Select } from "@/components/UI/select/select";
 import { Title } from "@/components/UI/title/title";
+import { paymentService } from "@/service/paymentService";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 export default function Home() {
-  const createPayment = async () => {
-    try {
-      const response = await axios.post('https://nodejs-production-b751.up.railway.app/create-payment', {
-        firstName:"David",
-            lastName:"Machkalyan",
-            phone:"+37443703717",
-            address:"Azatutyan St. 2",
-            comment:"Побыстрее бы :)",
-            amount:"300",
-            email:"wvime30@gmail.com",
-            items:[{
-              qaq:"qaq"
-            },
-            {
-              qaq:"qaq"
-            }
-            ]
-    
-      },{
-        withCredentials:true
-      });
-  
-      const data = await response.data;
-    if(data.confirmationUrl) {
-window.location.href = data.confirmationUrl
-    }
-    
-    } catch (error) {
-      console.error('Ошибка при отправке запроса:', error);
-    }
-  };
+const Buy  = useCallback(()=> {
+paymentService.createPayment('David','Qaq','+43284284','adawda','dedae','344','wsswi@gmail.com',[{qaq:1},{qaq:2}])
+},[])
   
   return (
     <>
@@ -58,7 +31,7 @@ window.location.href = data.confirmationUrl
       <BigContainer>
         <StoriesBox/>
       </BigContainer>
-<button onClick={createPayment}>qaq</button>
+<button onClick={Buy}>qaq</button>
       <Notifications/>
     </>
   );
