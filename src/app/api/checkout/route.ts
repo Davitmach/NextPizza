@@ -3,6 +3,7 @@ export async function POST(request: Request) {
       // Получаем данные из тела запроса
       const data = await request.json();
   
+   console.log(data);
    
   
       // Возвращаем ответ с этим токеном
