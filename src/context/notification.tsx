@@ -21,6 +21,13 @@ export const NotificationProvider = ({ children }: { children: ReactNode }) => {
   const [notifications, setNotifications] = useState<Notification[]>([]);
 
   const showNotification = (message: string, type: "success" | "error" | "info") => {
+    const soundMap:any = {
+      success: "/sound/success.mp3",
+    };
+    const soundPath = soundMap[type] || "/sound/default.mp3";
+        const audio = new Audio(soundPath);
+        audio.volume = 0.10;
+        audio.play();
     const id = Date.now();
     setNotifications((prev) => [...prev, { id, message, type }]);
     setTimeout(() => {

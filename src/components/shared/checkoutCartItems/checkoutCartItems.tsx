@@ -42,7 +42,7 @@ export const CheckoutCartItems = (props:CheckoutCartItemsProps)=> {
         plusMutate()       
     }, [plusMutate]);
     return(
-        <div className="border-b border-gray-cartBorder py-[20px] flex items-center justify-between">
+        <div className="border-b border-gray-cartBorder py-[20px] flex items-center justify-between gap-3">
             <div className="inline-flex items-center justify-center gap-5">
                 <div><Image alt="img" priority src={props.img} width={65} height={65} /></div>
                 <div>
@@ -50,7 +50,7 @@ export const CheckoutCartItems = (props:CheckoutCartItemsProps)=> {
                     <div><span className="text-gray-description text-[14px] font-[400]">{props.size == 1 ? 'Маленькая 20 см' : props.size === 2 ? 'Средняя 30см' :'Большая 35см'},{props.type === 1 ? 'Тонкое тесто':'Традиционное тесто'}</span></div>
                 </div>
             </div>
-            <div className="text-[16px] font-[700] text-black-label">{props.price} ₽</div>
+            <div className="text-[16px] font-[700] text-black-label text-nowrap">{props.price} ₽</div>
             <div>
                 <Counter defaultState={props.count}  firstFunc={Minus} secondFunc={Plus}/>
             </div>

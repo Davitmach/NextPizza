@@ -64,9 +64,9 @@ useEffect(()=> {
 
 
     return(<>{isLoading && <div className="z-50 fixed w-full h-[100vh] left-0 top-0 bg-gray-background"><BigLoading/></div> }
-     <BigContainer >
+     <BigContainer className="xxs:px-1" >
         <div className="mb-[50px]"><ProductPageTitle>Оформление заказа</ProductPageTitle></div>
-        <div className="flex w-full justify-between gap-[45px]">
+        <div className="flex w-full justify-between gap-[45px] l:flex-col-reverse">
         <div className="w-full"><CheckoutContainer/></div>
         <div><CheckoutPay function={Buy} tax={total.tax} total={total.total} price={total.price} delivery={total.delivery}/></div>
         </div>

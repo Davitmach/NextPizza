@@ -12,6 +12,7 @@ import React from "react";
 import { usePayed } from "@/store";
 import { paymentService } from "@/service/paymentService";
 import { userService } from "@/service/userService";
+import Style from './checkout.module.scss'
 interface ICartItems {
   id: number;
   cartId: number;
@@ -166,13 +167,13 @@ userService.GetId().then((e)=> {
   return (
     <div className="w-full flex flex-col gap-11">
       <CheckoutBox>
-        <div className="flex items-center justify-between border-b border-gray-cartBorder px-[35px] pb-[25px]">
+        <div className="flex items-center justify-between border-b border-gray-cartBorder px-[35px] l:px-[15px] pb-[25px]">
           <div>
-            <h1 className="font-[700] text-[24px] text-black-label">
+            <h1 className="font-[700] text-[24px] text-black-label  l:text-[20px]">
               1. Корзина
             </h1>
           </div>
-          <div className="cursor-pointer inline-flex items-center justify-center gap-[7px]">
+          <div className="cursor-pointer inline-flex items-center justify-end gap-[7px]">
             <svg
               width="16"
               height="16"
@@ -217,7 +218,7 @@ userService.GetId().then((e)=> {
               />
             </svg>
             <span
-              className="text-[16px] font-[400] text-black-label"
+              className="text-[16px] text-end  font-[400] text-black-label "
               onClick={() => {
                 cartService.clearCart().then(() => {
                   showNotification(
@@ -237,7 +238,7 @@ userService.GetId().then((e)=> {
             <Loading width={50} borderWidth={5} type="orange" />
           </div>
         ) : (
-          <div className="flex flex-col  px-[35px]">
+          <div className={`flex flex-col  px-[35px] l:px-[15px] max-h-[500px] overflow-y-auto ${Style.checkout}`}>
             {Array.isArray(sort) &&
               sort.length > 0 &&
               sort.map((e: ICartItems) => {
@@ -280,12 +281,12 @@ userService.GetId().then((e)=> {
       </CheckoutBox>
 
       <CheckoutBox>
-        <div className="pb-[25px] px-[35px] border-b border-b-gray-cartBorder">
-          <h1 className="text-[24px] font-[700] text-black-label">
+        <div className="pb-[25px] px-[35px] l:px-[15px] border-b border-b-gray-cartBorder">
+          <h1 className="text-[24px] font-[700] text-black-label l:text-[20px]">
             2. Персональная информация
           </h1>
         </div>
-        <div className="grid gap-[26px] grid-cols-2 px-[35px] py-[30px]">
+        <div className="grid gap-[26px] grid-cols-2 px-[35px] py-[30px] l:px-[15px] ">
           <div className="max-w-[328px] w-full">
             <Input
               ref={RefName}
@@ -319,12 +320,12 @@ userService.GetId().then((e)=> {
         </div>
       </CheckoutBox>
       <CheckoutBox>
-        <div className="pb-[25px] px-[35px] border-b border-b-gray-cartBorder">
-          <h1 className="text-[24px] font-[700] text-black-label">
+        <div className="pb-[25px] px-[35px] l:px-[15px] border-b border-b-gray-cartBorder">
+          <h1 className="text-[24px] font-[700] text-black-label l:text-[20px]">
             3. Адрес доставки
           </h1>
         </div>
-        <div className="flex flex-wrap gap-[26px] px-[35px] py-[30px]">
+        <div className="flex flex-wrap gap-[26px] px-[35px] l:px-[15px] py-[30px]">
           <div className="w-full">
             <Input
               ref={RefAddress}

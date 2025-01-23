@@ -46,7 +46,7 @@ export const CheckoutPay = (props:CheckOutPayProps)=> {
 
 
    return(
-    <div className="bg-white rounded-[30px] inline-flex flex-col justify-between flex-[2 2 450px] w-[450px] py-[25px]  ">
+    <div className="bg-white rounded-[30px] inline-flex flex-col justify-between  w-[450px] s:w-full py-[25px]  ">
         <div className="border-b border-white-border px-[45px] py-[10px]">
             <div><span className="font-[400] text-[22px] text-black-label">Итого:</span></div>
             <div className="text-black-label font-[800] text-[34px]">{props.total ? props.total.toFixed(0) +' ₽' : <Loading width={30} borderWidth={4} type='orange'  /> }</div>

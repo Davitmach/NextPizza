@@ -3,29 +3,10 @@
 'use client';
 import Style from './notification.module.scss';
 import { useNotification } from "@/context/notification";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export const Notifications = () => {
   const { notifications } = useNotification();
-
-  useEffect(() => {
-    if (notifications.length > 0) {
-    
-      const latestNotification = notifications[notifications.length - 1];
-
-    
-      const soundMap:any = {
-        success: "/sound/success.mp3",
-      };
-
-     
-      const soundPath = soundMap[latestNotification.type] || "/sound/default.mp3";
-      const audio = new Audio(soundPath);
-      audio.volume = 0.2;
-      audio.play();
-    }
-  }, [notifications]);
-
   return (
     <div className={`fixed bottom-4 right-4 z-[150000000000000] space-y-2 w-[300px] overflow-hidden `}>
       {notifications.map((notif) => (
