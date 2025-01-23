@@ -1,6 +1,7 @@
 
 import { PaymentApi } from "@/api/payment/paymentApi";
 import axios from "axios";
+import { cartService } from "./cartService";
 class PaymentService {
    private api;
    constructor() {
@@ -26,6 +27,7 @@ class PaymentService {
       const data = await response.data;
     if(data.confirmationUrl) {
 window.location.href = data.confirmationUrl
+cartService.clearCart()
     }
     
     } catch (error) {

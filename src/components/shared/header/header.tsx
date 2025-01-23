@@ -1,6 +1,6 @@
 'use client';
 import Style from './header.module.scss';
-import { Header_input } from "@/components/UI/input/input"
+import { Header_input, Input } from "@/components/UI/input/input"
 import { Logo } from "../logo/logo"
 import { Button } from "@/components/UI/button/button"
 import { FaBars } from "react-icons/fa";
@@ -9,6 +9,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Menu } from '../headerMenu/menu';
 import { BigContainer } from '@/components/UI/container/container';
 import { Nunito}from "next/font/google";
+import { usePathname } from 'next/navigation';
 
 const nunito = Nunito({
   weight:['1000','200','300','400','500','600','700','800','900'],
@@ -19,6 +20,9 @@ export const Header = ()=> {
     const [active,setActive] = useState<boolean>(false);
     const [click,setClick] = useState<boolean>(false);
     const ref = useRef<HTMLDivElement>(null);
+ 
+
+
     const Handler = ()=> {
        
         setClick(true)
@@ -111,7 +115,7 @@ else {
 
                 <div><Button variant='user' status={false} size="default"  /></div>
 
-            <div className='cursor-pointer z-20 lMin:hidden' onClick={Handler}>{active == true ? <FaXmark className='text-[30px] text-orange'/> :<FaBars className='text-[30px] text-orange'/>}</div>
+          
             </BigContainer>
         </header>
         <Menu ref={ref} click={click} status={active}/> 

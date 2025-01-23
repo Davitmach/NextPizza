@@ -14,15 +14,10 @@ const nunito = Nunito({
 export default function Layout({ children }: { children: React.ReactNode }) {
   
   return (
-    <html lang="en">
-      <head />
-      <body className={`${nunito.className}`} >
-<div className="bg-white-checkOutBg">
+
+<div className={`bg-white-checkOutBg  ${nunito.className}`}>
     <HeaderCheckOut/>
         {children}
-  
-        </div>
-      </body>
-    </html>
+</div>
   );
 }

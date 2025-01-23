@@ -5,6 +5,7 @@ import { cartService } from "@/service/cartService"
 
 import { useQuery } from "@tanstack/react-query"
 import { useEffect } from "react"
+import { Loading } from "../loading/loading"
 
 export const CartPay = ()=> {
     const {data,isSuccess,error} = useQuery({
@@ -28,25 +29,27 @@ queryFn:()=> cartService.getTotal()
                     <div><h1 className="text-nowrap text-black-label font-[700] text-[18px]">{data?.tax} ₽ </h1></div>
                 </div>
             </div>
-            <div className="w-full flex justify-center"><Button variant='pay' size="full" status={false}/></div>
+            <div className="w-full flex justify-center"><Button link="checkout" variant='pay' size="full" status={false}/></div>
         </div>
     )
 }
 
 interface CheckOutPayProps {
-    total:number,
-    tax:number,
-    delivery:number,
-    price:number
+    total:number|null,
+    tax:number|null,
+    delivery:number|null,
+    price:number|null,
+    function:Function
 }
 export const CheckoutPay = (props:CheckOutPayProps)=> {
+    
 
 
    return(
     <div className="bg-white rounded-[30px] inline-flex flex-col justify-between flex-[2 2 450px] w-[450px] py-[25px]  ">
         <div className="border-b border-white-border px-[45px] py-[10px]">
             <div><span className="font-[400] text-[22px] text-black-label">Итого:</span></div>
-            <div className="text-black-label font-[800] text-[34px]">{props.total} ₽</div>
+            <div className="text-black-label font-[800] text-[34px]">{props.total ? props.total.toFixed(0) +' ₽' : <Loading width={30} borderWidth={4} type='orange'  /> }</div>
         </div>
         <div className="flex flex-col py-[30px] px-[40px] gap-2 ">
         <div className="flex w-full items-end justify-between gap-[12px]">
@@ -56,7 +59,7 @@ export const CheckoutPay = (props:CheckOutPayProps)=> {
 </svg>
 <span className="text-nowrap">Стоимость товаров: </span></div>
                     <div className="w-full border-dotted border-b border-gray-dotted -translate-y-2"></div>
-                    <div><h1 className="text-nowrap text-black-label font-[700] text-[18px]">{props.price} ₽ </h1></div>
+                    <div><h1 className="text-nowrap text-black-label font-[700] text-[18px]">{props.price ? props.price.toFixed(0) +' ₽' : <Loading width={30} borderWidth={4} type='orange'  /> }</h1></div>
                 </div>
                 <div className="flex w-full items-end justify-between gap-[12px]">
                     <div className="flex items-center justify-center gap-2"><svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -64,7 +67,7 @@ export const CheckoutPay = (props:CheckOutPayProps)=> {
 </svg>
 <span>Налоги: </span></div>
                     <div className="w-full border-dotted border-b border-gray-dotted -translate-y-2"></div>
-                    <div><h1 className="text-nowrap text-black-label font-[700] text-[18px]">{props.tax} ₽ </h1></div>
+                    <div><h1 className="text-nowrap text-black-label font-[700] text-[18px]">{props.tax ? props.tax.toFixed(0) +' ₽' : <Loading width={30} borderWidth={4} type='orange'  /> }</h1></div>
                 </div>
                 <div className="flex w-full items-end justify-between gap-[12px]">
                     <div className="flex items-center justify-center gap-2"><svg width="17" height="13" viewBox="0 0 17 13" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -72,10 +75,10 @@ export const CheckoutPay = (props:CheckOutPayProps)=> {
 </svg>
 <span>Доставка: </span></div>
                     <div className="w-full border-dotted border-b border-gray-dotted -translate-y-2"></div>
-                    <div><h1 className="text-nowrap text-black-label font-[700] text-[18px]">{props.delivery} ₽ </h1></div>
+                    <div><h1 className="text-nowrap text-black-label font-[700] text-[18px]">{props.delivery? props.delivery +' ₽' : <Loading width={30} borderWidth={4} type='orange'  /> }</h1></div>
                 </div>
         </div>
-        <div className="px-[45px] border-t border-white-border py-[20px]"><Button variant='orange' size="full" status={false}>Перейти к оплате</Button></div>
+        <div className="px-[45px] border-t border-white-border py-[20px]"><Button func={props.function} variant='orange' size="full" status={false}>Перейти к оплате</Button></div>
     </div>
    )
 }

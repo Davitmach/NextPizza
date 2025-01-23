@@ -135,7 +135,7 @@ replace('/')
     <Recommend Data={data}  />
         </div>
 
-        <Notifications/>
+  
         </>
     )
   }

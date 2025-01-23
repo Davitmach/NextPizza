@@ -7,17 +7,14 @@ import { StoriesBox } from "@/components/shared/stories/stories";
 import { BigContainer } from "@/components/UI/container/container";
 import { Select } from "@/components/UI/select/select";
 import { Title } from "@/components/UI/title/title";
+import { cartService } from "@/service/cartService";
 import { paymentService } from "@/service/paymentService";
 import axios from "axios";
 import { useCallback, useEffect, useState } from "react";
 
 export default function Home() {
 const Buy  = useCallback(()=> {
-// paymentService.createPayment('David','Qaq','+43284284','adawda','dedae','344','wsswi@gmail.com',[{qaq:1},{qaq:2}])
-paymentService.getOrders().then((e)=> {
-  console.log(e);
-  
-});
+cartService.clearCart()
 },[])
   
   return (
@@ -36,7 +33,7 @@ paymentService.getOrders().then((e)=> {
         <StoriesBox/>
       </BigContainer>
 <button onClick={Buy}>get</button>
-      <Notifications/>
+
     </>
   );
 }

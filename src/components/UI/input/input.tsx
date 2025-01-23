@@ -19,7 +19,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
     return (
       <div className={`input-wrapper ${className || ""}`}>
         
-        <label className="block text-gray-700 text-sm font-medium mb-1">
+        <label className="block text-black-label text-[14px]  font-[700]">
           {Label}
         </label>
 
@@ -32,7 +32,9 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
           className={` w-full px-4 py-[13px] border rounded-lg outline-none  ${
             ErrorState ? "border-red-500 focus:ring-red-500" : "border-gray-300 focus:ring-blue-500"
           }`}
+         
         />
+       
 
    
         {ErrorMessage && ErrorState ? (
@@ -197,3 +199,13 @@ export const Price_input = (props: PriceInput) => {
     </div>
   );
 };
+
+export const TextArea =(props: {ref:React.Ref<HTMLTextAreaElement>,className?:string,label?:string})=> {
+return(<div>
+  <label className="block text-black-label text-[14px]  font-[700]">
+  {props.label}
+</label>
+  <textarea placeholder="Укажите тут дополнительную информацию для курьера" className={`w-full  outline-none border rounded-[10px] resize-none p-[18px] border-white-border ${props.className}`} ref={props.ref}></textarea>
+  </div>
+)
+}
