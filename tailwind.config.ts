@@ -47,6 +47,7 @@ checkOutBg:'rgba(244, 241, 238, 1)',
 checkOutBorder:'rgba(222, 222, 222, 1)'
         },
         gray: {
+          orderDate:'rgba(174, 174, 174, 1)',
          dark:'#888888',
          dark2:'#B1B1B1',
          dark3:'#ADADAD',
@@ -77,7 +78,17 @@ checkOutBorder:'rgba(222, 222, 222, 1)'
           breadTransparent:'rgba(55, 55, 55, 0.6)'
         },
         red:{
-          error_message:'rgba(254, 0, 0, 1)'
+          error_message:'rgba(254, 0, 0, 1)',
+          bg:'rgba(255, 240, 239, 1)',
+          text:'rgba(255, 84, 74, 1)'
+        },
+        green:{
+          bg:'rgba(234, 248, 244, 1)',
+          text:'rgba(27, 180, 134, 1)'
+        },
+        yellow:{
+          bg:'rgba(255, 243, 180, 1)',
+          text:'rgba(145, 124, 18, 1)'
         }
     
       },

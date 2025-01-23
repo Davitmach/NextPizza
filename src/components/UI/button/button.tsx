@@ -9,7 +9,6 @@ import { FaArrowLeftLong } from "react-icons/fa6";
 import { FaArrowRight } from "react-icons/fa6";
 import { FaArrowLeft } from "react-icons/fa";
 import { cartService } from "@/service/cartService";
-import Cookie from "js-cookie";
 import { useQuery } from "@tanstack/react-query";
 import { useNotification } from "@/context/notification";
 import { Loading } from "@/components/shared/loading/loading";

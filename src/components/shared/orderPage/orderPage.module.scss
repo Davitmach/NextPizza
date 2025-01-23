@@ -1,0 +1,25 @@
+.fadeIn {
+    max-height: 286px;
+    padding: 35px 0;
+    visibility: visible;
+ 
+    transition: max-height 0.5s ease, padding 0.5s ease, visibility 0.5s ease;
+
+
+}
+
+.fadeOut {
+    max-height: 0;
+    padding: 0 0;
+    visibility: hidden;
+    overflow: hidden;
+    transition: max-height 0.5s ease, padding 0.5s ease, visibility 0.5s ease;
+}
+
+    .orderPage {
+        &::-webkit-scrollbar {
+            width:0;
+        }
+      
+   
+    }

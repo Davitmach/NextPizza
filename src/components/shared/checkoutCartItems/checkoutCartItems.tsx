@@ -5,6 +5,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useNotification } from "@/context/notification";
 import { cartService } from "@/service/cartService";
 import { useCallback } from "react";
+import { ProductPayload } from "@/types/payload/productPayload";
 export const CheckoutCartItems = (props:CheckoutCartItemsProps)=> { 
     const queryClient = useQueryClient();
     const {showNotification} = useNotification();
@@ -57,3 +58,8 @@ export const CheckoutCartItems = (props:CheckoutCartItemsProps)=> {
         </div>
     )
 }
+
+
+
+
+

@@ -93,7 +93,7 @@ userService.GetId().then((e)=> {
   });
   //  useEffect для сортировки товаров
   useEffect(() => {
-    console.log(data);
+
     
     if (data) {
       setSort(

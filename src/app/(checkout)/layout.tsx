@@ -15,7 +15,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   
   return (
 
-<div className={`bg-white-checkOutBg  ${nunito.className}`}>
+<div className={`bg-white-checkOutBg  ${nunito.className} overflow-hidden `}>
     <HeaderCheckOut/>
         {children}
 </div>
