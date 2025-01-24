@@ -17,6 +17,10 @@ interface PayedState {
   payed: boolean; 
   setPayed: (newState: boolean) => void; 
 }
+interface AddressState {
+  address: string; 
+  setAddress: (newState: string) => void; 
+}
 export const useMenuState = create<MenuState>((set) => ({
   menuState: '', 
   setMenu: (newState: string) => set({ menuState: newState }),
@@ -37,4 +41,8 @@ export const useLogged = create<LoggedState>((set)=> ({
 export const usePayed = create<PayedState>((set)=> ({
   payed:false,
  setPayed:(newState:boolean)=> set({payed:newState})
+}))
+export const useAddress = create<AddressState>((set)=> ({
+  address:'',
+  setAddress:(newState:string)=> set({address:newState})
 }))
