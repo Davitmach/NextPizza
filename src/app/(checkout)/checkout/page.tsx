@@ -25,10 +25,7 @@ delivery:null
 })
 const {data:totalData,isSuccess} = useQuery({
     queryKey:['getTotal'],
-    queryFn:()=> cartService.getTotal(),
-    
-    
-    
+    queryFn:()=> cartService.getTotal(), 
 })
 useEffect(()=> {
 if(isSuccess == true) {

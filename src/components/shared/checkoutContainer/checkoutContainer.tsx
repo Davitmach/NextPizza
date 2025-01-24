@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 import { useNotification } from "@/context/notification";
 import { Input, TextArea } from "@/components/UI/input/input";
 import React from "react";
-import { useAddress, usePayed } from "@/store";
+import { usePayed } from "@/store";
 import { paymentService } from "@/service/paymentService";
 import { userService } from "@/service/userService";
 import Style from './checkout.module.scss'
@@ -56,7 +56,6 @@ interface ICartItems {
 
 export const CheckoutContainer = () => {
   const { showNotification } = useNotification();
-  const {address} = useAddress();
   const { payed, setPayed } = usePayed();
   const RefName = useRef<HTMLInputElement>(null);
   const RefPhone = useRef<HTMLInputElement>(null);
@@ -64,6 +63,7 @@ export const CheckoutContainer = () => {
   const RefTextarea = useRef<HTMLTextAreaElement>(null);
   const RefAddress = useRef<HTMLInputElement>(null);
   const [amount, setAmount] = useState<null | string>(null);
+  const [active,setActive] = useState<boolean>(true);
   const [email,setEmail] = useState<string|null>(null);
   const query = useQueryClient();
   const [errors, setErrors] = useState({
@@ -117,14 +117,12 @@ userService.GetId().then((e)=> {
 
   //  useEffect для ошибок input
   useEffect(() => {
-    console.log(address);
-    
     if (payed == true) {
       if (
         RefName.current &&
         RefLastname.current &&
         RefPhone.current &&
-        address
+        RefAddress.current
       ) {
         if (RefName.current.value.length == 0) {
           setErrors((prev) => ({ ...prev, name: true }));
@@ -141,7 +139,7 @@ userService.GetId().then((e)=> {
         } else {
           setErrors((prev) => ({ ...prev, phone: false }));
         }
-        if (address.length == 0) {
+        if (RefAddress.current.value.length == 0) {
           setErrors((prev) => ({ ...prev, address: true }));
         } else {
           setErrors((prev) => ({ ...prev, address: false }));
@@ -162,15 +160,15 @@ userService.GetId().then((e)=> {
       errors.phone == false &&
       payed == false
     ) {
-   
-      
-        if(RefName.current && address && RefLastname.current && RefPhone.current && RefTextarea.current && amount && email) {
-        paymentService.createPayment(RefName.current.value,RefLastname.current.value,RefPhone.current.value,address,RefTextarea.current.value,amount,email,data)
+        if(RefName.current && RefAddress.current && RefLastname.current && RefPhone.current && RefTextarea.current && amount && email) {
+      setActive(false)
+          paymentService.createPayment(RefName.current.value,RefLastname.current.value,RefPhone.current.value,RefAddress.current.value,RefTextarea.current.value,amount,email,data)
         }
     }
   }, [errors, payed]);
 
-  return (
+  return (<>
+  {active == false && <div className="z-50 fixed left-0 top-0 w-full h-[100vh] bg-gray-background"></div>}
     <div className="w-full flex flex-col gap-11">
       <CheckoutBox>
         <div className="flex items-center justify-between border-b border-gray-cartBorder px-[35px] l:px-[15px] pb-[25px]">
@@ -333,21 +331,15 @@ userService.GetId().then((e)=> {
         </div>
         <div className="flex flex-wrap gap-[26px] px-[35px] l:px-[15px] py-[30px]">
           <div className="w-full">
-            {/* <Input
+            <Input
               ref={RefAddress}
               ErrorMessage="Введите адрес доставки"
               Label="Введите адрес"
               InputType="text"
               required={true}
               ErrorState={errors.address}
-            /> */}
-            <AddressInput
-          
-            ErrorMessage="Введите адрес доставки"
-            Label="Введите адрес"
-            required={true}
-            ErrorState={errors.address}
             />
+        
           </div>
           <div className="w-full">
             <TextArea
@@ -359,5 +351,6 @@ userService.GetId().then((e)=> {
         </div>
       </CheckoutBox>
     </div>
+    </>
   );
 };

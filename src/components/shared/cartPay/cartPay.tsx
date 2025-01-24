@@ -4,7 +4,7 @@ import { Button } from "@/components/UI/button/button"
 import { cartService } from "@/service/cartService"
 
 import { useQuery } from "@tanstack/react-query"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { Loading } from "../loading/loading"
 
 export const CartPay = ()=> {
@@ -42,7 +42,6 @@ interface CheckOutPayProps {
     function:Function
 }
 export const CheckoutPay = (props:CheckOutPayProps)=> {
-    
 
 
    return(
