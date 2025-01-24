@@ -41,7 +41,7 @@ export async function POST(request: Request) {
       if (data?.object?.id && data.object.status) {
         const PaymentId = data.object.id;
   
-        // Ensure the function does not throw unexpectedly
+       
         try {
           await paymentService.changeStatus(data.object.status, PaymentId);
         } catch (serviceError) {
