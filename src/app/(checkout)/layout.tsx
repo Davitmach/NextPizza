@@ -15,7 +15,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   
   return (
 
-<div className={`bg-white-checkOutBg  ${nunito.className} fixed left-0 top-0 w-full overflow-y-scroll h-[100vh]  `}>
+<div className={`bg-white-checkOutBg  ${nunito.className} fixed left-0 top-0 w-full overflow-y-scroll h-[100vh]   `}>
     <HeaderCheckOut/>
         {children}
 </div>
