@@ -17,7 +17,7 @@ const {data} = useQuery({
     return(
            <BigContainer className="xxs:px-1 h-[100vh]" >
            <div className="mb-[50px]"><ProductPageTitle>Мои заказы</ProductPageTitle></div>
-        <div className={`pb-[20px] flex flex-col gap-[25px] overflow-y-scroll h-[600px] ${Style.order_page}`}>{
+        <div className={`pb-[20px] flex flex-col gap-[25px]   ${Style.order_page}`}>{
             data&&
             Array.isArray(data.info) && data.info.length >0 &&
             data.info.map((e:OrderProps)=> (
