@@ -10,7 +10,7 @@ export const Container = (containerProps:ContainerProps)=> {
     const {setMenu} = useMenuState();
     const { ref, inView } = useInView({
  
-        threshold: 0.5, 
+        threshold: 0.1, 
       });
       useEffect(()=> {
 if(inView == true) {
