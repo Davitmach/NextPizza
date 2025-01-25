@@ -23,7 +23,7 @@ export const UserBtnMenu = () => {
   };
 
   return (
-    <div className='w-full bg-white mt-[6px] rounded-[10px] shadow-lg py-[13px] absolute top-full'>
+    <div className='z-50 w-full bg-white mt-[6px] rounded-[10px] shadow-lg py-[13px] absolute top-full'>
       <div className='py-[10px] duration-300 hover:bg-orange-hover cursor-pointer font-[600] text-[16px] text-black-label pl-4 hover:text-orange'>
         <h1>Настройки</h1>
       </div>

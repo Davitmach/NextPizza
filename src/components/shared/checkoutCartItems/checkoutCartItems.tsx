@@ -44,7 +44,7 @@ export const CheckoutCartItems = (props:CheckoutCartItemsProps)=> {
     }, [plusMutate]);
     return(
         <div className="border-b border-gray-cartBorder py-[20px] flex items-center justify-between gap-3">
-            <div className="inline-flex items-center justify-center gap-5">
+            <div className="inline-flex items-center justify-center gap-5 571max:flex-col">
                 <div><Image alt="img" priority src={props.img} width={65} height={65} /></div>
                 <div>
                     <div><h1 className="text-[16px] font-[700] text-black-label">{props.name}</h1></div>
