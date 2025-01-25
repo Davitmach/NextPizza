@@ -9,7 +9,7 @@ export const OrderPage = (props:OrderPageProps)=> {
             <div className='flex  flex-col gap-[20px]'>
                 {props.items.map((e,index)=> (
                     <div key={e.id} className={`mb-[10px] border-t border-t-gray-cartBorder px-[27px] xxs:px-[15px] flex w-full items-center justify-between pt-[20px]  `}>
-                        <div className='flex items-center justify-center gap-2'>
+                        <div className='flex items-center justify-center gap-2 653max:flex-col 653max:items-start'>
                             <div><Image alt='img' src={e.product.imageUrl} width={65} height={65}/></div>
                             <div>
                                 <div><h1>{e.product.name}</h1></div>
