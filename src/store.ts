@@ -21,6 +21,18 @@ interface AddressState {
   address: string; 
   setAddress: (newState: string) => void; 
 }
+interface FilterState {
+  ingredients: string[];
+  addIngredient: (ingredient: string) => void;
+  removeIngredient: (ingredient: string) => void;
+
+  minPrice:number;
+  maxPrice:number;
+  setMin:(price:number)=> void;
+  setMax:(price:number)=> void;
+  type:'традиционное' | 'тонкое'|'';
+  setType:(type:'традиционное' | 'тонкое')=> void
+}
 export const useMenuState = create<MenuState>((set) => ({
   menuState: '', 
   setMenu: (newState: string) => set({ menuState: newState }),
@@ -46,3 +58,21 @@ export const useAddress = create<AddressState>((set)=> ({
   address:'',
   setAddress:(newState:string)=> set({address:newState})
 }))
+
+export const useFilter = create<FilterState>((set) => ({
+  ingredients: [],
+  addIngredient: (ingredient) =>
+    set((state) => ({
+      ingredients: [...state.ingredients, ingredient],
+    })),
+  removeIngredient: (ingredient) =>
+    set((state) => ({
+      ingredients: state.ingredients.filter((ing) => ing !== ingredient),
+    })),
+    maxPrice:0,
+    minPrice:0,
+    setMax:(newstate:number)=> set({maxPrice:newstate}),
+    setMin:(newstate:number)=> set({minPrice:newstate}),
+    type:'',
+    setType:(newState:'тонкое'|'традиционное')=> set({type:newState})
+}));

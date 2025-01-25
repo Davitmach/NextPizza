@@ -121,7 +121,7 @@ cartService.addCartItem(Id,1,Price,[]).then((e)=> {
         plusMutate()       
     }, [plusMutate]);
     return(
-        <div className='ProductCart inline-flex flex-col gap-[15px] cursor-pointer h-[425px] justify-between'>
+        <div className='ProductCart inline-flex flex-col gap-[15px] cursor-pointer max-h-[425px] '>
            <div className='flex flex-col gap-4'><div  onClick={()=> {
             HandleOpenModal()
         }} className='Img_box bg-white-productCart rounded-custom py-[24px] px-[37px]'><Image priority quality={100} src={Img} alt='Img' width={210} height={210} /></div>

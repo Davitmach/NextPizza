@@ -1,3 +1,5 @@
 export type CheckboxProps = {
-    children:React.ReactNode
+    children:React.ReactNode,
+    add:Function,
+    remove:Function
 }

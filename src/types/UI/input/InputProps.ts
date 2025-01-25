@@ -12,5 +12,6 @@ export type InputProps = {
 }
 
 export type PriceInput = {
-    ref:React.Ref<HTMLInputElement>
+    ref:React.Ref<HTMLInputElement>,
+    func:Function
 }

@@ -177,11 +177,18 @@ if(event.target.value.length == 0) {
 export const Price_input = (props: PriceInput) => {
   const Ref = props.ref;
   return (
-    <div className="Price_input relative inline">
+    <div className="Price_input relative  w-full">
       <input
         ref={Ref}
+        onInput={(e)=> {
+          const   target = e.target as HTMLInputElement
+          props.func(Number(target.value));
+          
+          
+        }}
+        defaultValue={0}
         type="number"
-        className={`outline-none border border-gray-priceInputBorder rounded-[10px] px-[15px] py-[11px] text-black-label font-[400] text-[14px] ${Style.PriceInput} `}
+        className={`w-full outline-none border border-gray-priceInputBorder rounded-[10px] px-[15px] py-[11px] text-black-label font-[400] text-[14px] ${Style.PriceInput} `}
       />
       <svg
         className="absolute top-[40%] right-[15px]"
