@@ -17,7 +17,7 @@ price:number,
 productId:number,
 size:number
 }
-type ingredient = {
+export type ingredient = {
     id:number,
     createdAt:string,   
    imageUrl:string,

@@ -15,8 +15,8 @@ export const RadioLabel = ({ children, active, onChange, value }: RadioProps2) =
         <div
             className="inline-flex items-center justify-center gap-[12px]"
             onClick={() => {onChange(value)
-
-                setType(children as 'тонкое'| 'традиционное')
+const type = children == 'Тонкое' ? 1 :2
+                setType(type)
             }} // Устанавливаем активное значение при клике
         >
             <Radio isActive={isActive} />

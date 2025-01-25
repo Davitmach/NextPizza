@@ -13,7 +13,7 @@ import { useMutation } from '@tanstack/react-query';
 import { useQueryClient } from '@tanstack/react-query';
 export const ProductCartLoading = ()=> {
     return(
-        <svg width="285" height="430" viewBox="0 0 285 430" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+        <svg style={{width:'100%'}} width="285" height="430" viewBox="0 0 285 430" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
 <rect x="160" y="388" width="125" height="42" rx="15" fill="#F9F9F9"/>
 <rect width="285" height="260" rx="15" fill="#FDFDFD"/>
 <rect y="275" width="257" height="30" rx="10" fill="#F9F9F9"/>
@@ -56,6 +56,8 @@ export const ProductCart = (props:ProductCartProps)=> {
     const Size = props.size;
     const Quantity = props.cartQuantity;
     const CartItemId = props.cartItemId;
+    
+    
     const HandleOpenModal = ()=> {
 push(`/product/${Id}`)
     }
@@ -121,17 +123,28 @@ cartService.addCartItem(Id,1,Price,[]).then((e)=> {
         plusMutate()       
     }, [plusMutate]);
     return(
-        <div className='ProductCart inline-flex flex-col gap-[15px] cursor-pointer max-h-[425px] '>
+        <div className='ProductCart inline-flex flex-col gap-[15px] justify-between cursor-pointer  '>
            <div className='flex flex-col gap-4'><div  onClick={()=> {
             HandleOpenModal()
-        }} className='Img_box bg-white-productCart rounded-custom py-[24px] px-[37px]'><Image priority quality={100} src={Img} alt='Img' width={210} height={210} /></div>
+        }} className='Img_box bg-white-productCart rounded-custom py-[24px] px-[37px] flex items-center justify-center'><Image priority quality={100} src={Img} alt='Img' width={210} height={210} /></div>
 
 <div  onClick={()=> {
             HandleOpenModal()
         }}><ProductTitle >{Name.length>20 ? Name.substring(0,20)+'...':Name}</ProductTitle></div>
 <div   onClick={()=> {
             HandleOpenModal()
-        }}><p className='text-gray-productCartDescription'>{Description}</p></div>
+        }}><p className='text-gray-productCartDescription'>{props.ingredients&& props.ingredients.length >0 ? props.ingredients.map((e,index)=> {
+            if(props.ingredients&& index == props.ingredients.length-1) {
+return(
+    e.name
+)
+            }
+            else {
+                return(
+                    e.name+', '
+                )
+            }
+        }):props.description}</p></div>
         </div> 
             <div className='Info_box'>
 

@@ -1,0 +1,12 @@
+.Active_cat {
+    position:sticky;
+    top: 0px;
+    left: 0;
+    background-color: white;
+    z-index: 9;
+}
+main {
+    @media (max-width:547px) {
+        grid-template-columns: 1fr !important;
+    }
+}

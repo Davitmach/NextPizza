@@ -74,6 +74,7 @@ export const Code = () => {
          
           showNotification("Вы успешно вошли в систему", "success");
           back()
+          document.body.style.overflow = 'auto'
         }
        
       }).catch((e)=> {

@@ -1,3 +1,6 @@
+import { IngredientsPayload } from "@/types/payload/ingredientsPayload"
+import { ingredient } from "@/types/payload/productPayload"
+
 export type ProductCartProps = {
     img:string,
     name:string,
@@ -8,5 +11,6 @@ export type ProductCartProps = {
     size?:number,
     type?:number,
 cartQuantity?:number,
-cartItemId?:number
+cartItemId?:number,
+ingredients?:ingredient[]
 }

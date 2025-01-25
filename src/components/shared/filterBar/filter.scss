@@ -1,0 +1,23 @@
+.Filter_container {
+    transition: .4s;
+@media (max-width:521px) {
+    width: 300px;
+}
+   
+}
+
+.Active_filter {
+    @media (max-width:1392px) {
+
+    left: 0;
+    }
+}
+.Disable_filter {
+    @media (max-width:1392px) {
+
+left: -430px;
+    }
+    @media (max-width:521px) {
+        left: -300px;
+    }
+}

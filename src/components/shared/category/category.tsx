@@ -27,8 +27,6 @@ export const CategoryBox = (CategoryProps: CategoryBoxProps) => {
             expireTime.setMinutes(expireTime.getMinutes() + 30); 
             
             Cookie.set('Category', JSON.stringify(cats), { expires: expireTime });
-       
-         setMenu(cats[0].name)
           setData(cats);
         });
       } else {

@@ -9,6 +9,15 @@ export const Category = (CategoryProps:CategoryProps)=> {
     const Text = CategoryProps.children as string;
 const HandleChangeMenu = (text:string)=> {
 setMenu(text);
+const element = document.getElementById(Text);
+
+if (element) {
+    element.scrollIntoView({
+      behavior: 'smooth',
+
+    });
+  }
+
 }
 
     return(

@@ -13,7 +13,7 @@ export const EmptyCartPage = ()=> {
 setDisable(true)
 ref.current?.addEventListener('animationend',()=> {
     back()
-    
+    document.body.style.overflow = 'auto'
 })
     },[])
 

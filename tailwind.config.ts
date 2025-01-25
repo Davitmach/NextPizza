@@ -22,7 +22,9 @@ const config: Config = {
       '571max':{'max':'571px'},
       '1073max':{'max':'1073px'},
       '937max':{'max':'937px'},
-      '653max':{'max':'653px'}
+      '653max':{'max':'653px'},
+      '1392max':{'max':'1392px'},
+      '813max':{'max':'813px'}
     },
     extend: {
       borderRadius: {

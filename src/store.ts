@@ -22,16 +22,16 @@ interface AddressState {
   setAddress: (newState: string) => void; 
 }
 interface FilterState {
-  ingredients: string[];
-  addIngredient: (ingredient: string) => void;
-  removeIngredient: (ingredient: string) => void;
+  ingredients: number[];
+  addIngredient: (ingredient: number) => void;
+  removeIngredient: (ingredient:number) => void;
 
   minPrice:number;
   maxPrice:number;
   setMin:(price:number)=> void;
   setMax:(price:number)=> void;
-  type:'традиционное' | 'тонкое'|'';
-  setType:(type:'традиционное' | 'тонкое')=> void
+  type:1|2|null;
+  setType:(type:1|2)=> void
 }
 export const useMenuState = create<MenuState>((set) => ({
   menuState: '', 
@@ -73,6 +73,6 @@ export const useFilter = create<FilterState>((set) => ({
     minPrice:0,
     setMax:(newstate:number)=> set({maxPrice:newstate}),
     setMin:(newstate:number)=> set({minPrice:newstate}),
-    type:'',
-    setType:(newState:'тонкое'|'традиционное')=> set({type:newState})
+    type:null,
+    setType:(newState:1|2)=> set({type:newState})
 }));

@@ -1,0 +1,5 @@
+.skelet {
+    @media (max-width:547px) {
+        grid-template-columns: 1fr !important;
+    }
+}

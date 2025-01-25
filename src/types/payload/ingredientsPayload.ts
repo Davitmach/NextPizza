@@ -1,5 +1,6 @@
 export type IngredientsPayload = {
     name:string,
     price:number,
-    img:string
+    img:string,
+    id:number
 }

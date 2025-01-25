@@ -1,4 +1,5 @@
 export type ContainerProps = {
     title:string,
-    children:React.ReactNode
+    children:React.ReactNode,
+    id:string
 }

@@ -22,6 +22,7 @@ export const CartItemsPage = () => {
     setDisable(true);
     ref.current?.addEventListener("animationend", () => {
       back();
+      document.body.style.overflow = 'auto'
     });
   }, []);
 
