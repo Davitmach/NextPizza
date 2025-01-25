@@ -44,6 +44,7 @@ const query = useQueryClient();
       setPhone(true); 
      
   }
+  document.body.style.overflow ='hidden';
 
    
   
