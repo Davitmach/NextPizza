@@ -12,6 +12,8 @@ const [active,setActive] = useState<boolean>(false);
 
 
 useEffect(()=> {
+    document.body.style.overflow = 'hidden'
+    
 if(path.includes('product')) {
     setActive(true)
 }
@@ -22,7 +24,7 @@ else {
     
 if(status == true) {
     return (
-        <div ref={ref} className={` active z-50 py-[20px] px-[30px] duration-500 fixed left-0 top-[143px]  w-full   bg-white flex justify-center gap-5 flex-col-reverse shadow-2xl rounded-b-3xl`}>
+        <div ref={ref} className={` active z-50 py-[20px] px-[30px] duration-500 absolute left-0 top-[143px]  w-full   bg-white flex justify-center gap-5 flex-col-reverse shadow-2xl rounded-b-3xl`}>
             { active == false && <div className=" "><Header_input/></div>}
                         <div className="flex gap-[16px] justify-center ">
                             <div><Button variant='user' status={false} size="default"  /></div>

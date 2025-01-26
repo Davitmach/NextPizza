@@ -6,7 +6,7 @@ export const Loading = (props:LoadingProps)=> {
   
     const Type = props.type;
     return(
-            <div  style={{ width: `${Width}px`, height: `${Width}px` ,borderTopWidth:BorderWidth,borderLeftWidth:BorderWidth}} className={`${Style.spinner} ${Type == 'white' ? Style.white : Style.orange} !w-[${Width}px] !h-[${Width}px]`}></div>
+            <div  style={{ width: `${Width}px`, height: `${Width}px` ,borderTopWidth:BorderWidth,borderLeftWidth:BorderWidth}} className={`${Style.spinner} ${Type == 'white' ? Style.white : Style.orange} !w-[${Width}px] !h-[${Width}px] z-50`}></div>
     )
 }
 export const BigLoading = ()=> {
