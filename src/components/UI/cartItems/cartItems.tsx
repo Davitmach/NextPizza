@@ -88,27 +88,10 @@ if(cartStockData) {
                 })
 
             }} className="text-black-label absolute right-3 top-3 text-[13px]"/>
-            <div onClick={()=> {
-Func(true)
-back()
-setTimeout(() => {
-    push(`/product/${ProductId}`);
-}, 1);
-    
-      
-            
-        }}><Image src={Img} alt="Img" width={65} height={65}/></div>
+            <div><Image src={Img} alt="Img" width={65} height={65}/></div>
             <div className="flex flex-col gap-[12px] w-full">
 
-                <div className="border-b border-b-gray-cartBorder pb-[12px]" onClick={()=> {
-Func(true)
-back()
-setTimeout(() => {
-    push(`/product/${ProductId}`); 
-}, 1);
-
-            
-        }}>
+                <div className="border-b border-b-gray-cartBorder pb-[12px]" >
                     <div><h1 className="text-black-label font-[700] text-[16px] ">{Name}</h1></div>
                     <div><span className="text-gray-description text-[14px] font-[400]">{Size} {Size && Type && 'см,'} {Type} {Array.isArray(Ingredients) && `+ ${Ingredients.map((e)=> (` ${e}`))}`}</span></div>
                 </div>
