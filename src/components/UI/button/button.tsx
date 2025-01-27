@@ -244,6 +244,7 @@ export const Button: React.FC<IButton> = (props) => {
         return (
           <button
             onClick={() => {
+              Func && Func()
               push("/cartBar");
             }}
             className={`${
@@ -261,6 +262,7 @@ export const Button: React.FC<IButton> = (props) => {
         return (
           <button
             onClick={() => {
+              Func && Func()
               push("/cartBar");
             }}
             className={`${
@@ -288,6 +290,7 @@ export const Button: React.FC<IButton> = (props) => {
         return (
           <button
             onClick={() => {
+              Func && Func()
               push("/cartBar");
             }}
             className={`${

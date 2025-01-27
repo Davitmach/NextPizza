@@ -23,7 +23,7 @@ export default function RootLayout({
   login:React.ReactNode
 }>) {
   return (
-<div className={nunito.className}>
+<div className={`${nunito.className} `}>
    <Header/>
         {children}
         {modal}

@@ -13,6 +13,7 @@ import { CategoryContainer } from "@/components/UI/container/container";
 import { Title } from "@/components/UI/title/title";
 import { CategoryBox } from "../category/category";
 import { Select } from "@/components/UI/select/select";
+import { usePathname } from "next/navigation";
 const nunito = Nunito({
   weight: ["1000", "200", "300", "400", "500", "600", "700", "800", "900"],
   subsets: ["latin", "cyrillic"],
@@ -21,7 +22,14 @@ export const Header = () => {
   const [active, setActive] = useState<boolean>(false);
   const [click, setClick] = useState<boolean>(false);
   const ref = useRef<HTMLDivElement>(null);
+const path= usePathname();
 
+useEffect(()=> {
+if(path.includes('cartBar')) {
+setActive(false);
+
+}
+},[path])
  
   const Handler = () => {
     setClick(true);
@@ -43,7 +51,7 @@ export const Header = () => {
   return (
     <>
       <header
-        className={` ${
+        className={`  ${
           nunito.className
         } z-50  bg-white w-full  mx-auto flex justify-between items-center border-b   ${
           active == false ? " border-b-gray-cartBorder" : "border-b-transparent"
@@ -72,9 +80,12 @@ export const Header = () => {
             )}
           </div>
         </BigContainer>
-      </header>
+      
+        <Menu ref={ref} click={click} status={active} />  
 
-      <Menu ref={ref} click={click} status={active} />
+      </header>
+    
+     
     </>
   );
 };
