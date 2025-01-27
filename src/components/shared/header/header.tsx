@@ -81,10 +81,10 @@ setActive(false);
           </div>
         </BigContainer>
       
-        <Menu ref={ref} click={click} status={active} />  
+       
 
       </header>
-    
+      <Menu ref={ref} click={click} status={active} />  
      
     </>
   );
