@@ -57,6 +57,7 @@ export const CategoryContainer= (props:{children:React.ReactNode,className?:stri
         };
       }, []);
 
+      
     return(
         <div className={`${props.parentClassName} w-full  Active_cat`}>
         <div className={`${props.className} max-w-[1500px] w-full mx-auto py-[30px] px-[30px] xxs:px-[15px] `}>
